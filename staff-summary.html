@@ -544,6 +544,201 @@ body {
   opacity: 1;
   transform: none;
 }
+
+/* ── PRINT STYLES ──────────────────────────────────────── */
+@media print {
+  /* Hide screen-only elements */
+  .hub-strip,
+  .print-action-bar,
+  .page-footer,
+  .footer-buttons,
+  body > script {
+    display: none !important;
+  }
+
+  /* Reset transitions/animations */
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Tighten body for paper */
+  body {
+    background: white !important;
+    color: #111 !important;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  /* Page setup */
+  @page {
+    size: letter;
+    margin: 0.5in 0.55in;
+  }
+
+  /* Keep hero compact, no reverse video */
+  .hero {
+    background: white !important;
+    color: #5C0000 !important;
+    padding: 0 0 .8rem 0 !important;
+    border-bottom: 2px solid #5C0000;
+    margin-bottom: 1rem !important;
+    page-break-after: avoid;
+  }
+  .hero h1 {
+    color: #5C0000 !important;
+    font-size: 22pt !important;
+    margin-bottom: .4rem !important;
+  }
+  .hero h1 em {
+    color: #8B0000 !important;
+  }
+  .hero-tag {
+    color: #92400E !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 8.5pt !important;
+  }
+  .hero-sub {
+    color: #374151 !important;
+    font-size: 9.5pt !important;
+  }
+
+  /* KPI strip — flatten for paper */
+  .kpi-strip {
+    background: transparent !important;
+    border-top: 1px solid #ccc !important;
+    border-bottom: 1px solid #ccc !important;
+    padding: .5rem 0 !important;
+    gap: 1rem !important;
+  }
+  .kpi { background: transparent !important; padding: .2rem .5rem !important; }
+  .kpi-n { color: #5C0000 !important; font-size: 16pt !important; }
+  .kpi-l { color: #374151 !important; font-size: 8.5pt !important; }
+
+  /* Body wrapper */
+  .body { padding: 0 !important; max-width: none !important; }
+
+  /* Section spacing tightened */
+  .section { margin-bottom: 1rem !important; }
+  .section-head h2 {
+    font-size: 13pt !important;
+    color: #5C0000 !important;
+    margin-bottom: .4rem !important;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4 {
+    page-break-after: avoid;
+    color: #111 !important;
+  }
+
+  /* Avoid orphaned content */
+  .scale-row, .theme-card, .theme-detail, .closing, .resource-list,
+  .alert-box, .intro-card, .what-comes-next {
+    page-break-inside: avoid;
+  }
+
+  /* Boxes — flatten heavy backgrounds for ink economy */
+  .alert-box, .intro-card, .scale-note, .theme-detail, .what-comes-next {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    padding: .6rem .8rem !important;
+  }
+
+  /* Closing block — invert the dark background */
+  .closing {
+    background: white !important;
+    color: #111 !important;
+    border: 2px solid #5C0000 !important;
+    padding: 1rem !important;
+  }
+  .closing::before { display: none !important; }
+  .closing h3 { color: #5C0000 !important; }
+  .closing em { color: #6B7280 !important; }
+
+  /* More Context section */
+  .more-context-section {
+    page-break-before: always;
+    border-top: 2px solid #5C0000 !important;
+    background: white !important;
+    padding: 1rem 0 !important;
+  }
+  .more-context-section a {
+    text-decoration: none !important;
+    color: #111 !important;
+    border: 1px solid #ccc !important;
+    background: white !important;
+  }
+
+  /* Links — show URL after for paper trail */
+  a { color: #5C0000 !important; text-decoration: underline !important; }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #6B7280;
+    word-break: break-all;
+  }
+  /* But not on internal/anchor links */
+  a[href^="#"]::after,
+  a[href^="index"]::after,
+  a[href^="retreat"]::after,
+  a[href^="staff"]::after { content: ""; }
+
+  /* Print marker at bottom of last page */
+  body::after {
+    content: "Student Health & Wellness · University of Utah · May 9, 2026 · wellnessattheu.github.io/wellness-hub";
+    display: block;
+    margin-top: 1.5rem;
+    padding-top: .5rem;
+    border-top: 1px solid #ccc;
+    font-size: 8pt;
+    color: #6B7280;
+    text-align: center;
+  }
+}
+
+/* Print button — visible on screen only */
+.print-action-bar {
+  background: #FAFAF7;
+  border-bottom: 1px solid #E5DDD5;
+  padding: 12px 32px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+.print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: #5C0000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.print-btn:hover {
+  background: #7A0000;
+  transform: translateY(-1px);
+}
+.print-btn-hint {
+  font-size: 12px;
+  color: #6B7280;
+}
+@media (max-width: 768px) {
+  .print-action-bar { padding: 10px 14px; }
+  .print-btn-hint { display: none; }
+}
 </style>
 </head>
 <body>
@@ -608,6 +803,14 @@ body {
     <a href="retreat.html">🗓️ Retreat 2026</a>
     <a href="#" class="current">📋 Pre-Survey</a>
   </nav>
+</div>
+
+<!-- PRINT ACTION BAR -->
+<div class="print-action-bar">
+  <span class="print-btn-hint">Want a copy to keep or share?</span>
+  <button type="button" class="print-btn" onclick="window.print();">
+    🖨️ Print this page
+  </button>
 </div>
 
 
@@ -1006,13 +1209,12 @@ body {
     <div class="section-head">
       <h2>If Something in This Document Landed Hard</h2>
     </div>
-    <p style="font-size:.85rem;line-height:1.75;margin-bottom:1rem;">Some of what's in here may be hard to read. If a theme surfaced something that's affecting your work or wellbeing, the resources below exist for you. Within Student Health &amp; Wellness, the services available to faculty and staff are three confidential avenues inside the Center for Campus Wellness, plus the Financial Wellness Center and Campus Recreation Services.</p>
+    <p style="font-size:.85rem;line-height:1.75;margin-bottom:1rem;">Some of what's in here may be hard to read. If a theme surfaced something that's affecting your work or wellbeing, these resources exist for you:</p>
     <ul class="resource-list">
-      <li><span class="r-dot"></span><div><strong>Spiritual Wellness Chaplain</strong> <em style="color:var(--lgray); font-style:normal; font-size:.78rem;">· within CCW</em> — confidential support across faith traditions and for those without one. Space to process meaning, grief, identity, and what's hard to name.</div></li>
-      <li><span class="r-dot"></span><div><strong>Victim-Survivor Advocacy</strong> <em style="color:var(--lgray); font-style:normal; font-size:.78rem;">· within CCW</em> — confidential, trauma-informed advocacy for anyone affected by interpersonal violence, harassment, or harm.</div></li>
-      <li><span class="r-dot"></span><div><strong>Basic Needs Collective (BNC)</strong> <em style="color:var(--lgray); font-style:normal; font-size:.78rem;">· within CCW</em> — food, housing, and emergency support resources. No judgment, no questions about why — only how to help.</div></li>
-      <li><span class="r-dot"></span><div><strong>Financial Wellness Center (FWC)</strong> — one-on-one financial coaching, debt and budget support, and resources for navigating financial strain. Available to faculty and staff at no cost.</div></li>
-      <li><span class="r-dot"></span><div><strong>Campus Recreation Services (CRS)</strong> — fitness, group exercise, and movement-based wellness available to faculty and staff. Caring for the body is part of caring for the work.</div></li>
+      <li><span class="r-dot"></span><div><strong>Employee Assistance Program (EAP)</strong> — free, confidential counseling and support services for U of U employees.</div></li>
+      <li><span class="r-dot"></span><div><strong>Center for Campus Wellness</strong> — three confidential support avenues open to faculty and staff: <em>Spiritual Wellness Chaplain</em>, <em>Victim-Survivor Advocacy</em>, and the <em>Basic Needs Collective (BNC)</em>.</div></li>
+      <li><span class="r-dot"></span><div><strong>HR Employee Relations or OEO</strong> — for concerns that warrant institutional channels beyond divisional leadership.</div></li>
+      <li><span class="r-dot"></span><div><strong>Dr. Watkins directly</strong> — if you'd like to raise something that doesn't fit one of the channels above. Email is open.</div></li>
     </ul>
   </div>
 
@@ -1032,41 +1234,41 @@ body {
 </div>
 
 <!-- MORE CONTEXT — NASPA + ADVOCACY -->
-<div style="background: var(--mist); border-top: 1px solid var(--warm); padding: 2.4rem 1.5rem 2.4rem 1.5rem;">
+<div class="more-context-section" style="background: #FFFFFF; border-top: 3px solid #5C0000; padding: 2.4rem 1.5rem 2.4rem 1.5rem;">
   <div style="max-width: 880px; margin: 0 auto;">
-    <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.4rem;">More Context · The Higher Ed Landscape</div>
-    <h3 style="font-family: var(--serif); font-size: 1.5rem; color: #5C0000; margin-bottom: 0.6rem;">If you want to dig deeper.</h3>
-    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--slate); margin-bottom: 0.8rem;">Dr. Watkins serves on the <strong>NASPA 2025 Top Issues in Student Affairs Advisory Committee</strong> and is featured by name in the Health, Safety &amp; Well-being follow-up brief. The reports below show what 144 vice presidents for student affairs nationally rank as their top priorities — including basic needs (67%), institution-wide collaboration on holistic well-being (66%), and integration of mental health services. Many of the patterns named at the May 9 retreat appear in these national findings.</p>
-    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--slate); margin-bottom: 1.2rem;">The fourth resource — the new <strong>Standards for Campus-Based Advocacy Services</strong> (NASPA, Every Voice Coalition, NOVA · January 2026) — is the national framework for trauma-informed survivor advocacy on campus, relevant to our Center for Campus Wellness work and to interpersonal violence response across the division.</p>
+    <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.5rem;">More Context · The Higher Ed Landscape</div>
+    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: #5C0000; margin-bottom: 0.8rem; font-weight: 700;">If you want to dig deeper.</h3>
+    <p style="font-size: 0.95rem; line-height: 1.65; color: #1F2937; margin-bottom: 0.9rem;">Dr. Watkins serves on the <strong style="color: #111827;">NASPA 2025 Top Issues in Student Affairs Advisory Committee</strong> and is featured by name in the Health, Safety &amp; Well-being follow-up brief. The reports below show what 144 vice presidents for student affairs nationally rank as their top priorities — including basic needs (67%), institution-wide collaboration on holistic well-being (66%), and integration of mental health services. Many of the patterns named at the May 9 retreat appear in these national findings.</p>
+    <p style="font-size: 0.95rem; line-height: 1.65; color: #1F2937; margin-bottom: 1.3rem;">The fourth resource — the new <strong style="color: #111827;">Standards for Campus-Based Advocacy Services</strong> (NASPA, Every Voice Coalition, NOVA · January 2026) — is the national framework for trauma-informed survivor advocacy on campus, relevant to our Center for Campus Wellness work and to interpersonal violence response across the division.</p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 1rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 1.2rem;">
 
-      <a href="https://www.naspa.org/report/2025-naspa-top-issues-in-student-affairs" target="_blank" rel="noopener" style="display: block; padding: 14px 16px; background: white; border: 1px solid var(--warm); border-left: 3px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.10)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem;">NASPA · Main Report</div>
-        <div style="font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #5C0000; line-height: 1.25; margin-bottom: 0.35rem;">2025 Top Issues in Student Affairs</div>
-        <div style="font-size: 0.8rem; color: var(--slate); line-height: 1.4;">144 VPSAs ranked 50 issues across five key areas. Basic needs and institutional collaboration top the list.</div>
-        <div style="font-size: 0.7rem; color: #5C0000; margin-top: 0.5rem; font-weight: 600;">Read the report →</div>
+      <a href="https://www.naspa.org/report/2025-naspa-top-issues-in-student-affairs" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
+        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.4rem;">NASPA · Main Report</div>
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">2025 Top Issues in Student Affairs</div>
+        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">144 VPSAs ranked 50 issues across five key areas. Basic needs and institutional collaboration top the list.</div>
+        <div style="font-size: 0.75rem; color: #5C0000; margin-top: 0.6rem; font-weight: 700;">Read the report →</div>
       </a>
 
-      <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-health-safety-and-well-being" target="_blank" rel="noopener" style="display: block; padding: 14px 16px; background: white; border: 1px solid var(--warm); border-left: 3px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.10)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem;">NASPA · Follow-Up Brief</div>
-        <div style="font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #5C0000; line-height: 1.25; margin-bottom: 0.35rem;">Health, Safety, &amp; Well-being</div>
-        <div style="font-size: 0.8rem; color: var(--slate); line-height: 1.4;">Features Dr. Watkins' Advisory Committee perspective on basic needs as a structural reality and institutional integration.</div>
-        <div style="font-size: 0.7rem; color: #5C0000; margin-top: 0.5rem; font-weight: 600;">Read the brief →</div>
+      <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-health-safety-and-well-being" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
+        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.4rem;">NASPA · Follow-Up Brief</div>
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">Health, Safety, &amp; Well-being</div>
+        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">Features Dr. Watkins' Advisory Committee perspective on basic needs as a structural reality and institutional integration.</div>
+        <div style="font-size: 0.75rem; color: #5C0000; margin-top: 0.6rem; font-weight: 700;">Read the brief →</div>
       </a>
 
-      <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-administration-and-governance" target="_blank" rel="noopener" style="display: block; padding: 14px 16px; background: white; border: 1px solid var(--warm); border-left: 3px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.10)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem;">NASPA · Follow-Up Brief</div>
-        <div style="font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #5C0000; line-height: 1.25; margin-bottom: 0.35rem;">Administration &amp; Governance</div>
-        <div style="font-size: 0.8rem; color: var(--slate); line-height: 1.4;">Compliance (68% Very Important), revenue generation, organizational structure — what VPSAs are navigating.</div>
-        <div style="font-size: 0.7rem; color: #5C0000; margin-top: 0.5rem; font-weight: 600;">Read the brief →</div>
+      <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-administration-and-governance" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
+        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.4rem;">NASPA · Follow-Up Brief</div>
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">Administration &amp; Governance</div>
+        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">Compliance (68% Very Important), revenue generation, organizational structure — what VPSAs are navigating.</div>
+        <div style="font-size: 0.75rem; color: #5C0000; margin-top: 0.6rem; font-weight: 700;">Read the brief →</div>
       </a>
 
-      <a href="https://www.naspa.org/resources" target="_blank" rel="noopener" style="display: block; padding: 14px 16px; background: white; border: 1px solid var(--warm); border-left: 3px solid var(--teal); border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(26,92,107,0.10)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.3rem;">NASPA · Every Voice · NOVA</div>
-        <div style="font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--teal); line-height: 1.25; margin-bottom: 0.35rem;">Standards for Campus-Based Advocacy Services</div>
-        <div style="font-size: 0.8rem; color: var(--slate); line-height: 1.4;">January 2026. National framework for trauma-informed, survivor-centered advocacy on campus — relevant to CCW &amp; division-wide IPV response.</div>
-        <div style="font-size: 0.7rem; color: var(--teal); margin-top: 0.5rem; font-weight: 600;">Find on NASPA Resources →</div>
+      <a href="https://www.naspa.org/resources" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #1A5C6B; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(26,92,107,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
+        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1A5C6B; margin-bottom: 0.4rem;">NASPA · Every Voice · NOVA</div>
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">Standards for Campus-Based Advocacy Services</div>
+        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">January 2026. National framework for trauma-informed, survivor-centered advocacy on campus — relevant to CCW &amp; division-wide IPV response.</div>
+        <div style="font-size: 0.75rem; color: #1A5C6B; margin-top: 0.6rem; font-weight: 700;">Find on NASPA Resources →</div>
       </a>
 
     </div>
@@ -1074,8 +1276,8 @@ body {
 </div>
 
 <div class="page-footer" style="padding: 1.6rem 1.5rem;">
-  <div style="margin-bottom: 1rem;">
-    <a href="SHW_Retreat_Handout.pdf" target="_blank" style="display: inline-block; padding: 10px 18px; background: #5C0000; color: white; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin: 0 6px 6px 0;">📄 Download 2-Page Handout (PDF)</a>
+  <div class="footer-buttons" style="margin-bottom: 1rem;">
+    <button type="button" onclick="window.print();" style="display: inline-block; padding: 10px 18px; background: #5C0000; color: white; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin: 0 6px 6px 0; border: none; cursor: pointer; font-family: inherit;">🖨️ Print this page</button>
     <a href="retreat.html" style="display: inline-block; padding: 10px 18px; background: white; color: #5C0000; border: 1px solid #5C0000; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin: 0 6px 6px 0;">← Back to Retreat Page</a>
     <a href="index.html" style="display: inline-block; padding: 10px 18px; background: white; color: #5C0000; border: 1px solid #5C0000; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin: 0 6px 6px 0;">🏠 Hub Home</a>
   </div>
