@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SH&W All-Teams Retreat Handout — May 8, 2026</title>
+<style>
+  @page { size: letter; margin: 0.4in 0.45in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 9pt; line-height: 1.4; color: #1C1C1E; background: #FDF6EE;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+  }
+  .page { page-break-after: always; width: 100%; }
+  .page:last-child { page-break-after: auto; }
+
+  .top-strip {
+    background: #5C0000; color: white; padding: 9px 14px;
+    margin-bottom: 12px; font-size: 8pt; letter-spacing: 0.05em;
+    text-transform: uppercase; overflow: hidden;
+  }
+  .top-strip .left { float: left; font-weight: 600; color: #F5E4C0; }
+  .top-strip .right { float: right; color: rgba(255,255,255,0.7); }
+  .back .top-strip { background: #1C1C1E; }
+
+  .hero-eyebrow {
+    color: #C9952A; font-size: 8pt; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .hero-title { font-size: 22pt; color: #5C0000; line-height: 1.05; margin-bottom: 4px; }
+  .hero-sub { font-size: 9pt; color: #4A4A4F; font-style: italic; margin-bottom: 12px; line-height: 1.4; }
+
+  table.layout { width: 100%; border-collapse: separate; border-spacing: 8px 0; margin: 0 -8px 12px -8px; }
+  table.layout td { vertical-align: top; padding: 0; }
+
+  .stat-card { background: white; border-left: 4px solid #5C0000; padding: 10px 12px; }
+  .stat-card.gold { border-left-color: #C9952A; }
+  .stat-label { font-size: 7.5pt; color: #5C0000; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+  .stat-card.gold .stat-label { color: #8B6914; }
+  .stat-number { font-family: 'Playfair Display', Georgia, serif; font-size: 26pt; color: #1C1C1E; font-weight: 700; line-height: 1; margin-bottom: 2px; }
+  .stat-number .frac { font-size: 12pt; color: #8A8A8E; font-weight: 400; }
+  .stat-detail { font-size: 8pt; color: #4A4A4F; line-height: 1.35; margin-top: 4px; }
+
+  .section-head { margin: 12px 0 8px 0; border-bottom: 1px solid #E5DDD5; padding-bottom: 4px; overflow: hidden; }
+  .section-head h2 { font-size: 12pt; color: #5C0000; float: left; margin-right: 10px; }
+  .section-head .sub { font-size: 8pt; color: #8A8A8E; font-style: italic; line-height: 18pt; }
+
+  table.themes { width: 100%; border-collapse: separate; border-spacing: 12px 4px; margin: 0 -12px 6px -12px; }
+  table.themes td { vertical-align: top; width: 50%; padding: 5px 0; border-bottom: 1px dotted #E5DDD5; }
+  .theme-num { font-family: 'Playfair Display', Georgia, serif; font-size: 14pt; color: #C9952A; font-weight: 700; float: left; width: 28px; line-height: 1; }
+  .theme-body { margin-left: 28px; }
+  .theme-name { font-weight: 600; font-size: 9pt; color: #1C1C1E; margin-bottom: 1px; }
+  .theme-count { font-size: 7.5pt; color: #8A8A8E; font-style: italic; margin-bottom: 2px; }
+  .theme-action { font-size: 8pt; color: #4A4A4F; line-height: 1.3; }
+
+  .celebrate { background: #F5E4C0; border: 1px solid #C9952A; border-radius: 4px; padding: 10px 14px; margin-top: 8px; }
+  .celebrate-eyebrow { color: #8B6914; font-size: 7.5pt; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+  .celebrate-stat { font-family: 'Playfair Display', Georgia, serif; font-size: 13pt; color: #5C0000; font-weight: 700; line-height: 1.15; margin-bottom: 4px; }
+  .celebrate-text { font-size: 8.5pt; color: #4A4A4F; font-style: italic; line-height: 1.4; }
+
+  .ring-block { background: white; border-left: 4px solid #006064; padding: 9px 12px; margin-bottom: 8px; overflow: hidden; }
+  .ring-block .ring-icon { float: left; width: 56px; margin-right: 12px; }
+  .ring-block .ring-text { margin-left: 70px; font-size: 8.5pt; line-height: 1.5; }
+  .ring-block .ring-text strong { color: #006064; }
+
+  table.gaps { width: 100%; border-collapse: separate; border-spacing: 10px 3px; margin: 0 -10px 8px -10px; }
+  table.gaps td { vertical-align: top; width: 50%; padding: 4px 0; border-bottom: 1px dotted #E5DDD5; }
+  .gap-num { font-family: 'Playfair Display', Georgia, serif; font-size: 12pt; color: #006064; font-weight: 700; float: left; width: 24px; line-height: 1; }
+  .gap-body { margin-left: 24px; }
+  .gap-name { font-weight: 600; font-size: 8.5pt; color: #1C1C1E; margin-bottom: 1px; }
+  .gap-detail { font-size: 7.5pt; color: #4A4A4F; line-height: 1.3; }
+  td.gap-bit { background: #FDF6EE; border-radius: 3px; }
+  td.gap-bit .gap-num { color: #5C0000; }
+  td.gap-bit .gap-name { color: #5C0000; }
+
+  table.track { width: 100%; border-collapse: separate; border-spacing: 6px 0; margin: 8px -6px 12px -6px; }
+  table.track td { background: #5C0000; color: white; padding: 10px 6px; text-align: center; border-radius: 3px; width: 25%; vertical-align: top; }
+  .track-num { font-family: 'Playfair Display', Georgia, serif; font-size: 16pt; font-weight: 700; line-height: 1; margin-bottom: 5px; }
+  .track-divider { width: 24px; height: 1.5px; background: #C9952A; margin: 4px auto; }
+  .track-label { font-size: 7.5pt; font-weight: 600; margin-bottom: 2px; }
+  .track-detail { font-size: 7pt; color: rgba(255,255,255,0.78); font-style: italic; line-height: 1.3; }
+
+  .next-section { background: white; border-radius: 4px; padding: 12px 14px; border-left: 4px solid #5C0000; }
+  .next-section h2 { font-size: 12pt; color: #5C0000; margin-bottom: 8px; }
+  table.next { width: 100%; border-collapse: separate; border-spacing: 10px 4px; }
+  table.next td { vertical-align: top; width: 33.33%; padding: 4px 0; }
+  .next-label { color: #5C0000; font-size: 7.5pt; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; }
+  .next-text { font-size: 8pt; line-height: 1.35; color: #4A4A4F; }
+
+  .page-footer { margin-top: 12px; padding-top: 6px; border-top: 1px solid #E5DDD5; font-size: 7.5pt; color: #8A8A8E; overflow: hidden; }
+  .page-footer .left { float: left; }
+  .page-footer .right { float: right; color: #5C0000; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="page front">
+  <div class="top-strip">
+    <span class="left">All-Teams Retreat · May 8, 2026</span>
+    <span class="right">Pre-Survey Snapshot · n=40 of 120</span>
+  </div>
+  <div class="hero-eyebrow">Building the Road Together</div>
+  <h1 class="hero-title">What 40 of You Said</h1>
+  <p class="hero-sub">Forty of your 120+ colleagues — about a third of the division — filled out the pre-survey. This is what they said and what May 8 does about it.</p>
+
+  <table class="layout">
+    <tr>
+      <td><div class="stat-card">
+        <div class="stat-label">Connection to Mission</div>
+        <div class="stat-number">3.48 <span class="frac">/ 5</span></div>
+        <div class="stat-detail">23 of 40 staff at 4 or above. Mission connection holds — even through burnout.</div>
+      </div></td>
+      <td><div class="stat-card gold">
+        <div class="stat-label">Informed About the Roadmap</div>
+        <div class="stat-number">2.82 <span class="frac">/ 5</span></div>
+        <div class="stat-detail">26 of 40 at 3 or below. Only 2 rated a 5. Awareness is the gap. May 8 closes it.</div>
+      </div></td>
+    </tr>
+  </table>
+
+  <div class="section-head">
+    <h2>The Seven Themes</h2>
+    <span class="sub">From 40 honest responses · what you said and what May 8 does</span>
+  </div>
+
+  <table class="themes">
+    <tr>
+      <td>
+        <div class="theme-num">01</div>
+        <div class="theme-body">
+          <div class="theme-name">Cross-departmental silos</div>
+          <div class="theme-count">≈31 of 40 raised it</div>
+          <div class="theme-action">Peer Health Navigators connect students across all 8 units. The Hub at every seat. MediCat platform routes referrals so students don't carry their own information.</div>
+        </div>
+      </td>
+      <td>
+        <div class="theme-num">02</div>
+        <div class="theme-body">
+          <div class="theme-name">Roadmap & strategic direction</div>
+          <div class="theme-count">≈18 of 40 raised it</div>
+          <div class="theme-action">Today is the visible roadmap. Plain language, where each unit fits, what's measured, what's next.</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="theme-num">03</div>
+        <div class="theme-body">
+          <div class="theme-name">Decision-making transparency</div>
+          <div class="theme-count">≈16 of 40 raised it</div>
+          <div class="theme-action">Walk-in hours fourth Friday, 9–5. Booking link via Alex. Decisions explained at the source — not down a telephone line.</div>
+        </div>
+      </td>
+      <td>
+        <div class="theme-num">04</div>
+        <div class="theme-body">
+          <div class="theme-name">Appreciation & validation</div>
+          <div class="theme-count">≈14 of 40 raised it</div>
+          <div class="theme-action">Staff Recognition Awards today — four categories, named out loud. Sustained, not one-time.</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="theme-num">05</div>
+        <div class="theme-body">
+          <div class="theme-name">Compensation, retention, equity</div>
+          <div class="theme-count">≈12 of 40 raised it</div>
+          <div class="theme-action">Salaries flow through fees + legislative funding, not AVP discretion. Dedicated compensation conversation by July 31.</div>
+        </div>
+      </td>
+      <td>
+        <div class="theme-num">06</div>
+        <div class="theme-body">
+          <div class="theme-name">Referral pathways (clinical)</div>
+          <div class="theme-count">≈8 of 40 raised it</div>
+          <div class="theme-action">Layer 1 Referral Coordination Program: pilot live with CCW + UCC. MediCat + referral pathway mailboxes track adherence.</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="theme-num">07</div>
+        <div class="theme-body">
+          <div class="theme-name">Trust & psychological safety</div>
+          <div class="theme-count">≈8 of 40 raised it · new</div>
+          <div class="theme-action">Acknowledgment, not a fix. Sustained behavior change is the work. Open-door policy, day one. Skip-level access to Lori is sanctioned.</div>
+        </div>
+      </td>
+      <td>
+        <div class="theme-num" style="color:#8A8A8E;">·</div>
+        <div class="theme-body">
+          <div class="theme-name" style="color:#8A8A8E; font-style:italic;">All seven addressed in the deck</div>
+          <div class="theme-count" style="color:#8A8A8E;">2 PM block · You Asked. We Answer.</div>
+          <div class="theme-action" style="color:#8A8A8E;">Specific commitments, specific dates, specific structures.</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="celebrate">
+    <div class="celebrate-eyebrow">What you celebrate · the only unanimous finding</div>
+    <div class="celebrate-stat">31 of 40 of you named student care as our defining strength.</div>
+    <div class="celebrate-text">Across departments, roles, and frustrations — student care was the through-line. "Even through burnout. Even through disappointment." That is the foundation everything else is built on.</div>
+  </div>
+
+  <div class="page-footer">
+    <span class="left">SH&W All-Teams Retreat 2026 · Building the Road Together</span>
+    <span class="right">Page 1 of 2 · Continued →</span>
+  </div>
+</div>
+
+<div class="page back">
+  <div class="top-strip">
+    <span class="left">The Honest Half · What's Built, What's Not, What's Next</span>
+    <span class="right">May 8, 2026</span>
+  </div>
+
+  <div class="hero-eyebrow">The Inheritance</div>
+  <h1 class="hero-title" style="font-size:18pt;">This is not a fresh start. It is a response.</h1>
+  <p class="hero-sub" style="margin-bottom:10px;">Many of the conditions named in this year's survey were named publicly five years ago. The work since 2022 has been the response to a documented institutional inheritance — Keeling 2021, SHC space documented since 2013, SMHF rolled into tuition last fiscal year, and zero cuts to SH&W in the 25%/15% budget exercise.</p>
+
+  <div class="section-head">
+    <h2>Where the Work Hasn't Reached Yet</h2>
+    <span class="sub">The outer ring · institutional policy and law · seven open gaps</span>
+  </div>
+
+  <div class="ring-block">
+    <div class="ring-icon">
+      <svg width="56" height="56" viewBox="0 0 56 56">
+        <circle cx="28" cy="28" r="26" fill="none" stroke="#E5DDD5" stroke-width="1"/>
+        <circle cx="28" cy="28" r="20" fill="none" stroke="#C9952A" stroke-width="1.5"/>
+        <circle cx="28" cy="28" r="13" fill="none" stroke="#5C0000" stroke-width="2"/>
+        <circle cx="28" cy="28" r="6" fill="#5C0000"/>
+      </svg>
+    </div>
+    <div class="ring-text">
+      <strong>Inner rings reached. Outer ring, not yet.</strong> Using the social-ecological model: this division has built at the individual, interpersonal, and organizational levels. What is still pending is institutional policy embedding — the kind of change that requires a seat at tables we have not consistently been at.
+    </div>
+  </div>
+
+  <table class="gaps">
+    <tr>
+      <td>
+        <div class="gap-num">01</div>
+        <div class="gap-body">
+          <div class="gap-name">Suicide prevention task force</div>
+          <div class="gap-detail">Program built. Institutional task force apparatus not yet embedded.</div>
+        </div>
+      </td>
+      <td>
+        <div class="gap-num">02</div>
+        <div class="gap-body">
+          <div class="gap-name">Incoming student wellness data</div>
+          <div class="gap-detail">One marker. No disaggregation. Wellness assessment now rolling out.</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="gap-num">03</div>
+        <div class="gap-body">
+          <div class="gap-name">Stop-out wellness data</div>
+          <div class="gap-detail">No aggregate question on why students leave.</div>
+        </div>
+      </td>
+      <td>
+        <div class="gap-num">04</div>
+        <div class="gap-body">
+          <div class="gap-name">Stop-out process simplification</div>
+          <div class="gap-detail">Students navigate 4–5 departments to leave.</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="gap-num">05</div>
+        <div class="gap-body">
+          <div class="gap-name">Hospital-discharge MOU</div>
+          <div class="gap-detail">No formal continuity of care from hospital to campus.</div>
+        </div>
+      </td>
+      <td>
+        <div class="gap-num">06</div>
+        <div class="gap-body">
+          <div class="gap-name">Communicable disease + EM</div>
+          <div class="gap-detail">SOP built. Institutional embedding with Emergency Management pending.</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="gap-bit" style="padding: 8px 12px;">
+        <div class="gap-num">07</div>
+        <div class="gap-body">
+          <div class="gap-name">BIT inclusion + safety net</div>
+          <div class="gap-detail">Documented from UCC + AVP correspondence. Escalated. The most active of the seven.</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="section-head">
+    <h2>Track Record</h2>
+    <span class="sub">Data-driven growth · 2022 to today</span>
+  </div>
+
+  <table class="track">
+    <tr>
+      <td>
+        <div class="track-num">1:850</div>
+        <div class="track-divider"></div>
+        <div class="track-label">CDA caseload, 2022</div>
+        <div class="track-detail">3 consultants + faculty liaison added</div>
+      </td>
+      <td>
+        <div class="track-num">0</div>
+        <div class="track-divider"></div>
+        <div class="track-label">Cuts to SH&W</div>
+        <div class="track-detail">25%/15% exercise · institutional vote of confidence</div>
+      </td>
+      <td>
+        <div class="track-num">3.5</div>
+        <div class="track-divider"></div>
+        <div class="track-label">Years solo grants</div>
+        <div class="track-detail">Christa now leads grant capacity</div>
+      </td>
+      <td>
+        <div class="track-num">2</div>
+        <div class="track-divider"></div>
+        <div class="track-label">Huntsman grants written</div>
+        <div class="track-detail">Active with HMHI + UHealth · tabled at funder, not at us</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="next-section">
+    <div class="hero-eyebrow" style="margin-bottom:4px;">What comes next · how to stay connected</div>
+    <h2>Bidirectional accountability — with structures, not just intentions.</h2>
+
+    <table class="next">
+      <tr>
+        <td>
+          <div class="next-label">Walk-in hours</div>
+          <div class="next-text">Every fourth Friday, 9 AM to 5 PM. Just come.</div>
+        </td>
+        <td>
+          <div class="next-label">Booking link + Alex</div>
+          <div class="next-text">Schedule directly. No gatekeeping.</div>
+        </td>
+        <td>
+          <div class="next-label">Focus groups</div>
+          <div class="next-text">July through December. 20 in-person + 20 online, monthly.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="next-label">Compensation conversation</div>
+          <div class="next-text">Dedicated session committed by July 31.</div>
+        </td>
+        <td>
+          <div class="next-label">Hub & Teams channel</div>
+          <div class="next-text">Standing dissemination — visit to stay current.</div>
+        </td>
+        <td>
+          <div class="next-label">Open-door policy</div>
+          <div class="next-text">Day-one standard. Skip-level access to Lori is sanctioned.</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span class="left">Student Health & Wellness · University of Utah · May 8, 2026</span>
+    <span class="right">wellnessattheu.github.io/wellness-hub</span>
+  </div>
+</div>
+
+</body>
+</html>
