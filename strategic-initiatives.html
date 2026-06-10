@@ -16,6 +16,7 @@
     --ink: #1F1B17;
     --soft: #E5DFD5;
     --white: #FFFFFF;
+    --teal: #006064;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -243,6 +244,93 @@
     .hub-nav-icon { font-size: 18px; }
   }
 
+  /* ─── Survey results dropdown ─────────────────────────────────── */
+  .survey-wrap { max-width: 1280px; margin: 0 auto 80px; padding: 0 24px; }
+  .survey-dropdown {
+    background: var(--white); border: 1.5px solid var(--soft);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 6px 18px rgba(31,27,23,0.07);
+  }
+  .survey-dropdown > summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; gap: 16px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, var(--crimson-dk) 0%, var(--crimson) 100%);
+    color: var(--white);
+  }
+  .survey-dropdown > summary::-webkit-details-marker { display: none; }
+  .survey-summary-icon { font-size: 24px; line-height: 1; }
+  .survey-summary-text { flex-grow: 1; }
+  .survey-summary-eyebrow {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 3px;
+  }
+  .survey-summary-title {
+    font-family: Georgia, serif; font-size: 20px; font-weight: 700; line-height: 1.2;
+  }
+  .survey-chevron {
+    flex-shrink: 0; width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50%;
+    font-size: 13px; transition: transform 0.3s;
+  }
+  .survey-dropdown[open] .survey-chevron { transform: rotate(180deg); }
+
+  .survey-content { padding: 32px 28px; }
+  .survey-body {
+    font-size: 15px; color: var(--warm-gray); line-height: 1.7; max-width: 760px;
+  }
+  .survey-body strong { color: var(--ink); }
+  .survey-btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 22px 0 12px; }
+  .survey-btn {
+    display: inline-block; background: var(--crimson); color: var(--white);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 13px 26px; border-radius: 6px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .survey-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(127,29,29,0.25); }
+  .survey-btn.gold { background: var(--gold); color: var(--ink); }
+  .survey-btn.gold:hover { box-shadow: 0 6px 18px rgba(200,162,75,0.35); }
+  .survey-note { font-size: 12px; color: var(--warm-gray); font-style: italic; }
+
+  .naspa-block { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--soft); }
+  .naspa-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .naspa-intro {
+    font-size: 14px; line-height: 1.6; color: var(--warm-gray);
+    max-width: 720px; margin-bottom: 18px;
+  }
+  .naspa-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;
+  }
+  .naspa-card {
+    display: block; padding: 14px 16px; background: var(--cream);
+    border: 1px solid var(--soft); border-left: 3px solid var(--crimson-dk);
+    border-radius: 6px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .naspa-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(31,27,23,0.1); }
+  .naspa-card.teal { border-left-color: var(--teal); }
+  .naspa-card-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .naspa-card.teal .naspa-card-tag { color: var(--teal); }
+  .naspa-card-title {
+    font-size: 14px; font-weight: 700; color: var(--crimson-dk);
+    line-height: 1.25; margin-bottom: 4px;
+  }
+  .naspa-card.teal .naspa-card-title { color: var(--teal); }
+  .naspa-card-desc { font-size: 12px; color: var(--warm-gray); line-height: 1.4; }
+
+  @media (max-width: 640px) {
+    .survey-dropdown > summary { padding: 18px 20px; }
+    .survey-content { padding: 24px 20px; }
+    .survey-summary-title { font-size: 17px; }
+  }
+
   </style>
 </head>
 <body>
@@ -259,7 +347,6 @@
     </div>
     <nav class="hub-nav" role="navigation" aria-label="Site navigation">
       <a href="index.html" class="hub-nav-link"><span class="hub-nav-icon">🏠</span><span>Hub</span></a>
-      <a href="retreat.html" class="hub-nav-link"><span class="hub-nav-icon">🗓️</span><span>Retreat 2026</span></a>
       <a href="roadmap.html" class="hub-nav-link"><span class="hub-nav-icon">🗺️</span><span>Roadmap</span></a>
       <a href="dashboard.html" class="hub-nav-link"><span class="hub-nav-icon">📊</span><span>KPI Dashboard</span></a>
       <a href="strategic-initiatives.html" class="hub-nav-link current"><span class="hub-nav-icon">🌅</span><span>Initiatives</span></a>
@@ -295,6 +382,71 @@
 
 <!-- Card grid -->
 <div class="grid" id="cards-grid"></div>
+
+<!-- Survey results (carried over from the 2026 retreat) -->
+<div class="survey-wrap">
+  <details class="survey-dropdown">
+    <summary>
+      <span class="survey-summary-icon">📋</span>
+      <span class="survey-summary-text">
+        <span class="survey-summary-eyebrow">Pre-Retreat Staff Survey · 2026</span>
+        <span class="survey-summary-title">What 40 of You Said</span>
+      </span>
+      <span class="survey-chevron">▼</span>
+    </summary>
+
+    <div class="survey-content">
+      <p class="survey-body">
+        Forty of your 120+ colleagues — about a third of the division — filled out the pre-survey.
+        The results are what shaped May 8: the seven themes, the two numbers, and the only finding that was
+        unanimous across departments — that <strong>31 of 40 of you named student care</strong> as our defining strength.
+      </p>
+
+      <div class="survey-btn-row">
+        <a href="staff-summary.html" class="survey-btn">Read the Full Pre-Survey Summary →</a>
+        <a href="SHW_Retreat_Handout.pdf" class="survey-btn gold" target="_blank">Download Handout (PDF)</a>
+      </div>
+      <p class="survey-note">Two scale numbers · Seven themes · What May 8 does about each · Where the work hasn't reached yet</p>
+
+      <!-- NASPA + advocacy context -->
+      <div class="naspa-block">
+        <div class="naspa-eyebrow">More Context · The Higher Ed Landscape</div>
+        <p class="naspa-intro">
+          Dr. Watkins serves on the <strong>NASPA 2025 Top Issues in Student Affairs Advisory Committee</strong> and is
+          featured by name in the Health, Safety &amp; Well-being follow-up brief. The reports below show what 144 vice
+          presidents for student affairs nationally rank as their top priorities. The fourth resource is the new
+          <strong>Standards for Campus-Based Advocacy Services</strong> (NASPA, Every Voice Coalition, NOVA · January 2026).
+        </p>
+
+        <div class="naspa-grid">
+          <a href="https://www.naspa.org/report/2025-naspa-top-issues-in-student-affairs" target="_blank" rel="noopener" class="naspa-card">
+            <div class="naspa-card-tag">NASPA · Main Report</div>
+            <div class="naspa-card-title">2025 Top Issues in Student Affairs</div>
+            <div class="naspa-card-desc">144 VPSAs ranked 50 issues. Basic needs &amp; collaboration top the list.</div>
+          </a>
+
+          <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-health-safety-and-well-being" target="_blank" rel="noopener" class="naspa-card">
+            <div class="naspa-card-tag">NASPA · Follow-Up Brief</div>
+            <div class="naspa-card-title">Health, Safety, &amp; Well-being</div>
+            <div class="naspa-card-desc">Features Dr. Watkins on basic needs &amp; institutional integration.</div>
+          </a>
+
+          <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-administration-and-governance" target="_blank" rel="noopener" class="naspa-card">
+            <div class="naspa-card-tag">NASPA · Follow-Up Brief</div>
+            <div class="naspa-card-title">Administration &amp; Governance</div>
+            <div class="naspa-card-desc">Compliance, revenue generation, organizational structure.</div>
+          </a>
+
+          <a href="https://www.naspa.org/resources" target="_blank" rel="noopener" class="naspa-card teal">
+            <div class="naspa-card-tag">NASPA · Every Voice · NOVA</div>
+            <div class="naspa-card-title">Standards for Campus-Based Advocacy Services</div>
+            <div class="naspa-card-desc">January 2026 framework for trauma-informed survivor advocacy.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
 
 <!-- Footer -->
 <footer class="page-footer">
