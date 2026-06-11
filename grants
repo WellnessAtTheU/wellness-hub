@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SH&W Grant Dashboard | University of Utah</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --navy: #1a1f36;
+    --navy-light: #252b47;
+    --teal: #2dd4bf;
+    --teal-glow: rgba(45,212,191,0.12);
+    --text-primary: #f0f4f8;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --card-bg: #1e2540;
+    --card-border: rgba(45,212,191,0.18);
+    --accent-gold: #f59e0b;
+    --accent-violet: #818cf8;
+    --accent-emerald: #34d399;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--navy); color: var(--text-primary);
+    min-height: 100vh; line-height: 1.6; font-size: 16px;
+  }
+
+  /* NAV */
+  .site-nav {
+    background: var(--navy-light); border-bottom: 1px solid var(--card-border);
+    padding: 0 1.5rem; display: flex; align-items: center; flex-wrap: wrap;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .site-nav .brand {
+    font-weight: 700; color: var(--teal); font-size: 1.1rem;
+    padding: 1rem 1.5rem 1rem 0; border-right: 1px solid var(--card-border);
+    margin-right: 0.5rem; letter-spacing: -0.02em;
+  }
+  .site-nav a {
+    color: var(--text-secondary); text-decoration: none;
+    padding: 1rem 0.75rem; font-size: 0.875rem; transition: color 0.2s; white-space: nowrap;
+  }
+  .site-nav a:hover, .site-nav a.active { color: var(--teal); }
+
+  /* HEADER */
+  .page-header {
+    background: linear-gradient(135deg, var(--navy-light) 0%, #1a2035 100%);
+    border-bottom: 1px solid var(--card-border); padding: 2.5rem 2rem 2rem;
+  }
+  .page-header .label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;
+  }
+  .page-header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800;
+    color: var(--text-primary); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem;
+  }
+  .page-header h1 span { color: var(--teal); }
+  .page-header .intro { color: var(--text-secondary); font-size: 0.975rem; max-width: 72ch; margin-bottom: 1rem; }
+  .explore-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--teal-glow); border: 1px solid var(--card-border);
+    border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.82rem; color: var(--teal); font-weight: 600;
+  }
+
+  /* LAYOUT */
+  .main { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* SUMMARY STRIP */
+  .summary-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .summary-tile {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem; position: relative; overflow: hidden;
+  }
+  .summary-tile::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); }
+  .summary-tile.gold::before { background: var(--accent-gold); }
+  .summary-tile.violet::before { background: var(--accent-violet); }
+  .summary-tile.emerald::before { background: var(--accent-emerald); }
+  .tile-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .tile-value { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.25rem; }
+  .tile-sub { font-size: 0.75rem; color: var(--text-secondary); }
+
+  /* SECTION HEADERS */
+  .section-header { margin: 2.5rem 0 1.25rem; display: flex; align-items: baseline; gap: 0.75rem; }
+  .section-header h2 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
+  .section-badge {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal); background: var(--teal-glow); border: 1px solid var(--card-border);
+    padding: 0.2rem 0.6rem; border-radius: 999px;
+  }
+
+  /* CHART GRID */
+  .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+  .chart-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.2s;
+  }
+  .chart-card:hover { border-color: var(--teal); }
+  .card-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .card-sub { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
+  .chart-card canvas { cursor: pointer; }
+  .click-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center; }
+
+  /* DRILL PANEL */
+  #drilldown-container { margin-top: 2rem; }
+  .drill-panel {
+    background: var(--card-bg); border: 1px solid var(--teal);
+    border-radius: var(--radius); padding: 1.75rem; margin-bottom: 1.25rem;
+    animation: fadeSlideIn 0.3s ease;
+  }
+  @keyframes fadeSlideIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  .drill-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .drill-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+  .drill-title span { color: var(--teal); }
+  .drill-close {
+    background: none; border: 1px solid var(--card-border); border-radius: 999px;
+    color: var(--text-secondary); padding: 0.2rem 0.75rem; font-size: 0.78rem;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+  }
+  .drill-close:hover { border-color: var(--teal); color: var(--teal); }
+  .narrative {
+    background: var(--teal-glow); border-left: 3px solid var(--teal);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.75rem 1rem; font-size: 0.875rem; color: var(--text-secondary);
+    margin-bottom: 1.25rem; font-style: italic; line-height: 1.5;
+  }
+
+  /* FUNDING SPLIT */
+  .funding-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+  .funding-split-card { border-radius: var(--radius-sm); padding: 1rem 1.25rem; border: 1px solid var(--card-border); }
+  .funding-split-card.awarded-card { background: rgba(52,211,153,0.07); border-color: rgba(52,211,153,0.25); }
+  .funding-split-card.pipeline-card { background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.25); }
+  .split-card-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .awarded-card .split-card-label { color: var(--accent-emerald); }
+  .pipeline-card .split-card-label { color: var(--accent-gold); }
+  .split-card-value { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+  .awarded-card .split-card-value { color: var(--accent-emerald); }
+  .pipeline-card .split-card-value { color: var(--accent-gold); }
+  .split-card-sub { font-size: 0.75rem; color: var(--text-secondary); }
+
+  /* DRILL SECTION LABEL */
+  .drill-section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin: 1.25rem 0 0.75rem;
+    padding-bottom: 0.4rem; border-bottom: 1px solid var(--card-border);
+  }
+  .drill-chart-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+  .drill-chart-mini { background: var(--navy); border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 1rem; }
+  .drill-chart-mini.awarded-mini { border-color: rgba(52,211,153,0.2); }
+  .drill-chart-mini.pipeline-mini { border-color: rgba(245,158,11,0.2); }
+  .mini-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .mini-title.awarded-label { color: var(--accent-emerald); }
+  .mini-title.pipeline-label { color: var(--accent-gold); }
+
+  /* TABLE */
+  .grant-table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--card-border); margin-top: 1rem; }
+  table.grant-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  table.grant-table thead th {
+    background: var(--navy); color: var(--text-muted); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1rem; text-align: left;
+    white-space: nowrap; border-bottom: 1px solid var(--card-border);
+  }
+  table.grant-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
+  table.grant-table tbody tr:hover { background: var(--teal-glow); }
+  table.grant-table tbody td { padding: 0.7rem 1rem; color: var(--text-secondary); vertical-align: middle; }
+  table.grant-table tbody td:first-child { color: var(--text-primary); font-weight: 500; }
+  .status-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .badge-Awarded    { background: rgba(52,211,153,0.15); color: var(--accent-emerald); }
+  .badge-Submitted  { background: rgba(129,140,248,0.15); color: var(--accent-violet); }
+  .badge-InProgress { background: rgba(245,158,11,0.15); color: var(--accent-gold); }
+  .badge-Upcoming   { background: rgba(45,212,191,0.12); color: var(--teal); }
+  .amount-cell { font-variant-numeric: tabular-nums; color: var(--text-primary) !important; font-weight: 600; }
+  .awarded-amount { color: var(--accent-emerald) !important; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .na-cell { color: var(--text-muted); font-style: italic; }
+
+  /* FOOTER */
+  .site-footer {
+    border-top: 1px solid var(--card-border); padding: 1.5rem 2rem;
+    text-align: center; font-size: 0.78rem; color: var(--text-muted); background: var(--navy-light);
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 1.5rem 1rem; }
+    .main { padding: 1.25rem 0.75rem 3rem; }
+    .funding-split { grid-template-columns: 1fr; }
+    .drill-chart-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="brand">U · SH&amp;W</div>
+  <a href="https://wellnessattheu.github.io/wellness-hub/index.html">🏠 Hub</a>
+  <a href="https://wellnessattheu.github.io/wellness-hub/retreat.html">🗓️ Retreat 2026</a>
+  <a href="https://wellnessattheu.github.io/wellness-hub/roadmap.html">🗺️ Roadmap</a>
+  <a href="https://wellnessattheu.github.io/wellness-hub/dashboard.html">📊 KPI Dashboard</a>
+  <a href="https://wellnessattheu.github.io/wellness-hub/strategic-initiatives.html">🌅 Initiatives</a>
+  <a href="#" class="active">💰 Grants</a>
+</nav>
+
+<header class="page-header">
+  <div class="label">Student Health &amp; Wellness · Division Hub</div>
+  <h1>Grant Pipeline <span>&amp; Funding Dashboard</span></h1>
+  <p class="intro">
+    A live view of SH&amp;W's external funding portfolio — where money is going, which priorities it's serving, and what's in the pipeline. This dashboard covers current and upcoming grants only; grants not awarded are excluded.
+  </p>
+  <div class="explore-cta">
+    ✦ Click any chart segment or bar to explore funding by department, strategic priority, or funder type
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="summary-strip" id="summary-strip"></div>
+
+  <div class="section-header">
+    <h2>Funding Overview</h2>
+    <span class="section-badge">All Active Grants</span>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="card-title">By Strategic Priority</div>
+      <div class="card-sub">Awarded (green) vs. in consideration (gold) by priority area</div>
+      <canvas id="chartPriority" height="260"></canvas>
+      <div class="click-hint">Click a bar to explore</div>
+    </div>
+    <div class="chart-card">
+      <div class="card-title">By Lead Department</div>
+      <div class="card-sub">Awarded (green) vs. in consideration (gold) by department</div>
+      <canvas id="chartDept" height="260"></canvas>
+      <div class="click-hint">Click a bar to explore</div>
+    </div>
+    <div class="chart-card">
+      <div class="card-title">By Funder Type</div>
+      <div class="card-sub">Share of total portfolio value by funding source type</div>
+      <canvas id="chartType" height="260"></canvas>
+      <div class="click-hint">Click a segment to explore</div>
+    </div>
+  </div>
+
+  <div id="drilldown-container"></div>
+
+  <div class="section-header" style="margin-top:3rem;">
+    <h2>All Active Grants</h2>
+    <span class="section-badge" id="table-count-badge">—</span>
+  </div>
+  <div class="grant-table-wrap">
+    <table class="grant-table">
+      <thead>
+        <tr>
+          <th>Grant Title</th><th>Status</th><th>Funder</th><th>Type</th>
+          <th>Dept.</th><th>Strategic Priority</th><th>Requested</th><th>Awarded</th><th>Period</th>
+        </tr>
+      </thead>
+      <tbody id="main-table-body"></tbody>
+    </table>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  Student Health &amp; Wellness Division · University of Utah · Student Affairs · Grant data updated June 2026 ·
+  Questions? <a href="mailto:WellnessAtTheU@utah.edu" style="color:var(--teal);">WellnessAtTheU@utah.edu</a>
+</footer>
+
+<script>
+// ─── DATA — verified row-by-row from simplified Grant Tracker CSV (updated June 2026) ───
+const GRANTS = [
+  // UPCOMING
+  { status:"Upcoming",    title:"Mental Health Awareness Training (MHAT)",                                        funder:"SAMHSA",                                type:"Federal",          requested:200000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"CCW", period:"2026"      },
+  { status:"Upcoming",    title:"OVW Campus Grant",                                                               funder:"US Department of Justice",              type:"Federal",          requested:null,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:""          },
+  { status:"Upcoming",    title:"MEAF Grants",                                                                    funder:"Mitsubishi Electric America Foundation", type:"Corporate",        requested:null,   awarded:null,  priority:"Health Equity and Access",                      dept:"CDA", period:"2027-2028" },
+  { status:"Upcoming",    title:"Community Grant Competition",                                                     funder:"Organization for Autism Research",       type:"Foundation",       requested:15000,  awarded:null,  priority:"Peer-Led Support Models",                       dept:"CDA", period:"2027"      },
+  // IN PROGRESS
+  { status:"In Progress", title:"Zero Hunger / Hunger Relief",                                                    funder:"Kroger Co. Foundation",                 type:"Corporate",        requested:20000,  awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"2026"      },
+  { status:"In Progress", title:"Warehouse Donations",                                                             funder:"Costco",                                type:"Corporate",        requested:1000,   awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"2026"      },
+  { status:"In Progress", title:"Schwab Moneywise Momentum Grants",                                                funder:"Charles Schwab Foundation",             type:"Corporate",        requested:null,   awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026-2027" },
+  { status:"In Progress", title:"Economic Opportunity Grants: Financial Literacy",                                 funder:"Nasdaq Foundation",                     type:"Corporate",        requested:75000,  awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026-2027" },
+  { status:"In Progress", title:"Basic Needs",                                                                     funder:"ECMC Foundation",                       type:"Foundation",       requested:500000, awarded:null,  priority:"Basic Needs Security",                           dept:"SHW", period:"2026-2028" },
+  // SUBMITTED
+  { status:"Submitted",   title:"Patient Safety Prize",                                                           funder:"Elevance Health",                       type:"Foundation",       requested:1500000,awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"SHW", period:"2026-2028" },
+  { status:"Submitted",   title:"Get Out and Get Active",                                                         funder:"Anxiety and Depression Initiative",      type:"Foundation",       requested:10000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CRS", period:"2026-2027" },
+
+  { status:"Submitted",   title:"Aid to Higher Education",                                                        funder:"Northrop Grumman",                      type:"Corporate",        requested:15000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CCW", period:"2026-2027" },
+  { status:"Submitted",   title:"Prejudice to Pluralism: A Cohort for Addressing Antisemitism and Islamophobia",  funder:"Interfaith America",                    type:"Foundation",       requested:25000,  awarded:null,  priority:"Spiritual Wellness and Interfaith Programming",  dept:"SWP", period:"2027"      },
+  { status:"Submitted",   title:"Product Donation",                                                               funder:"Chomps",                                type:"Corporate In-Kind",requested:500,    awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"2026-2027" },
+  // AWARDED
+  { status:"Awarded",     title:"JED Campus",                                                                     funder:"JED Foundation",                        type:"Foundation",       requested:70000,  awarded:70000, priority:"Mental Health Expansion and Crisis Prevention",  dept:"SHW", period:"2021-2024" },
+  { status:"Awarded",     title:"Faith and Health Pipeline",                                                      funder:"Interfaith America",                    type:"Foundation",       requested:5000,   awarded:5000,  priority:"Spiritual Wellness and Interfaith Programming",  dept:"SWP", period:"2025-2026" },
+  { status:"Awarded",     title:"Prosperity Now",                                                                  funder:"Prosperity Now",                        type:"Foundation",       requested:20000,  awarded:11200, priority:"Health Equity and Access",                       dept:"FWC", period:"2026"      },
+  { status:"Awarded",     title:"In-Kind Donation",                                                               funder:"The OP Games",                          type:"Corporate In-Kind",requested:84700,  awarded:84700, priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026"      },
+  { status:"Awarded",     title:"SoFi Bank Sweepstakes",                                                          funder:"SoFi Bank",                             type:"Corporate",        requested:12000,  awarded:12000, priority:"Basic Needs Security",                           dept:"FWC", period:"2026"      },
+];
+
+// ─── HELPERS ───
+const fmt    = n => '$' + n.toLocaleString('en-US');
+const isAwd  = g => g.status === 'Awarded';
+const isPipe = g => !isAwd(g);
+function sumBy(arr, fn) { return arr.reduce((a,g) => a + (fn(g)||0), 0); }
+function groupSum(arr, field, fn) {
+  const m = {};
+  arr.forEach(g => { const k = g[field]||'Unknown'; m[k] = (m[k]||0) + (fn(g)||0); });
+  return m;
+}
+function unique(arr, field) { return [...new Set(arr.map(g => g[field]).filter(Boolean))]; }
+
+const PALETTE   = ['#2dd4bf','#818cf8','#f59e0b','#34d399','#f43f5e','#60a5fa','#c084fc','#fb923c','#a3e635','#e879f9','#38bdf8','#fbbf24'];
+const PALETTE_A = ['#34d399','#2dd4bf','#60a5fa','#a78bfa','#f472b6','#fbbf24','#fb923c'];
+const PALETTE_P = ['#f59e0b','#818cf8','#f43f5e','#38bdf8','#c084fc','#a3e635','#e879f9'];
+
+const TIP = {
+  backgroundColor:'#1e2540', borderColor:'rgba(45,212,191,0.3)', borderWidth:1,
+  titleColor:'#f0f4f8', bodyColor:'#94a3b8', padding:10,
+};
+const LEG = { position:'bottom', labels:{ color:'#94a3b8', font:{size:11}, padding:12, boxWidth:12 } };
+
+let charts = {};
+function killChart(id) { if (charts[id]) { charts[id].destroy(); delete charts[id]; } }
+
+// ─── SUMMARY ───
+function buildSummary() {
+  const awd  = GRANTS.filter(isAwd);
+  const pipe = GRANTS.filter(isPipe);
+  const totalAwd  = sumBy(awd,  g => g.awarded);
+  const totalPipe = sumBy(pipe, g => g.requested);
+  document.getElementById('summary-strip').innerHTML = `
+    <div class="summary-tile gold">
+      <div class="tile-label">Total Funds Awarded</div>
+      <div class="tile-value">${fmt(totalAwd)}</div>
+      <div class="tile-sub">${awd.length} confirmed award${awd.length!==1?'s':''}</div>
+    </div>
+    <div class="summary-tile">
+      <div class="tile-label">Total Funds in the Pipeline</div>
+      <div class="tile-value">${fmt(totalPipe)}+</div>
+      <div class="tile-sub">${pipe.length} grants across upcoming, in progress &amp; submitted</div>
+    </div>
+    <div class="summary-tile violet">
+      <div class="tile-label">Total Grants Tracked</div>
+      <div class="tile-value">${GRANTS.length}</div>
+      <div class="tile-sub">Active portfolio (excl. not awarded)</div>
+    </div>
+    <div class="summary-tile emerald">
+      <div class="tile-label">Departments Engaged</div>
+      <div class="tile-value">${unique(GRANTS,'dept').length}</div>
+      <div class="tile-sub">Across SH&amp;W division</div>
+    </div>`;
+}
+
+// ─── GROUPED BAR ───
+function makeGroupedBar(id, labels, awdVals, pipeVals, onClick) {
+  killChart(id);
+  charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label:'Awarded',          data:awdVals,  backgroundColor:'rgba(52,211,153,0.75)', borderColor:'#34d399', borderWidth:1, borderRadius:4 },
+      { label:'In Consideration', data:pipeVals, backgroundColor:'rgba(245,158,11,0.5)',  borderColor:'#f59e0b', borderWidth:1, borderRadius:4 },
+    ]},
+    options: {
+      responsive: true,
+      plugins: { legend:LEG, tooltip:{ ...TIP, callbacks:{ label:c=>` ${c.dataset.label}: ${fmt(c.raw)}` } } },
+      scales: {
+        x: { ticks:{color:'#64748b',font:{size:10}}, grid:{color:'rgba(255,255,255,0.03)'} },
+        y: { ticks:{color:'#64748b',font:{size:10},callback:v=>'$'+v.toLocaleString()}, grid:{color:'rgba(255,255,255,0.06)'} },
+      },
+      onClick: (e, els) => { if (els.length) onClick(labels[els[0].index]); },
+    }
+  });
+}
+
+// ─── DOUGHNUT ───
+function makePie(id, labels, values, palette, onClick) {
+  killChart(id);
+  charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
+    type: 'doughnut',
+    data: { labels, datasets:[{ data:values, backgroundColor:palette, borderColor:'#1e2540', borderWidth:2, hoverOffset:6 }] },
+    options: {
+      responsive:true, cutout:'58%',
+      plugins: { legend:LEG, tooltip:{ ...TIP, callbacks:{ label:c=>` ${fmt(c.raw)}` } } },
+      onClick: (e, els) => { if (els.length) onClick(labels[els[0].index]); },
+    }
+  });
+}
+
+// ─── OVERVIEW CHARTS ───
+function buildOverview() {
+  const priorities = unique(GRANTS, 'priority');
+  const shortP = priorities.map(p => p.length > 28 ? p.substring(0,26)+'…' : p);
+  makeGroupedBar('chartPriority', shortP,
+    priorities.map(p => sumBy(GRANTS.filter(g => isAwd(g) && g.priority===p), g => g.awarded)),
+    priorities.map(p => sumBy(GRANTS.filter(g => isPipe(g) && g.priority===p), g => g.requested)),
+    lbl => drillDown('priority', priorities[shortP.indexOf(lbl)] || lbl)
+  );
+
+  const depts = unique(GRANTS, 'dept');
+  makeGroupedBar('chartDept', depts,
+    depts.map(d => sumBy(GRANTS.filter(g => isAwd(g) && g.dept===d), g => g.awarded)),
+    depts.map(d => sumBy(GRANTS.filter(g => isPipe(g) && g.dept===d), g => g.requested)),
+    lbl => drillDown('dept', lbl)
+  );
+
+  const types = unique(GRANTS, 'type');
+  makePie('chartType', types,
+    types.map(t => sumBy(GRANTS.filter(g => g.type===t), g => g.awarded || g.requested || 0)),
+    PALETTE, lbl => drillDown('type', lbl)
+  );
+}
+
+// ─── DRILL DOWN ───
+let panelN = 0;
+
+function drillDown(dim, value) {
+  const subset = GRANTS.filter(g => g[dim] === value);
+  if (!subset.length) return;
+
+  const aGrants = subset.filter(isAwd);
+  const pGrants = subset.filter(isPipe);
+  const totalA  = sumBy(aGrants, g => g.awarded);
+  const totalP  = sumBy(pGrants, g => g.requested);
+  const pid     = 'drill-' + (++panelN);
+  const dimL    = { priority:'Strategic Priority', dept:'Department', type:'Funder Type' };
+  const others  = { priority:['dept','type'], dept:['priority','type'], type:['dept','priority'] }[dim];
+
+  function miniData(grants, field, fn) {
+    const m = {};
+    grants.forEach(g => { const k = g[field]||'Unknown'; m[k] = (m[k]||0) + (fn(g)||0); });
+    return m;
+  }
+
+  const awd1 = miniData(aGrants, others[0], g => g.awarded);
+  const awd2 = miniData(aGrants, others[1], g => g.awarded);
+  const pip1 = miniData(pGrants, others[0], g => g.requested);
+  const pip2 = miniData(pGrants, others[1], g => g.requested);
+
+  const dimTitle = dim==='priority' ? `Priority: <span>${value}</span>`
+                 : dim==='dept'     ? `Department: <span>${value}</span>`
+                 :                    `Funder Type: <span>${value}</span>`;
+
+  const el = document.createElement('div');
+  el.className = 'drill-panel'; el.id = pid;
+  el.innerHTML = `
+    <div class="drill-header">
+      <div class="drill-title">${dimTitle}</div>
+      <button class="drill-close" onclick="closePanel('${pid}')">✕ Close</button>
+    </div>
+    <div class="narrative">${buildNarrative(dim, value, subset, aGrants, pGrants, totalA, totalP)}</div>
+
+    <div class="funding-split">
+      <div class="funding-split-card awarded-card">
+        <div class="split-card-label">✓ Confirmed Awarded Funding</div>
+        <div class="split-card-value">${totalA > 0 ? fmt(totalA) : '—'}</div>
+        <div class="split-card-sub">${aGrants.length} awarded grant${aGrants.length!==1?'s':''} · funds confirmed</div>
+      </div>
+      <div class="funding-split-card pipeline-card">
+        <div class="split-card-label">⏳ Funding in the Pipeline</div>
+        <div class="split-card-value">${totalP > 0 ? fmt(totalP)+'+' : '—'}</div>
+        <div class="split-card-sub">${pGrants.length} grant${pGrants.length!==1?'s':''} upcoming, in progress, or submitted · not yet secured</div>
+      </div>
+    </div>
+
+    ${aGrants.length > 0 ? `
+    <div class="drill-section-label">Awarded Funding Breakdown</div>
+    <div class="drill-chart-row">
+      <div class="drill-chart-mini awarded-mini"><div class="mini-title awarded-label">Awarded by ${dimL[others[0]]}</div><canvas id="${pid}-a1" height="180"></canvas></div>
+      <div class="drill-chart-mini awarded-mini"><div class="mini-title awarded-label">Awarded by ${dimL[others[1]]}</div><canvas id="${pid}-a2" height="180"></canvas></div>
+    </div>` : '<p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;">No confirmed awarded funding in this category yet.</p>'}
+
+    ${pGrants.length > 0 ? `
+    <div class="drill-section-label">Pipeline — In Consideration</div>
+    <div class="drill-chart-row">
+      <div class="drill-chart-mini pipeline-mini"><div class="mini-title pipeline-label">In Consideration by ${dimL[others[0]]}</div><canvas id="${pid}-p1" height="180"></canvas></div>
+      <div class="drill-chart-mini pipeline-mini"><div class="mini-title pipeline-label">In Consideration by ${dimL[others[1]]}</div><canvas id="${pid}-p2" height="180"></canvas></div>
+    </div>` : ''}
+
+    <div class="drill-section-label">Grant Detail</div>
+    <div class="grant-table-wrap">
+      <table class="grant-table">
+        <thead><tr><th>Grant Title</th><th>Status</th><th>Funder</th><th>Type</th><th>Dept.</th><th>Priority</th><th>Requested</th><th>Awarded</th><th>Period</th></tr></thead>
+        <tbody id="${pid}-tbody"></tbody>
+      </table>
+    </div>`;
+
+  document.getElementById('drilldown-container').prepend(el);
+
+  setTimeout(() => {
+    function mp(cid, dataMap, pal) {
+      killChart(cid);
+      const cel = document.getElementById(cid);
+      if (!cel || !Object.keys(dataMap).length) return;
+      const lbls = Object.keys(dataMap), vals = lbls.map(k => dataMap[k]);
+      charts[cid] = new Chart(cel.getContext('2d'), {
+        type: 'doughnut',
+        data: { labels:lbls, datasets:[{ data:vals, backgroundColor:pal, borderColor:'#1a1f36', borderWidth:2 }] },
+        options: { responsive:true, cutout:'55%',
+          plugins:{ legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10},padding:8,boxWidth:10}},
+          tooltip:{ ...TIP, callbacks:{ label:c=>` ${fmt(c.raw)}` } } } }
+      });
+    }
+    if (aGrants.length) { mp(pid+'-a1', awd1, PALETTE_A); mp(pid+'-a2', awd2, PALETTE_A.slice(2)); }
+    if (pGrants.length) { mp(pid+'-p1', pip1, PALETTE_P); mp(pid+'-p2', pip2, PALETTE_P.slice(2)); }
+
+    const tbody = document.getElementById(pid+'-tbody');
+    [...aGrants, ...pGrants].forEach(g => {
+      const sc = g.status.replace(' ','');
+      tbody.innerHTML += `<tr>
+        <td>${g.title}</td>
+        <td><span class="status-badge badge-${sc}">${g.status}</span></td>
+        <td>${g.funder}</td><td>${g.type}</td><td>${g.dept}</td><td>${g.priority}</td>
+        <td class="${g.requested ? 'amount-cell' : 'na-cell'}">${g.requested ? fmt(g.requested) : 'TBD'}</td>
+        <td class="${g.awarded ? 'awarded-amount' : 'na-cell'}">${g.awarded ? fmt(g.awarded) : 'Not yet awarded'}</td>
+        <td>${g.period||'—'}</td></tr>`;
+    });
+  }, 60);
+
+  el.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function closePanel(id) {
+  const el = document.getElementById(id); if (!el) return;
+  ['a1','a2','p1','p2'].forEach(s => killChart(id+'-'+s));
+  el.style.transition = 'opacity 0.2s,transform 0.2s';
+  el.style.opacity = '0'; el.style.transform = 'translateY(8px)';
+  setTimeout(() => el.remove(), 220);
+}
+
+// ─── NARRATIVE ───
+function buildNarrative(dim, value, subset, aGrants, pGrants, totalA, totalP) {
+  function top(arr, field, fn) {
+    const m = {};
+    arr.forEach(g => { const k = g[field]||'Unknown'; m[k] = (m[k]||0) + (fn(g)||0); });
+    return Object.entries(m).sort((a,b) => b[1]-a[1])[0] || null;
+  }
+  const n = subset.length;
+  const awdStr  = `<strong style="color:var(--accent-emerald)">${fmt(totalA)}</strong>`;
+  const pipeStr = `<strong style="color:var(--accent-gold)">${fmt(totalP)}+</strong>`;
+  let parts = [];
+
+  if (dim === 'priority') {
+    parts.push(`The <strong>${value}</strong> priority area has ${n} grant${n!==1?'s':''} in the portfolio.`);
+    totalA > 0 ? parts.push(`${awdStr} has been confirmed as awarded.`) : parts.push(`No funding in this priority has been confirmed as awarded yet.`);
+    if (totalP > 0) parts.push(`${pipeStr} is currently in consideration (not yet secured).`);
+    const t = top(aGrants, 'dept', g => g.awarded);
+    if (t) parts.push(`Among awarded grants, <strong>${t[0]}</strong> has received the most in this priority.`);
+  } else if (dim === 'dept') {
+    parts.push(`<strong>${value}</strong> has ${n} grant${n!==1?'s':''} in the portfolio.`);
+    totalA > 0 ? parts.push(`${awdStr} has been confirmed as awarded to ${value}.`) : parts.push(`${value} has no confirmed awarded funding yet — all funding is in the pipeline.`);
+    if (totalP > 0) parts.push(`${pipeStr} is in consideration across ${pGrants.length} active application${pGrants.length!==1?'s':''}.`);
+    const tA = top(aGrants, 'priority', g => g.awarded);
+    if (tA) parts.push(`Awarded funding is concentrated in <strong>${tA[0]}</strong>.`);
+    const tP = top(pGrants, 'priority', g => g.requested);
+    if (tP) parts.push(`The largest pending request targets <strong>${tP[0]}</strong>.`);
+  } else {
+    parts.push(`<strong>${value}</strong> funders account for ${n} grant${n!==1?'s':''} in the portfolio.`);
+    totalA > 0 ? parts.push(`${awdStr} has been confirmed as awarded from ${value} sources.`) : parts.push(`No ${value} funding has been confirmed as awarded yet.`);
+    if (totalP > 0) parts.push(`${pipeStr} from ${value} funders is currently in consideration.`);
+    const t = top(aGrants, 'dept', g => g.awarded);
+    if (t) parts.push(`<strong>${t[0]}</strong> leads the division in confirmed ${value} funding.`);
+  }
+  return parts.join(' ');
+}
+
+// ─── MAIN TABLE ───
+function buildTable() {
+  const order = { Awarded:0, Submitted:1, 'In Progress':2, Upcoming:3 };
+  const sorted = [...GRANTS].sort((a,b) => (order[a.status]??9) - (order[b.status]??9));
+  const tbody = document.getElementById('main-table-body');
+  sorted.forEach(g => {
+    const sc = g.status.replace(' ','');
+    tbody.innerHTML += `<tr>
+      <td>${g.title}</td>
+      <td><span class="status-badge badge-${sc}">${g.status}</span></td>
+      <td>${g.funder}</td><td>${g.type}</td><td>${g.dept}</td><td>${g.priority}</td>
+      <td class="${g.requested ? 'amount-cell' : 'na-cell'}">${g.requested ? fmt(g.requested) : 'TBD'}</td>
+      <td class="${g.awarded ? 'awarded-amount' : 'na-cell'}">${g.awarded ? fmt(g.awarded) : 'Not yet awarded'}</td>
+      <td>${g.period||'—'}</td></tr>`;
+  });
+  document.getElementById('table-count-badge').textContent = `${GRANTS.length} grants`;
+}
+
+// ─── INIT ───
+window.closePanel = closePanel;
+document.addEventListener('DOMContentLoaded', () => { buildSummary(); buildOverview(); buildTable(); });
+</script>
+</body>
+</html>
