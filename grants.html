@@ -4,67 +4,77 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SH&W Grant Dashboard | University of Utah</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
-    --navy: #1a1f36;
-    --navy-light: #252b47;
-    --teal: #2dd4bf;
-    --teal-glow: rgba(45,212,191,0.12);
-    --text-primary: #f0f4f8;
-    --text-secondary: #94a3b8;
+    /* University of Utah / SH&W Hub brand palette */
+    --crimson: #CC0000;
+    --crimson-dark: #8B0000;
+    --crimson-soft: #f9e8e8;
+    --crimson-glow: rgba(204,0,0,0.08);
+    --teal: #006064;
+    --gold: #B45309;       /* pipeline / in consideration */
+    --green: #15803d;      /* awarded */
+    --blue: #1d4ed8;
+    --purple: #6A1B9A;
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
     --text-muted: #64748b;
-    --card-bg: #1e2540;
-    --card-border: rgba(45,212,191,0.18);
-    --accent-gold: #f59e0b;
-    --accent-violet: #818cf8;
-    --accent-emerald: #34d399;
+    --border: #e2e8f0;
     --radius: 12px;
     --radius-sm: 8px;
+    /* semantic accents used in narrative + funding cards */
+    --accent-gold: #B45309;
+    --accent-emerald: #15803d;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--navy); color: var(--text-primary);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text-primary);
     min-height: 100vh; line-height: 1.6; font-size: 16px;
   }
 
   /* NAV */
   .site-nav {
-    background: var(--navy-light); border-bottom: 1px solid var(--card-border);
+    background: var(--crimson); border-bottom: 1px solid rgba(255,255,255,0.15);
     padding: 0 1.5rem; display: flex; align-items: center; flex-wrap: wrap;
     position: sticky; top: 0; z-index: 100;
   }
   .site-nav .brand {
-    font-weight: 700; color: var(--teal); font-size: 1.1rem;
-    padding: 1rem 1.5rem 1rem 0; border-right: 1px solid var(--card-border);
+    font-weight: 700; color: #fff; font-size: 1.1rem;
+    padding: 1rem 1.5rem 1rem 0; border-right: 1px solid rgba(255,255,255,0.25);
     margin-right: 0.5rem; letter-spacing: -0.02em;
   }
   .site-nav a {
-    color: var(--text-secondary); text-decoration: none;
+    color: rgba(255,255,255,0.85); text-decoration: none;
     padding: 1rem 0.75rem; font-size: 0.875rem; transition: color 0.2s; white-space: nowrap;
   }
-  .site-nav a:hover, .site-nav a.active { color: var(--teal); }
+  .site-nav a:hover { color: #fff; }
+  .site-nav a.active { color: #fff; font-weight: 700; box-shadow: inset 0 -2px 0 #fff; }
 
   /* HEADER */
   .page-header {
-    background: linear-gradient(135deg, var(--navy-light) 0%, #1a2035 100%);
-    border-bottom: 1px solid var(--card-border); padding: 2.5rem 2rem 2rem;
+    background: linear-gradient(135deg, #1e293b 0%, #2d1b1b 50%, var(--crimson-dark) 100%);
+    border-bottom: 1px solid var(--border); padding: 2.5rem 2rem 2rem;
   }
   .page-header .label {
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;
+    text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem;
   }
   .page-header h1 {
-    font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800;
-    color: var(--text-primary); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 400;
+    color: #fff; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem;
   }
-  .page-header h1 span { color: var(--teal); }
-  .page-header .intro { color: var(--text-secondary); font-size: 0.975rem; max-width: 72ch; margin-bottom: 1rem; }
+  .page-header h1 span { color: #fca5a5; }
+  .page-header .intro { color: rgba(255,255,255,0.72); font-size: 0.975rem; max-width: 72ch; margin-bottom: 1rem; }
   .explore-cta {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--teal-glow); border: 1px solid var(--card-border);
-    border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.82rem; color: var(--teal); font-weight: 600;
+    background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.82rem; color: #fff; font-weight: 600;
   }
 
   /* LAYOUT */
@@ -73,13 +83,14 @@
   /* SUMMARY STRIP */
   .summary-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
   .summary-tile {
-    background: var(--card-bg); border: 1px solid var(--card-border);
+    background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 1.25rem 1.5rem; position: relative; overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16,24,40,0.04);
   }
-  .summary-tile::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); }
-  .summary-tile.gold::before { background: var(--accent-gold); }
-  .summary-tile.violet::before { background: var(--accent-violet); }
-  .summary-tile.emerald::before { background: var(--accent-emerald); }
+  .summary-tile::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--crimson); }
+  .summary-tile.gold::before { background: var(--gold); }
+  .summary-tile.violet::before { background: var(--teal); }
+  .summary-tile.emerald::before { background: var(--green); }
   .tile-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
   .tile-value { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.25rem; }
   .tile-sub { font-size: 0.75rem; color: var(--text-secondary); }
@@ -89,17 +100,18 @@
   .section-header h2 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
   .section-badge {
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--teal); background: var(--teal-glow); border: 1px solid var(--card-border);
+    color: var(--crimson); background: var(--crimson-glow); border: 1px solid rgba(204,0,0,0.18);
     padding: 0.2rem 0.6rem; border-radius: 999px;
   }
 
   /* CHART GRID */
   .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
   .chart-card {
-    background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.2s;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(16,24,40,0.04);
   }
-  .chart-card:hover { border-color: var(--teal); }
+  .chart-card:hover { border-color: var(--crimson); box-shadow: 0 4px 14px rgba(204,0,0,0.08); }
   .card-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
   .card-sub { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
   .chart-card canvas { cursor: pointer; }
@@ -108,22 +120,23 @@
   /* DRILL PANEL */
   #drilldown-container { margin-top: 2rem; }
   .drill-panel {
-    background: var(--card-bg); border: 1px solid var(--teal);
+    background: var(--surface); border: 1px solid var(--crimson);
     border-radius: var(--radius); padding: 1.75rem; margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px rgba(16,24,40,0.06);
     animation: fadeSlideIn 0.3s ease;
   }
   @keyframes fadeSlideIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
   .drill-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .drill-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
-  .drill-title span { color: var(--teal); }
+  .drill-title span { color: var(--crimson); }
   .drill-close {
-    background: none; border: 1px solid var(--card-border); border-radius: 999px;
+    background: none; border: 1px solid var(--border); border-radius: 999px;
     color: var(--text-secondary); padding: 0.2rem 0.75rem; font-size: 0.78rem;
     cursor: pointer; transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
   }
-  .drill-close:hover { border-color: var(--teal); color: var(--teal); }
+  .drill-close:hover { border-color: var(--crimson); color: var(--crimson); }
   .narrative {
-    background: var(--teal-glow); border-left: 3px solid var(--teal);
+    background: var(--crimson-glow); border-left: 3px solid var(--crimson);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     padding: 0.75rem 1rem; font-size: 0.875rem; color: var(--text-secondary);
     margin-bottom: 1.25rem; font-style: italic; line-height: 1.5;
@@ -131,56 +144,56 @@
 
   /* FUNDING SPLIT */
   .funding-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
-  .funding-split-card { border-radius: var(--radius-sm); padding: 1rem 1.25rem; border: 1px solid var(--card-border); }
-  .funding-split-card.awarded-card { background: rgba(52,211,153,0.07); border-color: rgba(52,211,153,0.25); }
-  .funding-split-card.pipeline-card { background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.25); }
+  .funding-split-card { border-radius: var(--radius-sm); padding: 1rem 1.25rem; border: 1px solid var(--border); }
+  .funding-split-card.awarded-card { background: rgba(21,128,61,0.06); border-color: rgba(21,128,61,0.25); }
+  .funding-split-card.pipeline-card { background: rgba(180,83,9,0.06); border-color: rgba(180,83,9,0.28); }
   .split-card-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
-  .awarded-card .split-card-label { color: var(--accent-emerald); }
-  .pipeline-card .split-card-label { color: var(--accent-gold); }
+  .awarded-card .split-card-label { color: var(--green); }
+  .pipeline-card .split-card-label { color: var(--gold); }
   .split-card-value { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
-  .awarded-card .split-card-value { color: var(--accent-emerald); }
-  .pipeline-card .split-card-value { color: var(--accent-gold); }
+  .awarded-card .split-card-value { color: var(--green); }
+  .pipeline-card .split-card-value { color: var(--gold); }
   .split-card-sub { font-size: 0.75rem; color: var(--text-secondary); }
 
   /* DRILL SECTION LABEL */
   .drill-section-label {
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--text-muted); margin: 1.25rem 0 0.75rem;
-    padding-bottom: 0.4rem; border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
   }
   .drill-chart-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
-  .drill-chart-mini { background: var(--navy); border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 1rem; }
-  .drill-chart-mini.awarded-mini { border-color: rgba(52,211,153,0.2); }
-  .drill-chart-mini.pipeline-mini { border-color: rgba(245,158,11,0.2); }
+  .drill-chart-mini { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
+  .drill-chart-mini.awarded-mini { border-color: rgba(21,128,61,0.22); }
+  .drill-chart-mini.pipeline-mini { border-color: rgba(180,83,9,0.22); }
   .mini-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
-  .mini-title.awarded-label { color: var(--accent-emerald); }
-  .mini-title.pipeline-label { color: var(--accent-gold); }
+  .mini-title.awarded-label { color: var(--green); }
+  .mini-title.pipeline-label { color: var(--gold); }
 
   /* TABLE */
-  .grant-table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--card-border); margin-top: 1rem; }
-  table.grant-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .grant-table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); margin-top: 1rem; }
+  table.grant-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: var(--surface); }
   table.grant-table thead th {
-    background: var(--navy); color: var(--text-muted); font-size: 0.68rem; font-weight: 700;
+    background: var(--bg); color: var(--text-muted); font-size: 0.68rem; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1rem; text-align: left;
-    white-space: nowrap; border-bottom: 1px solid var(--card-border);
+    white-space: nowrap; border-bottom: 1px solid var(--border);
   }
-  table.grant-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
-  table.grant-table tbody tr:hover { background: var(--teal-glow); }
+  table.grant-table tbody tr { border-bottom: 1px solid rgba(16,24,40,0.05); transition: background 0.15s; }
+  table.grant-table tbody tr:hover { background: var(--crimson-glow); }
   table.grant-table tbody td { padding: 0.7rem 1rem; color: var(--text-secondary); vertical-align: middle; }
   table.grant-table tbody td:first-child { color: var(--text-primary); font-weight: 500; }
   .status-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 999px; }
-  .badge-Awarded    { background: rgba(52,211,153,0.15); color: var(--accent-emerald); }
-  .badge-Submitted  { background: rgba(129,140,248,0.15); color: var(--accent-violet); }
-  .badge-InProgress { background: rgba(245,158,11,0.15); color: var(--accent-gold); }
-  .badge-Upcoming   { background: rgba(45,212,191,0.12); color: var(--teal); }
+  .badge-Awarded    { background: rgba(21,128,61,0.12); color: var(--green); }
+  .badge-Submitted  { background: rgba(29,78,216,0.12); color: var(--blue); }
+  .badge-InProgress { background: rgba(180,83,9,0.14); color: var(--gold); }
+  .badge-Upcoming   { background: rgba(0,96,100,0.12); color: var(--teal); }
   .amount-cell { font-variant-numeric: tabular-nums; color: var(--text-primary) !important; font-weight: 600; }
-  .awarded-amount { color: var(--accent-emerald) !important; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .awarded-amount { color: var(--green) !important; font-weight: 700; font-variant-numeric: tabular-nums; }
   .na-cell { color: var(--text-muted); font-style: italic; }
 
   /* FOOTER */
   .site-footer {
-    border-top: 1px solid var(--card-border); padding: 1.5rem 2rem;
-    text-align: center; font-size: 0.78rem; color: var(--text-muted); background: var(--navy-light);
+    border-top: 1px solid var(--border); padding: 1.5rem 2rem;
+    text-align: center; font-size: 0.78rem; color: var(--text-muted); background: var(--surface);
   }
 
   @media (max-width: 640px) {
@@ -264,7 +277,7 @@
 
 <footer class="site-footer">
   Student Health &amp; Wellness Division · University of Utah · Student Affairs · Grant data updated June 2026 ·
-  Questions? <a href="mailto:WellnessAtTheU@utah.edu" style="color:var(--teal);">WellnessAtTheU@utah.edu</a>
+  Questions? <a href="mailto:WellnessAtTheU@utah.edu" style="color:var(--crimson);">WellnessAtTheU@utah.edu</a>
 </footer>
 
 <script>
@@ -308,15 +321,16 @@ function groupSum(arr, field, fn) {
 }
 function unique(arr, field) { return [...new Set(arr.map(g => g[field]).filter(Boolean))]; }
 
-const PALETTE   = ['#2dd4bf','#818cf8','#f59e0b','#34d399','#f43f5e','#60a5fa','#c084fc','#fb923c','#a3e635','#e879f9','#38bdf8','#fbbf24'];
-const PALETTE_A = ['#34d399','#2dd4bf','#60a5fa','#a78bfa','#f472b6','#fbbf24','#fb923c'];
-const PALETTE_P = ['#f59e0b','#818cf8','#f43f5e','#38bdf8','#c084fc','#a3e635','#e879f9'];
+// Brand-aligned chart palettes (U of U crimson + SH&W Hub accents)
+const PALETTE   = ['#CC0000','#006064','#B45309','#1D4ED8','#15803d','#6A1B9A','#E65100','#0891B2','#7C3AED','#E11D48','#D97706','#059669'];
+const PALETTE_A = ['#15803d','#059669','#0891B2','#1D4ED8','#0D9488','#16A34A','#2563EB'];
+const PALETTE_P = ['#B45309','#D97706','#E65100','#CC0000','#9333EA','#CA8A04','#DC2626'];
 
 const TIP = {
-  backgroundColor:'#1e2540', borderColor:'rgba(45,212,191,0.3)', borderWidth:1,
-  titleColor:'#f0f4f8', bodyColor:'#94a3b8', padding:10,
+  backgroundColor:'#ffffff', borderColor:'rgba(204,0,0,0.35)', borderWidth:1,
+  titleColor:'#1e293b', bodyColor:'#475569', padding:10,
 };
-const LEG = { position:'bottom', labels:{ color:'#94a3b8', font:{size:11}, padding:12, boxWidth:12 } };
+const LEG = { position:'bottom', labels:{ color:'#475569', font:{size:11}, padding:12, boxWidth:12 } };
 
 let charts = {};
 function killChart(id) { if (charts[id]) { charts[id].destroy(); delete charts[id]; } }
@@ -328,22 +342,22 @@ function buildSummary() {
   const totalAwd  = sumBy(awd,  g => g.awarded);
   const totalPipe = sumBy(pipe, g => g.requested);
   document.getElementById('summary-strip').innerHTML = `
-    <div class="summary-tile gold">
+    <div class="summary-tile emerald">
       <div class="tile-label">Total Funds Awarded</div>
       <div class="tile-value">${fmt(totalAwd)}</div>
       <div class="tile-sub">${awd.length} confirmed award${awd.length!==1?'s':''}</div>
     </div>
-    <div class="summary-tile">
+    <div class="summary-tile gold">
       <div class="tile-label">Total Funds in the Pipeline</div>
       <div class="tile-value">${fmt(totalPipe)}+</div>
       <div class="tile-sub">${pipe.length} grants across upcoming, in progress &amp; submitted</div>
     </div>
-    <div class="summary-tile violet">
+    <div class="summary-tile">
       <div class="tile-label">Total Grants Tracked</div>
       <div class="tile-value">${GRANTS.length}</div>
       <div class="tile-sub">Active portfolio (excl. not awarded)</div>
     </div>
-    <div class="summary-tile emerald">
+    <div class="summary-tile violet">
       <div class="tile-label">Departments Engaged</div>
       <div class="tile-value">${unique(GRANTS,'dept').length}</div>
       <div class="tile-sub">Across SH&amp;W division</div>
@@ -356,15 +370,15 @@ function makeGroupedBar(id, labels, awdVals, pipeVals, onClick) {
   charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
     type: 'bar',
     data: { labels, datasets: [
-      { label:'Awarded',          data:awdVals,  backgroundColor:'rgba(52,211,153,0.75)', borderColor:'#34d399', borderWidth:1, borderRadius:4 },
-      { label:'In Consideration', data:pipeVals, backgroundColor:'rgba(245,158,11,0.5)',  borderColor:'#f59e0b', borderWidth:1, borderRadius:4 },
+      { label:'Awarded',          data:awdVals,  backgroundColor:'rgba(21,128,61,0.78)', borderColor:'#15803d', borderWidth:1, borderRadius:4 },
+      { label:'In Consideration', data:pipeVals, backgroundColor:'rgba(180,83,9,0.55)',  borderColor:'#B45309', borderWidth:1, borderRadius:4 },
     ]},
     options: {
       responsive: true,
       plugins: { legend:LEG, tooltip:{ ...TIP, callbacks:{ label:c=>` ${c.dataset.label}: ${fmt(c.raw)}` } } },
       scales: {
-        x: { ticks:{color:'#64748b',font:{size:10}}, grid:{color:'rgba(255,255,255,0.03)'} },
-        y: { ticks:{color:'#64748b',font:{size:10},callback:v=>'$'+v.toLocaleString()}, grid:{color:'rgba(255,255,255,0.06)'} },
+        x: { ticks:{color:'#64748b',font:{size:10}}, grid:{color:'rgba(16,24,40,0.05)'} },
+        y: { ticks:{color:'#64748b',font:{size:10},callback:v=>'$'+v.toLocaleString()}, grid:{color:'rgba(16,24,40,0.08)'} },
       },
       onClick: (e, els) => { if (els.length) onClick(labels[els[0].index]); },
     }
@@ -376,7 +390,7 @@ function makePie(id, labels, values, palette, onClick) {
   killChart(id);
   charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
     type: 'doughnut',
-    data: { labels, datasets:[{ data:values, backgroundColor:palette, borderColor:'#1e2540', borderWidth:2, hoverOffset:6 }] },
+    data: { labels, datasets:[{ data:values, backgroundColor:palette, borderColor:'#ffffff', borderWidth:2, hoverOffset:6 }] },
     options: {
       responsive:true, cutout:'58%',
       plugins: { legend:LEG, tooltip:{ ...TIP, callbacks:{ label:c=>` ${fmt(c.raw)}` } } },
@@ -493,9 +507,9 @@ function drillDown(dim, value) {
       const lbls = Object.keys(dataMap), vals = lbls.map(k => dataMap[k]);
       charts[cid] = new Chart(cel.getContext('2d'), {
         type: 'doughnut',
-        data: { labels:lbls, datasets:[{ data:vals, backgroundColor:pal, borderColor:'#1a1f36', borderWidth:2 }] },
+        data: { labels:lbls, datasets:[{ data:vals, backgroundColor:pal, borderColor:'#ffffff', borderWidth:2 }] },
         options: { responsive:true, cutout:'55%',
-          plugins:{ legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10},padding:8,boxWidth:10}},
+          plugins:{ legend:{position:'bottom',labels:{color:'#475569',font:{size:10},padding:8,boxWidth:10}},
           tooltip:{ ...TIP, callbacks:{ label:c=>` ${fmt(c.raw)}` } } } }
       });
     }
