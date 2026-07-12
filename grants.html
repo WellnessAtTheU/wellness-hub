@@ -8,14 +8,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
-    /* University of Utah / SH&W Hub brand palette */
     --crimson: #CC0000;
     --crimson-dark: #8B0000;
     --crimson-soft: #f9e8e8;
     --crimson-glow: rgba(204,0,0,0.08);
     --teal: #006064;
-    --gold: #B45309;       /* pipeline / in consideration */
-    --green: #15803d;      /* awarded */
+    --gold: #B45309;
+    --green: #15803d;
     --blue: #1d4ed8;
     --purple: #6A1B9A;
     --bg: #f6f7f9;
@@ -26,7 +25,6 @@
     --border: #e2e8f0;
     --radius: 12px;
     --radius-sm: 8px;
-    /* semantic accents used in narrative + funding cards */
     --accent-gold: #B45309;
     --accent-emerald: #15803d;
   }
@@ -40,13 +38,15 @@
   /* NAV */
   .site-nav {
     background: var(--crimson); border-bottom: 1px solid rgba(255,255,255,0.15);
-    padding: 0 1.5rem; display: flex; align-items: center; flex-wrap: wrap;
+    padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 100;
   }
   .site-nav .brand {
     font-weight: 700; color: #fff; font-size: 1.1rem;
-    padding: 1rem 1.5rem 1rem 0; border-right: 1px solid rgba(255,255,255,0.25);
-    margin-right: 0.5rem; letter-spacing: -0.02em;
+    padding: 1rem 0; letter-spacing: -0.02em; white-space: nowrap;
+  }
+  .nav-links {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0;
   }
   .site-nav a {
     color: rgba(255,255,255,0.85); text-decoration: none;
@@ -122,8 +122,7 @@
   .drill-panel {
     background: var(--surface); border: 1px solid var(--crimson);
     border-radius: var(--radius); padding: 1.75rem; margin-bottom: 1.25rem;
-    box-shadow: 0 4px 16px rgba(16,24,40,0.06);
-    animation: fadeSlideIn 0.3s ease;
+    box-shadow: 0 4px 16px rgba(16,24,40,0.06); animation: fadeSlideIn 0.3s ease;
   }
   @keyframes fadeSlideIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
   .drill-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
@@ -190,6 +189,26 @@
   .awarded-amount { color: var(--green) !important; font-weight: 700; font-variant-numeric: tabular-nums; }
   .na-cell { color: var(--text-muted); font-style: italic; }
 
+  /* CONTACT BOX */
+  .contact-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 1.25rem;
+    box-shadow: 0 1px 3px rgba(16,24,40,0.04);
+    margin-top: 2.5rem;
+  }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--crimson-soft); border: 1px solid rgba(204,0,0,0.18);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .contact-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .contact-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+  .contact-role { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
+  .contact-email a { font-size: 0.82rem; color: var(--crimson); text-decoration: none; font-weight: 500; }
+  .contact-email a:hover { text-decoration: underline; }
+
   /* FOOTER */
   .site-footer {
     border-top: 1px solid var(--border); padding: 1.5rem 2rem;
@@ -201,6 +220,7 @@
     .main { padding: 1.25rem 0.75rem 3rem; }
     .funding-split { grid-template-columns: 1fr; }
     .drill-chart-row { grid-template-columns: 1fr; }
+    .contact-box { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -208,11 +228,13 @@
 
 <nav class="site-nav">
   <div class="brand">U · SH&amp;W</div>
-  <a href="https://wellnessattheu.github.io/wellness-hub/index.html">🏠 Hub</a>
-  <a href="https://wellnessattheu.github.io/wellness-hub/roadmap.html">🗺️ Roadmap</a>
-  <a href="https://wellnessattheu.github.io/wellness-hub/dashboard.html">📊 KPI Dashboard</a>
-  <a href="https://wellnessattheu.github.io/wellness-hub/strategic-initiatives.html">🌅 Initiatives</a>
-  <a href="#" class="active">💰 Grants</a>
+  <div class="nav-links">
+    <a href="https://wellnessattheu.github.io/wellness-hub/index.html">🏠 Hub</a>
+    <a href="https://wellnessattheu.github.io/wellness-hub/roadmap.html">🗺️ Roadmap</a>
+    <a href="https://wellnessattheu.github.io/wellness-hub/dashboard.html">📊 KPI Dashboard</a>
+    <a href="https://wellnessattheu.github.io/wellness-hub/strategic-initiatives.html">🌅 Initiatives</a>
+    <a href="#" class="active">💰 Grants</a>
+  </div>
 </nav>
 
 <header class="page-header">
@@ -266,47 +288,66 @@
       <thead>
         <tr>
           <th>Grant Title</th><th>Status</th><th>Funder</th><th>Type</th>
-          <th>Dept.</th><th>Strategic Priority</th><th>Requested</th><th>Awarded</th><th>Period</th>
+          <th>Dept.</th><th>Strategic Priority</th><th>Requested</th><th>Awarded</th><th>Deadline</th>
         </tr>
       </thead>
       <tbody id="main-table-body"></tbody>
     </table>
   </div>
 
+  <!-- CONTACT BOX -->
+  <div class="contact-box">
+    <div class="contact-icon">✉️</div>
+    <div>
+      <div class="contact-label">Questions or suggestions about this dashboard?</div>
+      <div class="contact-name">Christa Greenlee</div>
+      <div class="contact-role">SH&amp;W Operations Project Manager &amp; Grants Manager</div>
+      <div class="contact-email"><a href="mailto:christa.greenlee@utah.edu">christa.greenlee@utah.edu</a></div>
+    </div>
+  </div>
+
 </main>
 
 <footer class="site-footer">
-  Student Health &amp; Wellness Division · University of Utah · Student Affairs · Grant data updated June 2026 ·
-  Questions? <a href="mailto:WellnessAtTheU@utah.edu" style="color:var(--crimson);">WellnessAtTheU@utah.edu</a>
+  Student Health &amp; Wellness Division · University of Utah · Student Affairs · Grant data updated July 2026 ·
+  Questions? <a href="mailto:christa.greenlee@utah.edu" style="color:var(--crimson);">christa.greenlee@utah.edu</a>
 </footer>
 
 <script>
-// ─── DATA — verified row-by-row from simplified Grant Tracker CSV (updated June 2026) ───
+// ─── DATA — verified row-by-row from Grant Tracker CSV, July 2026 ───
+// Not Awarded excluded: Emergency Aid Microgrant, Anna Lalor Burdick Program, Prejudice to Pluralism
+// Manual overrides: ECMC requested=$500,000; Schwab requested=$250,000
 const GRANTS = [
-  // UPCOMING
-  { status:"Upcoming",    title:"Mental Health Awareness Training (MHAT)",                                        funder:"SAMHSA",                                type:"Federal",          requested:200000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"CCW", period:"2026"      },
-  { status:"Upcoming",    title:"OVW Campus Grant",                                                               funder:"US Department of Justice",              type:"Federal",          requested:null,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:""          },
-  { status:"Upcoming",    title:"MEAF Grants",                                                                    funder:"Mitsubishi Electric America Foundation", type:"Corporate",        requested:null,   awarded:null,  priority:"Health Equity and Access",                      dept:"CDA", period:"2027-2028" },
-  { status:"Upcoming",    title:"Community Grant Competition",                                                     funder:"Organization for Autism Research",       type:"Foundation",       requested:15000,  awarded:null,  priority:"Peer-Led Support Models",                       dept:"CDA", period:"2027"      },
   // IN PROGRESS
-  { status:"In Progress", title:"Zero Hunger / Hunger Relief",                                                    funder:"Kroger Co. Foundation",                 type:"Corporate",        requested:20000,  awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"2026"      },
-  { status:"In Progress", title:"Warehouse Donations",                                                             funder:"Costco",                                type:"Corporate",        requested:1000,   awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"2026"      },
-  { status:"In Progress", title:"Schwab Moneywise Momentum Grants",                                                funder:"Charles Schwab Foundation",             type:"Corporate",        requested:null,   awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026-2027" },
-  { status:"In Progress", title:"Economic Opportunity Grants: Financial Literacy",                                 funder:"Nasdaq Foundation",                     type:"Corporate",        requested:75000,  awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026-2027" },
-  { status:"In Progress", title:"Basic Needs",                                                                     funder:"ECMC Foundation",                       type:"Foundation",       requested:500000, awarded:null,  priority:"Basic Needs Security",                           dept:"SHW", period:"2026-2028" },
+  { status:"In Progress", title:"GLS Suicide Prevention on Campus",              funder:"SAMHSA",                                type:"Federal",          requested:500000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:"7/27/2026"  },
+  { status:"In Progress", title:"Warehouse Donations",                            funder:"Costco",                                type:"Corporate In-Kind",requested:1000,    awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"7/7/2026"   },
+  { status:"In Progress", title:"Schwab Moneywise Momentum Grants",               funder:"Charles Schwab Foundation",             type:"Corporate",        requested:250000,  awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"7/31/2026"  },
+  { status:"In Progress", title:"Basic Needs",                                    funder:"ECMC Foundation",                       type:"Foundation",       requested:500000,  awarded:null,  priority:"Basic Needs Security",                           dept:"SHW", period:"9/1/2026"   },
+  { status:"In Progress", title:"Zero Hunger / Hunger Relief",                    funder:"Kroger Co. Foundation",                 type:"Corporate",        requested:null,    awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"9/18/2026"  },
+  { status:"In Progress", title:"Get Out and Get Active",                         funder:"Anxiety and Depression Initiative",      type:"Foundation",       requested:10000,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CRS", period:"4/27/2026"  },
+  // UPCOMING
+  { status:"Upcoming",    title:"OVW Campus Grant",                               funder:"US Department of Justice",              type:"Federal",          requested:null,    awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:"8/1/2026"   },
+  { status:"Upcoming",    title:"MEAF Grants",                                    funder:"Mitsubishi Electric America Foundation", type:"Corporate",        requested:null,    awarded:null,  priority:"Health Equity and Access",                      dept:"CDA", period:"11/1/2026"  },
+  { status:"Upcoming",    title:"Community Grant Competition",                     funder:"Organization for Autism Research",       type:"Foundation",       requested:15000,   awarded:null,  priority:"Peer-Led Support Models",                       dept:"CDA", period:"3/1/2027"   },
   // SUBMITTED
-  { status:"Submitted",   title:"Patient Safety Prize",                                                           funder:"Elevance Health",                       type:"Foundation",       requested:1500000,awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"SHW", period:"2026-2028" },
-  { status:"Submitted",   title:"Get Out and Get Active",                                                         funder:"Anxiety and Depression Initiative",      type:"Foundation",       requested:10000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CRS", period:"2026-2027" },
-
-  { status:"Submitted",   title:"Aid to Higher Education",                                                        funder:"Northrop Grumman",                      type:"Corporate",        requested:15000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CCW", period:"2026-2027" },
-  { status:"Submitted",   title:"Prejudice to Pluralism: A Cohort for Addressing Antisemitism and Islamophobia",  funder:"Interfaith America",                    type:"Foundation",       requested:25000,  awarded:null,  priority:"Spiritual Wellness and Interfaith Programming",  dept:"SWP", period:"2027"      },
-  { status:"Submitted",   title:"Product Donation",                                                               funder:"Chomps",                                type:"Corporate In-Kind",requested:500,    awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"2026-2027" },
+  { status:"Submitted",   title:"Patient Safety Prize",                           funder:"Elevance Health",                       type:"Foundation",       requested:1500000, awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"SHW", period:"4/7/2026"   },
+  { status:"Submitted",   title:"Aid to Higher Education",                        funder:"Northrop Grumman",                      type:"Corporate",        requested:15000,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CCW", period:"5/27/2026"  },
+  { status:"Submitted",   title:"VITA Continued Support",                         funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Health Equity and Access",                       dept:"FWC", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Success360 Campus Partner Training",             funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Health Equity and Access",                       dept:"FWC", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Wellness Retreat",                               funder:"Parent Fund",                           type:"Donor(s)",         requested:7683,    awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"UCC", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Executive Functioning Project",                  funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Peer-Led Support Models",                       dept:"CDA", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Meals Within Reach",                             funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Basic Needs Security",                           dept:"SHW", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Economic Opportunity Grants: Financial Literacy", funder:"Nasdaq Foundation",                    type:"Corporate",        requested:65000,   awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"7/31/2026"  },
+  { status:"Submitted",   title:"Mental Health Awareness Training (MHAT)",        funder:"SAMHSA",                                type:"Federal",          requested:200000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CCW", period:"TBD"        },
   // AWARDED
-  { status:"Awarded",     title:"JED Campus",                                                                     funder:"JED Foundation",                        type:"Foundation",       requested:70000,  awarded:70000, priority:"Mental Health Expansion and Crisis Prevention",  dept:"SHW", period:"2021-2024" },
-  { status:"Awarded",     title:"Faith and Health Pipeline",                                                      funder:"Interfaith America",                    type:"Foundation",       requested:5000,   awarded:5000,  priority:"Spiritual Wellness and Interfaith Programming",  dept:"SWP", period:"2025-2026" },
-  { status:"Awarded",     title:"Prosperity Now",                                                                  funder:"Prosperity Now",                        type:"Foundation",       requested:20000,  awarded:11200, priority:"Health Equity and Access",                       dept:"FWC", period:"2026"      },
-  { status:"Awarded",     title:"In-Kind Donation",                                                               funder:"The OP Games",                          type:"Corporate In-Kind",requested:84700,  awarded:84700, priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026"      },
-  { status:"Awarded",     title:"SoFi Bank Sweepstakes",                                                          funder:"SoFi Bank",                             type:"Corporate",        requested:12000,  awarded:12000, priority:"Basic Needs Security",                           dept:"FWC", period:"2026"      },
+  { status:"Awarded",     title:"JED Campus",                                     funder:"JED Foundation",                        type:"Foundation",       requested:70000,   awarded:70000, priority:"Mental Health Expansion and Crisis Prevention",  dept:"SHW", period:"2021-2024"  },
+  { status:"Awarded",     title:"Faith and Health Pipeline",                      funder:"Interfaith America",                    type:"Foundation",       requested:5000,    awarded:5000,  priority:"Spiritual Wellness and Interfaith Programming",  dept:"SWP", period:"2025-2026"  },
+  { status:"Awarded",     title:"Prosperity Now",                                 funder:"Prosperity Now",                        type:"Foundation",       requested:20000,   awarded:11200, priority:"Health Equity and Access",                       dept:"FWC", period:"2026"       },
+  { status:"Awarded",     title:"In-Kind Donation",                               funder:"The OP Games",                          type:"Corporate In-Kind",requested:84700,   awarded:84700, priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026"       },
+  { status:"Awarded",     title:"SoFi Bank Sweepstakes",                          funder:"SoFi Bank",                             type:"Corporate",        requested:12000,   awarded:12000, priority:"Basic Needs Security",                           dept:"FWC", period:"2026"       },
+  { status:"Awarded",     title:"Scholarships for Accessibility",                 funder:"Craig H. Neilsen Foundation",           type:"Foundation",       requested:10000,   awarded:10000, priority:"Health Equity and Access",                       dept:"CDA", period:"2026"       },
+  { status:"Awarded",     title:"Scholarships for Students with Learning Disabilities", funder:"Kingsley Foundation",             type:"Foundation",       requested:10000,   awarded:10000, priority:"Health Equity and Access",                       dept:"CDA", period:"2026"       },
+  { status:"Awarded",     title:"Product Donation",                               funder:"Chomps",                                type:"Corporate In-Kind",requested:512,     awarded:512,   priority:"Basic Needs Security",                           dept:"CCW", period:"2026"       },
 ];
 
 // ─── HELPERS ───
@@ -314,14 +355,8 @@ const fmt    = n => '$' + n.toLocaleString('en-US');
 const isAwd  = g => g.status === 'Awarded';
 const isPipe = g => !isAwd(g);
 function sumBy(arr, fn) { return arr.reduce((a,g) => a + (fn(g)||0), 0); }
-function groupSum(arr, field, fn) {
-  const m = {};
-  arr.forEach(g => { const k = g[field]||'Unknown'; m[k] = (m[k]||0) + (fn(g)||0); });
-  return m;
-}
 function unique(arr, field) { return [...new Set(arr.map(g => g[field]).filter(Boolean))]; }
 
-// Brand-aligned chart palettes (U of U crimson + SH&W Hub accents)
 const PALETTE   = ['#CC0000','#006064','#B45309','#1D4ED8','#15803d','#6A1B9A','#E65100','#0891B2','#7C3AED','#E11D48','#D97706','#059669'];
 const PALETTE_A = ['#15803d','#059669','#0891B2','#1D4ED8','#0D9488','#16A34A','#2563EB'];
 const PALETTE_P = ['#B45309','#D97706','#E65100','#CC0000','#9333EA','#CA8A04','#DC2626'];
@@ -408,14 +443,12 @@ function buildOverview() {
     priorities.map(p => sumBy(GRANTS.filter(g => isPipe(g) && g.priority===p), g => g.requested)),
     lbl => drillDown('priority', priorities[shortP.indexOf(lbl)] || lbl)
   );
-
   const depts = unique(GRANTS, 'dept');
   makeGroupedBar('chartDept', depts,
     depts.map(d => sumBy(GRANTS.filter(g => isAwd(g) && g.dept===d), g => g.awarded)),
     depts.map(d => sumBy(GRANTS.filter(g => isPipe(g) && g.dept===d), g => g.requested)),
     lbl => drillDown('dept', lbl)
   );
-
   const types = unique(GRANTS, 'type');
   makePie('chartType', types,
     types.map(t => sumBy(GRANTS.filter(g => g.type===t), g => g.awarded || g.requested || 0)),
@@ -425,11 +458,9 @@ function buildOverview() {
 
 // ─── DRILL DOWN ───
 let panelN = 0;
-
 function drillDown(dim, value) {
   const subset = GRANTS.filter(g => g[dim] === value);
   if (!subset.length) return;
-
   const aGrants = subset.filter(isAwd);
   const pGrants = subset.filter(isPipe);
   const totalA  = sumBy(aGrants, g => g.awarded);
@@ -437,22 +468,18 @@ function drillDown(dim, value) {
   const pid     = 'drill-' + (++panelN);
   const dimL    = { priority:'Strategic Priority', dept:'Department', type:'Funder Type' };
   const others  = { priority:['dept','type'], dept:['priority','type'], type:['dept','priority'] }[dim];
-
   function miniData(grants, field, fn) {
     const m = {};
     grants.forEach(g => { const k = g[field]||'Unknown'; m[k] = (m[k]||0) + (fn(g)||0); });
     return m;
   }
-
   const awd1 = miniData(aGrants, others[0], g => g.awarded);
   const awd2 = miniData(aGrants, others[1], g => g.awarded);
   const pip1 = miniData(pGrants, others[0], g => g.requested);
   const pip2 = miniData(pGrants, others[1], g => g.requested);
-
   const dimTitle = dim==='priority' ? `Priority: <span>${value}</span>`
                  : dim==='dept'     ? `Department: <span>${value}</span>`
                  :                    `Funder Type: <span>${value}</span>`;
-
   const el = document.createElement('div');
   el.className = 'drill-panel'; el.id = pid;
   el.innerHTML = `
@@ -461,7 +488,6 @@ function drillDown(dim, value) {
       <button class="drill-close" onclick="closePanel('${pid}')">✕ Close</button>
     </div>
     <div class="narrative">${buildNarrative(dim, value, subset, aGrants, pGrants, totalA, totalP)}</div>
-
     <div class="funding-split">
       <div class="funding-split-card awarded-card">
         <div class="split-card-label">✓ Confirmed Awarded Funding</div>
@@ -474,31 +500,26 @@ function drillDown(dim, value) {
         <div class="split-card-sub">${pGrants.length} grant${pGrants.length!==1?'s':''} upcoming, in progress, or submitted · not yet secured</div>
       </div>
     </div>
-
     ${aGrants.length > 0 ? `
     <div class="drill-section-label">Awarded Funding Breakdown</div>
     <div class="drill-chart-row">
       <div class="drill-chart-mini awarded-mini"><div class="mini-title awarded-label">Awarded by ${dimL[others[0]]}</div><canvas id="${pid}-a1" height="180"></canvas></div>
       <div class="drill-chart-mini awarded-mini"><div class="mini-title awarded-label">Awarded by ${dimL[others[1]]}</div><canvas id="${pid}-a2" height="180"></canvas></div>
     </div>` : '<p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;">No confirmed awarded funding in this category yet.</p>'}
-
     ${pGrants.length > 0 ? `
     <div class="drill-section-label">Pipeline — In Consideration</div>
     <div class="drill-chart-row">
       <div class="drill-chart-mini pipeline-mini"><div class="mini-title pipeline-label">In Consideration by ${dimL[others[0]]}</div><canvas id="${pid}-p1" height="180"></canvas></div>
       <div class="drill-chart-mini pipeline-mini"><div class="mini-title pipeline-label">In Consideration by ${dimL[others[1]]}</div><canvas id="${pid}-p2" height="180"></canvas></div>
     </div>` : ''}
-
     <div class="drill-section-label">Grant Detail</div>
     <div class="grant-table-wrap">
       <table class="grant-table">
-        <thead><tr><th>Grant Title</th><th>Status</th><th>Funder</th><th>Type</th><th>Dept.</th><th>Priority</th><th>Requested</th><th>Awarded</th><th>Period</th></tr></thead>
+        <thead><tr><th>Grant Title</th><th>Status</th><th>Funder</th><th>Type</th><th>Dept.</th><th>Priority</th><th>Requested</th><th>Awarded</th><th>Deadline</th></tr></thead>
         <tbody id="${pid}-tbody"></tbody>
       </table>
     </div>`;
-
   document.getElementById('drilldown-container').prepend(el);
-
   setTimeout(() => {
     function mp(cid, dataMap, pal) {
       killChart(cid);
@@ -515,7 +536,6 @@ function drillDown(dim, value) {
     }
     if (aGrants.length) { mp(pid+'-a1', awd1, PALETTE_A); mp(pid+'-a2', awd2, PALETTE_A.slice(2)); }
     if (pGrants.length) { mp(pid+'-p1', pip1, PALETTE_P); mp(pid+'-p2', pip2, PALETTE_P.slice(2)); }
-
     const tbody = document.getElementById(pid+'-tbody');
     [...aGrants, ...pGrants].forEach(g => {
       const sc = g.status.replace(' ','');
@@ -528,7 +548,6 @@ function drillDown(dim, value) {
         <td>${g.period||'—'}</td></tr>`;
     });
   }, 60);
-
   el.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
@@ -551,7 +570,6 @@ function buildNarrative(dim, value, subset, aGrants, pGrants, totalA, totalP) {
   const awdStr  = `<strong style="color:var(--accent-emerald)">${fmt(totalA)}</strong>`;
   const pipeStr = `<strong style="color:var(--accent-gold)">${fmt(totalP)}+</strong>`;
   let parts = [];
-
   if (dim === 'priority') {
     parts.push(`The <strong>${value}</strong> priority area has ${n} grant${n!==1?'s':''} in the portfolio.`);
     totalA > 0 ? parts.push(`${awdStr} has been confirmed as awarded.`) : parts.push(`No funding in this priority has been confirmed as awarded yet.`);
