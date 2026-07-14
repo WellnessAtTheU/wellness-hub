@@ -16,7 +16,6 @@
     --ink: #1F1B17;
     --soft: #E5DFD5;
     --white: #FFFFFF;
-    --teal: #006064;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -159,7 +158,6 @@
   .status-launching{ background: #FCE7F3; color: #9D174D; }
   .status-planning { background: #DBEAFE; color: #1E3A8A; }
   .status-completed{ background: #E5E7EB; color: #1F2937; }
-  .status-paused   { background: #FEE2E2; color: #991B1B; }
   .flip-hint {
     margin-left: auto; font-size: 11px; color: var(--warm-gray);
     font-style: italic; opacity: 0.7;
@@ -245,93 +243,6 @@
     .hub-nav-icon { font-size: 18px; }
   }
 
-  /* ─── Survey results dropdown ─────────────────────────────────── */
-  .survey-wrap { max-width: 1280px; margin: 0 auto 80px; padding: 0 24px; }
-  .survey-dropdown {
-    background: var(--white); border: 1.5px solid var(--soft);
-    border-radius: 12px; overflow: hidden;
-    box-shadow: 0 6px 18px rgba(31,27,23,0.07);
-  }
-  .survey-dropdown > summary {
-    list-style: none; cursor: pointer;
-    display: flex; align-items: center; gap: 16px;
-    padding: 22px 28px;
-    background: linear-gradient(135deg, var(--crimson-dk) 0%, var(--crimson) 100%);
-    color: var(--white);
-  }
-  .survey-dropdown > summary::-webkit-details-marker { display: none; }
-  .survey-summary-icon { font-size: 24px; line-height: 1; }
-  .survey-summary-text { flex-grow: 1; }
-  .survey-summary-eyebrow {
-    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--gold); font-weight: 700; margin-bottom: 3px;
-  }
-  .survey-summary-title {
-    font-family: Georgia, serif; font-size: 20px; font-weight: 700; line-height: 1.2;
-  }
-  .survey-chevron {
-    flex-shrink: 0; width: 30px; height: 30px;
-    display: flex; align-items: center; justify-content: center;
-    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50%;
-    font-size: 13px; transition: transform 0.3s;
-  }
-  .survey-dropdown[open] .survey-chevron { transform: rotate(180deg); }
-
-  .survey-content { padding: 32px 28px; }
-  .survey-body {
-    font-size: 15px; color: var(--warm-gray); line-height: 1.7; max-width: 760px;
-  }
-  .survey-body strong { color: var(--ink); }
-  .survey-btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 22px 0 12px; }
-  .survey-btn {
-    display: inline-block; background: var(--crimson); color: var(--white);
-    font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-    padding: 13px 26px; border-radius: 6px; text-decoration: none;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .survey-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(127,29,29,0.25); }
-  .survey-btn.gold { background: var(--gold); color: var(--ink); }
-  .survey-btn.gold:hover { box-shadow: 0 6px 18px rgba(200,162,75,0.35); }
-  .survey-note { font-size: 12px; color: var(--warm-gray); font-style: italic; }
-
-  .naspa-block { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--soft); }
-  .naspa-eyebrow {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 8px;
-  }
-  .naspa-intro {
-    font-size: 14px; line-height: 1.6; color: var(--warm-gray);
-    max-width: 720px; margin-bottom: 18px;
-  }
-  .naspa-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;
-  }
-  .naspa-card {
-    display: block; padding: 14px 16px; background: var(--cream);
-    border: 1px solid var(--soft); border-left: 3px solid var(--crimson-dk);
-    border-radius: 6px; text-decoration: none;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .naspa-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(31,27,23,0.1); }
-  .naspa-card.teal { border-left-color: var(--teal); }
-  .naspa-card-tag {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 4px;
-  }
-  .naspa-card.teal .naspa-card-tag { color: var(--teal); }
-  .naspa-card-title {
-    font-size: 14px; font-weight: 700; color: var(--crimson-dk);
-    line-height: 1.25; margin-bottom: 4px;
-  }
-  .naspa-card.teal .naspa-card-title { color: var(--teal); }
-  .naspa-card-desc { font-size: 12px; color: var(--warm-gray); line-height: 1.4; }
-
-  @media (max-width: 640px) {
-    .survey-dropdown > summary { padding: 18px 20px; }
-    .survey-content { padding: 24px 20px; }
-    .survey-summary-title { font-size: 17px; }
-  }
-
   </style>
 </head>
 <body>
@@ -348,10 +259,10 @@
     </div>
     <nav class="hub-nav" role="navigation" aria-label="Site navigation">
       <a href="index.html" class="hub-nav-link"><span class="hub-nav-icon">🏠</span><span>Hub</span></a>
+      <a href="retreat.html" class="hub-nav-link"><span class="hub-nav-icon">🗓️</span><span>Retreat 2026</span></a>
       <a href="roadmap.html" class="hub-nav-link"><span class="hub-nav-icon">🗺️</span><span>Roadmap</span></a>
       <a href="dashboard.html" class="hub-nav-link"><span class="hub-nav-icon">📊</span><span>KPI Dashboard</span></a>
       <a href="strategic-initiatives.html" class="hub-nav-link current"><span class="hub-nav-icon">🌅</span><span>Initiatives</span></a>
-      <a href="grants.html" class="hub-nav-link"><span class="hub-nav-icon">💰</span><span>Grants</span></a>
     </nav>
   </div>
 </div>
@@ -366,16 +277,51 @@
   </p>
 </header>
 
+<!-- ==================== FEEDBACK CALLOUT + GALLERY WALK POSTERS ==================== -->
+<section style="max-width: 1200px; margin: 0 auto 32px; padding: 0 24px;">
+
+  <!-- Feedback Form Callout (Prominent) -->
+  <div style="background: linear-gradient(135deg, #7F1D1D 0%, #5A1212 100%); border-radius: 16px; padding: 28px 32px; color: white; box-shadow: 0 12px 32px rgba(127,29,29,0.25); margin-bottom: 24px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -30px; right: -30px; font-size: 160px; opacity: 0.08; line-height: 1;">📣</div>
+    <div style="position: relative; z-index: 1;">
+      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #C8A24B; margin-bottom: 8px;">Working Feedback Form</div>
+      <h2 style="font-family: 'DM Serif Display', Georgia, serif; font-size: 28px; font-weight: 400; margin: 0 0 10px; letter-spacing: -0.01em;">Initiative Feedback — All Staff Town Hall</h2>
+      <p style="font-size: 15px; line-height: 1.55; margin: 0 0 18px; color: rgba(255,255,255,0.92); max-width: 720px;">
+        This is the current working link. If you tried the previous feedback form and it didn't load, please use this one instead. Your feedback shapes what gets prioritized, adjusted, or added to this landscape.
+      </p>
+      <a href="https://forms.office.com/r/zXfXzx6qV6" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: #C8A24B; color: #1F1B17; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,0.15); transition: transform 0.15s;">
+        → Open the Feedback Form
+      </a>
+    </div>
+  </div>
+
+  <!-- Gallery Walk Posters PDF -->
+  <div style="background: #FAF7F2; border: 1px solid #E5DFD5; border-left: 6px solid #C8A24B; border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+    <div style="font-size: 44px; line-height: 1; flex-shrink: 0;">🖼️</div>
+    <div style="flex: 1; min-width: 240px;">
+      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C8A24B; margin-bottom: 6px;">Reference Materials</div>
+      <h3 style="font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; font-weight: 400; margin: 0 0 8px; color: #1F1B17; line-height: 1.25;">Initiative Gallery Walk Posters — 2026</h3>
+      <p style="font-size: 14px; line-height: 1.55; color: #5C5751; margin: 0;">
+        Each active initiative captured as a poster for the gallery walk. Use these to see the visual summary of every initiative below — great for orientation, revisiting details, or sharing with a colleague.
+      </p>
+    </div>
+    <a href="https://github.com/WellnessAtTheU/wellness-hub/blob/main/Initiative%20Gallery%20Walk%20Posters%202026.pdf" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #7F1D1D; color: white; padding: 12px 20px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(127,29,29,0.20); flex-shrink: 0;">
+      📄 View PDF →
+    </a>
+  </div>
+
+</section>
+<!-- ==================== END FEEDBACK CALLOUT + GALLERY WALK POSTERS ==================== -->
+
 <!-- Filter controls -->
 <div class="controls">
   <div class="controls-inner">
-    <div class="count-pill" id="initiative-count">23 Initiatives</div>
+    <div class="count-pill" id="initiative-count">26 Initiatives</div>
     <div class="filter-group">
       <span class="filter-label">Status:</span>
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="active">Active</button>
       <button class="filter-btn" data-filter="progress">In Progress</button>
-      <button class="filter-btn" data-filter="paused">Paused</button>
       <button class="filter-btn" data-filter="planning">Planning</button>
       <button class="filter-btn" data-filter="launching">Launching</button>
     </div>
@@ -385,70 +331,6 @@
 
 <!-- Card grid -->
 <div class="grid" id="cards-grid"></div>
-
-<!-- Survey results (carried over from the 2026 retreat) -->
-<div class="survey-wrap">
-  <details class="survey-dropdown">
-    <summary>
-      <span class="survey-summary-icon">📋</span>
-      <span class="survey-summary-text">
-        <span class="survey-summary-eyebrow">Pre-Retreat Staff Survey · 2026</span>
-        <span class="survey-summary-title">What 40 of You Said</span>
-      </span>
-      <span class="survey-chevron">▼</span>
-    </summary>
-
-    <div class="survey-content">
-      <p class="survey-body">
-        Forty of your 120+ colleagues — about a third of the division — filled out the pre-survey.
-        The results are what shaped May 8: the seven themes, the two numbers, and the only finding that was
-        unanimous across departments — that <strong>31 of 40 of you named student care</strong> as our defining strength.
-      </p>
-
-      <div class="survey-btn-row">
-        <a href="staff-summary.html" class="survey-btn">Read the Full Pre-Survey Summary →</a>
-      </div>
-      <p class="survey-note">Two scale numbers · Seven themes · What May 8 does about each · Where the work hasn't reached yet</p>
-
-      <!-- NASPA + advocacy context -->
-      <div class="naspa-block">
-        <div class="naspa-eyebrow">More Context · The Higher Ed Landscape</div>
-        <p class="naspa-intro">
-          Dr. Watkins serves on the <strong>NASPA 2025 Top Issues in Student Affairs Advisory Committee</strong> and is
-          featured by name in the Health, Safety &amp; Well-being follow-up brief. The reports below show what 144 vice
-          presidents for student affairs nationally rank as their top priorities. The fourth resource is the new
-          <strong>Standards for Campus-Based Advocacy Services</strong> (NASPA, Every Voice Coalition, NOVA · January 2026).
-        </p>
-
-        <div class="naspa-grid">
-          <a href="https://www.naspa.org/report/2025-naspa-top-issues-in-student-affairs" target="_blank" rel="noopener" class="naspa-card">
-            <div class="naspa-card-tag">NASPA · Main Report</div>
-            <div class="naspa-card-title">2025 Top Issues in Student Affairs</div>
-            <div class="naspa-card-desc">144 VPSAs ranked 50 issues. Basic needs &amp; collaboration top the list.</div>
-          </a>
-
-          <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-health-safety-and-well-being" target="_blank" rel="noopener" class="naspa-card">
-            <div class="naspa-card-tag">NASPA · Follow-Up Brief</div>
-            <div class="naspa-card-title">Health, Safety, &amp; Well-being</div>
-            <div class="naspa-card-desc">Features Dr. Watkins on basic needs &amp; institutional integration.</div>
-          </a>
-
-          <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-administration-and-governance" target="_blank" rel="noopener" class="naspa-card">
-            <div class="naspa-card-tag">NASPA · Follow-Up Brief</div>
-            <div class="naspa-card-title">Administration &amp; Governance</div>
-            <div class="naspa-card-desc">Compliance, revenue generation, organizational structure.</div>
-          </a>
-
-          <a href="https://www.naspa.org/resources" target="_blank" rel="noopener" class="naspa-card teal">
-            <div class="naspa-card-tag">NASPA · Every Voice · NOVA</div>
-            <div class="naspa-card-title">Standards for Campus-Based Advocacy Services</div>
-            <div class="naspa-card-desc">January 2026 framework for trauma-informed survivor advocacy.</div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </details>
-</div>
 
 <!-- Footer -->
 <footer class="page-footer">
@@ -561,12 +443,12 @@ const initiatives = [
   {
     n: "09",
     name: "SH&W Branding Campaign",
-    overview: "Coordinated identity and messaging initiative across the division.",
+    overview: "Coordinated identity and messaging initiative across the division — with tangible visual rollout across campus.",
     goal: "Reinforce a unified SH&W identity. Theme adopted: 'Support for Your Well-Being, Your Way.'",
-    components: "Brand framework; messaging rollout; student survey validation. UMC developing initial mockups; marketing toolkit under departmental review.",
-    status: "progress",
-    statusLabel: "In Progress",
-    timeline: "Summer 2026 rollout",
+    components: "Brand framework; messaging rollout; student survey validation. Fall 2026 physical rollout: bus wraps, floor clings, flyers, and window wraps outside the Wellness Hub. Marketing toolkit under departmental review.",
+    status: "launching",
+    statusLabel: "Fall Rollout",
+    timeline: "Fall 2026 — assets rolling out across campus",
     needs: "Brand governance; departmental adoption.",
     kpi: "Campus Climate · Culture of Care"
   },
@@ -587,11 +469,11 @@ const initiatives = [
     name: "SH&W Utilization Dashboard",
     overview: "Central dashboard of utilization, engagement, and outcomes data across the division.",
     goal: "Enable data-informed decisions and ROI storytelling.",
-    components: "Data feeds; UAIR partnership (data broker model); success metrics overlay.",
+    components: "Data feeds; UAIR partnership (data broker model); success metrics overlay. Timing dependent on two partner-readiness pieces: (1) UCC developing a new consent to share data, targeted for Fall; (2) MOU with UAIR for data broker role in development.",
     status: "progress",
-    statusLabel: "In Development",
-    timeline: "UAIR MOU target: end of month",
-    needs: "Data governance; analytics capacity.",
+    statusLabel: "In Motion",
+    timeline: "Ongoing — dependencies in progress",
+    needs: "UCC consent finalization; UAIR MOU completion; data governance; analytics capacity.",
     kpi: "All KPIs"
   },
   {
@@ -659,59 +541,59 @@ const initiatives = [
     name: "Success360 — Financial Wellness (Fidelity)",
     overview: "Incentivized financial wellness program embedded in First-Year Experience, Fidelity-backed.",
     goal: "Build long-term financial literacy and behaviors.",
-    components: "Fidelity partnership; incentives; brokerage accounts; curriculum. Currently paused pending Branding completion.",
-    status: "progress",
-    statusLabel: "Paused",
-    timeline: "Target Fall 2027",
-    needs: "Sponsorship funding; tech integration; resume after Branding.",
+    components: "Fidelity partnership; incentives; brokerage accounts; curriculum. Fall 2026 program start with upcoming staff training. Aligned with Branding rollout.",
+    status: "launching",
+    statusLabel: "Fall 2026 Start",
+    timeline: "Program starts Fall 2026 · staff training upcoming",
+    needs: "Sponsorship funding; tech integration; training coordination.",
     kpi: "Well-Being · Campus Climate"
   },
   {
     n: "18",
     name: "Incoming Student Wellness Assessment",
-    overview: "Early assessment to identify needs and link incoming students to care during orientation.",
+    overview: "Early assessment identifying needs and linking incoming students to care during orientation. Now in active use across the division.",
     goal: "Support early intervention and forecasting.",
     components: "12–13 yes/no questions covering health, mental health, financial aid, financial wellness, disability. Student version + parent version. Centralized response routing through peer navigators.",
-    status: "launching",
-    statusLabel: "Launching",
-    timeline: "Stretch goal: soft launch May 5 (UAsia, International, Transfer); full launch week of May 20",
-    needs: "Tool finalization (Will's team); response scripts; engineering coordination.",
+    status: "active",
+    statusLabel: "Launched",
+    timeline: "Launched May 2026 · Data collection in progress",
+    needs: "Ongoing evaluation; response follow-through analytics.",
     kpi: "Well-Being · Utilization"
   },
   {
     n: "19",
-    name: "QUEST Curriculum Integration *",
-    overview: "Paused within SH&W strategic initiatives because this work has been elevated to a campus-wide task force.",
-    goal: "Ensure every first-year student encounters core SH&W content within their academic experience through a broader campus-wide process.",
-    components: "Campus-wide task force elevation; prior content mapping and integration opportunities preserved for task force use.",
-    status: "paused",
-    statusLabel: "Paused *",
-    timeline: "Paused in SH&W portfolio · Elevated to campus-wide task force",
-    needs: "Task force charge, governance, ownership, and integration pathway to be clarified at the campus level.",
+    name: "QUEST Curriculum Integration",
+    overview: "Integration of health and wellness content into the QUEST first-year program.",
+    goal: "Ensure every first-year student encounters core SH&W content within their academic experience.",
+    components: "Two department leaders volunteering for content mapping; documentation of existing content; identification of integration opportunities.",
+    status: "planning",
+    statusLabel: "Planning Phase",
+    timeline: "Initial meeting with Undergraduate Studies pending",
+    needs: "Faculty Senate process clarification; required approvals; integration pathway.",
     kpi: "Well-Being · Campus Climate"
   },
   {
     n: "20",
-    name: "Durable Skills Curriculum (Student Employment) *",
-    overview: "Paused within SH&W strategic initiatives because this work has been elevated to a campus-wide task force.",
-    goal: "Build student worker durable skills with formal recognition through a broader campus-wide pathway.",
-    components: "Campus-wide task force elevation; prior curriculum documentation, core tenets, and module-level content mapping preserved for task force use.",
-    status: "paused",
-    statusLabel: "Paused *",
-    timeline: "Paused in SH&W portfolio · Elevated to campus-wide task force",
-    needs: "Task force charge, governance, ownership, and credentialing pathway to be clarified at the campus level.",
+    name: "Durability Skills Curriculum (Student Employment)",
+    overview: "Core curriculum for SH&W student workers (CCW-led, Campus Recreation excepted) building durability skills with potential micro-credential pathway.",
+    goal: "Build student worker durability skills with formal recognition through Undergraduate Studies micro-credential or Faculty Senate certificate.",
+    components: "Documentation of current curriculum, core tenets, and module-level content mapping. Sabeth leading; Cha supporting.",
+    status: "active",
+    statusLabel: "Active",
+    timeline: "Informal badge first; formal certificate as long-term goal",
+    needs: "Faculty Group/Task Force charge letter from Lori; Brittany as backup.",
     kpi: "Culture of Care · Utilization"
   },
   {
     n: "21",
-    name: "Guided Services Program *",
-    overview: "Paused within SH&W strategic initiatives because this work has been elevated to a campus-wide task force.",
-    goal: "Ensure continuity and reduce system fragmentation for students with complex needs through a broader campus-wide care coordination approach.",
-    components: "Campus-wide task force elevation; health navigation, targeted populations, and cross-unit care coordination concepts preserved for task force use.",
-    status: "paused",
-    statusLabel: "Paused *",
-    timeline: "Paused in SH&W portfolio · Elevated to campus-wide task force",
-    needs: "Task force charge, governance, staffing model, referral protocols, and campus-level decision points to be clarified.",
+    name: "Guided Service Program",
+    overview: "Coordinated service program for students with moderate-to-high acuity needs requiring multidisciplinary care.",
+    goal: "Ensure continuity and reduce system fragmentation for students with complex needs.",
+    components: "Health navigation; targeted populations; cross-unit care coordination.",
+    status: "active",
+    statusLabel: "Active",
+    timeline: "Pre-committee discussion phase",
+    needs: "Address Jason's questions/concerns before committee convenes; staffing model; referral protocols.",
     kpi: "Utilization · Culture of Care"
   },
   {
@@ -737,6 +619,42 @@ const initiatives = [
     timeline: "Built March–April 2026 following measles incident",
     needs: "Ongoing review; integration with broader risk infrastructure.",
     kpi: "Campus Climate · Culture of Care"
+  },
+  {
+    n: "24",
+    name: "Policy Mapping & OGC Consent Approvals",
+    overview: "Systematic mapping of current-state policies, development of new policy where gaps exist, and OGC approval of new consents to enable cross-department data sharing and referral coordination.",
+    goal: "Establish the policy and consent infrastructure needed to operationalize the collaborative continual-care model across SH&W departments.",
+    components: "Current-state policy inventory; new policy development in identified gaps; new consent forms for cross-department data sharing (including UCC consent tied to UAIR dashboards); OGC review and approval cycle.",
+    status: "progress",
+    statusLabel: "Now → August",
+    timeline: "Active through August 2026 · OGC approval targeted end of summer",
+    needs: "OGC turnaround; cross-department consent alignment; legal review capacity.",
+    kpi: "Culture of Care · Campus Climate · Utilization"
+  },
+  {
+    n: "25",
+    name: "Division-Wide Training Development",
+    overview: "Division-wide training program developed collaboratively and implemented across all SH&W departments to build shared competencies aligned with the collaborative care model.",
+    goal: "Establish shared knowledge, language, and practice standards across the division — building de-siloed practice into everyday work.",
+    components: "Development phase September–October 2026: curriculum design, learning objectives, delivery format decisions. Implementation phase October–December 2026: rollout across all departments with attendance tracking and evaluation.",
+    status: "launching",
+    statusLabel: "Sept → Dec",
+    timeline: "Development Sept–Oct 2026 · Implementation Oct–Dec 2026",
+    needs: "Curriculum leads from each department; training design capacity; delivery time-hold on staff calendars.",
+    kpi: "Culture of Care · Well-Being · Campus Climate"
+  },
+  {
+    n: "26",
+    name: "Identifying Capacity of SH&W",
+    overview: "Division-wide capacity mapping — staffing, scheduling, space, and utilization — to ground FY26 resource conversations in what SH&W can actually deliver as a system.",
+    goal: "Move resource conversations (including FTE decisions) from center-by-center advocacy to system-level allocation grounded in shared capacity data.",
+    components: "Staffing model analysis across departments; utilization and demand pattern mapping; space and scheduling constraints; alignment with the collaborative continual-care model. Feeds directly into FY26 planning and any FTE requests to VP.",
+    status: "progress",
+    statusLabel: "In Progress",
+    timeline: "Active — Summer 2026 through FY26 planning cycle",
+    needs: "Department data cooperation; shared acuity metric alignment; UAIR dashboard integration (once available).",
+    kpi: "All KPIs"
   }
 ];
 
