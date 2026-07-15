@@ -3,1296 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What You Said — Pre-Retreat Survey Summary | SH&W All-Staff Retreat 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Retreat Summaries · SH&W Division Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ─────────────────────────────────────────────── */
-:root {
-  --red:     #CC0000;
-  --navy:    #1E3A5F;
-  --teal:    #1A5C6B;
-  --sage:    #3D6B4F;
-  --amber:   #92400E;
-  --slate:   #374151;
-  --mist:    #F4F1EC;
-  --cream:   #FAF8F4;
-  --warm:    #E8E0D5;
-  --lgray:   #C8C2B8;
-  --lred:    #FFF1F1;
-  --lteal:   #EBF5F7;
-  --lgreen:  #EEF7F1;
-  --lamber:  #FFFBEB;
-  --white:   #FFFFFF;
-
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans:  'DM Sans', system-ui, sans-serif;
-
-  --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
-  --shadow:    0 2px 16px rgba(0,0,0,.08);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,.12);
-
-  --radius: 8px;
-  --w: 860px;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--sans);
-  background: var(--cream);
-  color: var(--slate);
-  line-height: 1.65;
-  font-size: 15px;
-}
-
-/* ── HERO ─────────────────────────────────────────────── */
-.hero {
-  background: var(--navy);
-  position: relative;
-  overflow: hidden;
-  padding: 4rem 1.5rem 3.5rem;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(26,92,107,.35) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at 10% 90%, rgba(204,0,0,.15) 0%, transparent 55%);
-  pointer-events: none;
-}
-.hero-inner {
-  max-width: var(--w);
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-.hero-tag {
-  display: inline-block;
-  font-size: .68rem;
-  font-weight: 600;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--red);
-  border: 1px solid rgba(204,0,0,.35);
-  border-radius: 20px;
-  padding: .25rem .8rem;
-  margin-bottom: 1.4rem;
-}
-.hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  color: #fff;
-  line-height: 1.12;
-  margin-bottom: .6rem;
-}
-.hero h1 em {
-  display: block;
-  font-style: italic;
-  color: rgba(255,255,255,.65);
-}
-.hero-sub {
-  font-size: .85rem;
-  color: rgba(255,255,255,.45);
-  margin-bottom: 2.4rem;
-}
-.kpi-strip {
-  display: flex;
-  gap: 0;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: var(--radius);
-  overflow: hidden;
-  width: fit-content;
-  flex-wrap: wrap;
-}
-.kpi {
-  padding: .9rem 1.6rem;
-  border-right: 1px solid rgba(255,255,255,.1);
-  text-align: center;
-  min-width: 110px;
-}
-.kpi:last-child { border-right: none; }
-.kpi-n {
-  font-family: var(--serif);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--red);
-  line-height: 1;
-  display: block;
-}
-.kpi-l {
-  font-size: .6rem;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.35);
-  display: block;
-  margin-top: .2rem;
-}
-@media(max-width:520px) { .kpi { flex: 1 1 50%; border-right: 1px solid rgba(255,255,255,.1); } }
-
-/* ── BODY ─────────────────────────────────────────────── */
-.body {
-  max-width: var(--w);
-  margin: 0 auto;
-  padding: 3rem 1.5rem 5rem;
-}
-
-/* ── SECTION ──────────────────────────────────────────── */
-.section { margin-bottom: 3.5rem; }
-
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  margin-bottom: 1.2rem;
-}
-.section-num {
-  font-family: var(--serif);
-  font-size: .75rem;
-  font-weight: 700;
-  color: var(--red);
-  border: 1.5px solid var(--red);
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.section-head h2 {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  color: #111;
-  border-bottom: 2px solid #111;
-  padding-bottom: .3rem;
-  flex: 1;
-}
-
-/* ── INTRO CARD ───────────────────────────────────────── */
-.intro-card {
-  background: var(--lteal);
-  border-left: 4px solid var(--teal);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 1.4rem 1.6rem;
-  margin-bottom: 2rem;
-}
-.intro-card .card-label {
-  font-size: .64rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: .5rem;
-}
-.intro-card p {
-  font-size: .875rem;
-  line-height: 1.75;
-  color: #0F3B44;
-}
-
-/* ── TWO-NUMBER PANEL ─────────────────────────────────── */
-.two-num {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-@media(max-width:500px) { .two-num { grid-template-columns: 1fr; } }
-.num-card {
-  border-radius: var(--radius);
-  padding: 1.5rem 1.4rem;
-  text-align: center;
-}
-.num-card.blue { background: var(--lteal); border: 1px solid #99C9D4; }
-.num-card.red  { background: var(--lred);  border: 1px solid #FFAAAA; }
-.num-card .num-label {
-  font-size: .62rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: .5rem;
-}
-.num-card.blue .num-label { color: var(--teal); }
-.num-card.red  .num-label { color: var(--red);  }
-.num-card .num-val {
-  font-family: var(--serif);
-  font-size: 3.4rem;
-  font-weight: 700;
-  line-height: 1;
-  display: block;
-}
-.num-card.blue .num-val { color: var(--teal); }
-.num-card.red  .num-val { color: var(--red);  }
-.num-card .num-denom { font-size: .9rem; color: var(--slate); }
-.num-card .num-desc  { font-size: .8rem; color: var(--slate); margin-top: .5rem; line-height: 1.5; }
-
-/* ── SCALE BARS ───────────────────────────────────────── */
-.scale-wrap { margin-bottom: 1.8rem; }
-.scale-title {
-  font-size: .8rem;
-  font-weight: 600;
-  color: var(--slate);
-  margin-bottom: .3rem;
-}
-.scale-mean {
-  font-family: var(--serif);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1;
-  margin-bottom: .8rem;
-}
-.scale-mean span { font-size: .85rem; color: var(--lgray); font-family: var(--sans); font-weight: 400; }
-.bar-row {
-  display: grid;
-  grid-template-columns: 24px 1fr 56px;
-  align-items: center;
-  gap: .6rem;
-  margin-bottom: .45rem;
-}
-.bar-label { font-size: .7rem; font-weight: 700; color: var(--slate); text-align: center; }
-.bar-track { height: 10px; background: var(--warm); border-radius: 5px; overflow: hidden; }
-.bar-fill  { height: 100%; border-radius: 5px; }
-.bar-fill.low  { background: var(--red); }
-.bar-fill.mid  { background: var(--slate); }
-.bar-fill.high { background: var(--teal); }
-.bar-val { font-size: .66rem; color: var(--lgray); text-align: right; }
-.scale-note {
-  background: var(--mist);
-  border-radius: var(--radius);
-  padding: .6rem .9rem;
-  font-size: .78rem;
-  color: var(--slate);
-  line-height: 1.65;
-  margin-top: .7rem;
-}
-.scale-note strong { color: #111; }
-
-/* ── THEME CARDS ──────────────────────────────────────── */
-.theme-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: .9rem;
-}
-.theme-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 1.1rem 1.2rem;
-  box-shadow: var(--shadow-sm);
-  border-top: 3px solid var(--red);
-  transition: box-shadow .2s, transform .2s;
-}
-.theme-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-.theme-card.teal   { border-top-color: var(--teal); }
-.theme-card.sage   { border-top-color: var(--sage); }
-.theme-card.amber  { border-top-color: var(--amber); }
-.theme-card.navy   { border-top-color: var(--navy); }
-.tc-label {
-  font-size: .62rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: .25rem;
-}
-.theme-card.teal  .tc-label { color: var(--teal);  }
-.theme-card.sage  .tc-label { color: var(--sage);  }
-.theme-card.amber .tc-label { color: var(--amber); }
-.theme-card.navy  .tc-label { color: var(--navy);  }
-.tc-count {
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #111;
-  line-height: 1;
-}
-.tc-of { font-size: .7rem; color: var(--lgray); }
-.tc-pct {
-  display: inline-block;
-  background: var(--mist);
-  border-radius: 20px;
-  font-size: .6rem;
-  font-weight: 700;
-  padding: .1rem .45rem;
-  color: var(--lgray);
-  margin-left: .3rem;
-}
-.tc-desc { font-size: .78rem; color: var(--slate); line-height: 1.65; margin-top: .4rem; }
-
-/* ── THEME DETAIL ─────────────────────────────────────── */
-.theme-detail { margin-bottom: 2rem; }
-.td-hdr {
-  background: var(--mist);
-  border-radius: var(--radius) var(--radius) 0 0;
-  padding: .8rem 1.1rem;
-  display: flex;
-  align-items: baseline;
-  gap: .7rem;
-}
-.td-num {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--red);
-  min-width: 28px;
-}
-.td-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #111; }
-.td-sub   { font-size: .75rem; font-style: italic; color: var(--lgray); margin-left: auto; white-space: nowrap; }
-.td-body {
-  background: var(--white);
-  border: 1px solid var(--warm);
-  border-top: none;
-  border-radius: 0 0 var(--radius) var(--radius);
-  padding: 1.1rem 1.3rem;
-}
-.td-body p { font-size: .83rem; line-height: 1.75; color: var(--slate); margin-bottom: .8rem; }
-.td-body p:last-child { margin-bottom: 0; }
-.td-body .resp-label {
-  font-size: .62rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--navy);
-  margin: .9rem 0 .4rem;
-  display: block;
-}
-
-/* ── COMMITMENT CARDS ─────────────────────────────────── */
-.commit-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: .9rem;
-}
-.commit-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 1rem 1.1rem;
-  box-shadow: var(--shadow-sm);
-  border-left: 3px solid var(--sage);
-}
-.commit-card h4 {
-  font-size: .72rem;
-  font-weight: 700;
-  color: var(--sage);
-  margin-bottom: .3rem;
-}
-.commit-card p { font-size: .77rem; line-height: 1.65; color: var(--slate); }
-.commit-tag {
-  font-size: .64rem;
-  font-weight: 600;
-  color: var(--sage);
-  margin-top: .4rem;
-  display: block;
-}
-
-/* ── QUOTES ───────────────────────────────────────────── */
-.quote {
-  border-left: 3px solid var(--lgray);
-  background: var(--mist);
-  padding: .75rem 1rem;
-  border-radius: 0 var(--radius) var(--radius) 0;
-  font-family: var(--serif);
-  font-size: .88rem;
-  font-style: italic;
-  color: var(--slate);
-  line-height: 1.75;
-  margin-bottom: .6rem;
-}
-.quote.green  { border-left-color: var(--sage);  background: var(--lgreen); color: #1A3D28; }
-.quote.amber  { border-left-color: var(--amber); background: var(--lamber); color: #5C2A00; }
-
-/* ── ALERT BOX ────────────────────────────────────────── */
-.alert-box {
-  border-radius: var(--radius);
-  padding: 1.1rem 1.3rem;
-  margin-bottom: 1rem;
-  font-size: .83rem;
-  line-height: 1.75;
-}
-.alert-box strong { display: block; margin-bottom: .3rem; font-size: .85rem; }
-.alert-box.red   { background: var(--lred);   border: 1px solid #FFAAAA; color: #7F1D1D; }
-.alert-box.teal  { background: var(--lteal);  border: 1px solid #99C9D4; color: #0F3B44; }
-.alert-box.mist  { background: var(--mist);   border: 1px solid var(--lgray); color: var(--slate); }
-
-/* ── NEED CARDS ───────────────────────────────────────── */
-.need-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: .85rem;
-}
-.need-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 1rem 1.1rem;
-  box-shadow: var(--shadow-sm);
-  border-top: 3px solid var(--teal);
-}
-.need-card h4 { font-size: .75rem; font-weight: 700; color: var(--teal); margin-bottom: .3rem; }
-.need-card p  { font-size: .78rem; line-height: 1.65; color: var(--slate); }
-
-/* ── HEARD/NEXT GRID ──────────────────────────────────── */
-.heard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-@media(max-width:580px) { .heard-grid { grid-template-columns: 1fr; } }
-.heard-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 1rem 1.1rem;
-  box-shadow: var(--shadow-sm);
-}
-.heard-card h4 {
-  font-size: .72rem;
-  font-weight: 700;
-  color: var(--teal);
-  padding-bottom: .35rem;
-  border-bottom: 1px solid var(--warm);
-  margin-bottom: .6rem;
-}
-.heard-card ul {
-  padding-left: 1rem;
-  font-size: .77rem;
-  line-height: 1.9;
-  color: var(--slate);
-}
-
-/* ── RESOURCE LIST ────────────────────────────────────── */
-.resource-list { list-style: none; padding: 0; }
-.resource-list li {
-  display: flex;
-  gap: .75rem;
-  padding: .7rem 0;
-  border-bottom: 1px solid var(--warm);
-  font-size: .83rem;
-  color: var(--slate);
-}
-.resource-list li:last-child { border-bottom: none; }
-.resource-list .r-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--teal);
-  flex-shrink: 0;
-  margin-top: 7px;
-}
-.resource-list strong { color: #111; }
-
-/* ── CLOSING ──────────────────────────────────────────── */
-.closing {
-  background: var(--navy);
-  border-radius: var(--radius);
-  padding: 2rem 2.2rem;
-  position: relative;
-  overflow: hidden;
-}
-.closing::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 80% at 90% 20%, rgba(26,92,107,.3) 0%, transparent 60%);
-  pointer-events: none;
-}
-.closing h3 {
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  color: #fff;
-  margin-bottom: .7rem;
-  position: relative;
-  z-index: 1;
-}
-.closing p {
-  font-size: .85rem;
-  color: rgba(255,255,255,.7);
-  line-height: 1.8;
-  position: relative;
-  z-index: 1;
-  margin-bottom: .6rem;
-}
-.closing p:last-child { margin-bottom: 0; }
-.closing em { color: rgba(255,255,255,.45); font-style: italic; }
-
-/* ── DIVIDER ──────────────────────────────────────────── */
-.divider {
-  border: none;
-  border-top: 2px solid var(--warm);
-  margin: 2.5rem 0;
-}
-.divider.red { border-top-color: var(--red); }
-
-/* ── FOOTER ───────────────────────────────────────────── */
-.page-footer {
-  background: var(--mist);
-  border-top: 1px solid var(--warm);
-  padding: 1.2rem 1.5rem;
-  text-align: center;
-  font-size: .7rem;
-  color: var(--lgray);
-}
-
-/* ── ANIMATE ON SCROLL ────────────────────────────────── */
-.fade-in {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .5s ease, transform .5s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* ── PRINT STYLES ──────────────────────────────────────── */
-@media print {
-  /* Hide screen-only elements */
-  .hub-strip,
-  .print-action-bar,
-  .page-footer,
-  .footer-buttons,
-  body > script {
-    display: none !important;
+  :root{
+    --red:#CC0000; --red-dark:#8B0000; --red-soft:#f9e8e8;
+    --teal:#006064; --teal-soft:#e0f2f1;
+    --green:#15803d; --green-soft:#dcfce7;
+    --gold:#B45309; --gold-soft:#fef3c7;
+    --slate:#1e293b; --slate-mid:#475569; --slate-light:#94a3b8;
+    --border:#e2e8f0; --bg:#f8f9fa; --white:#ffffff;
   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--slate);line-height:1.6;}
 
-  /* Reset transitions/animations */
-  .fade-in {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
+  /* BANNER + NAV */
+  .top-banner{background:var(--red);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.15);}
+  .banner-left{display:flex;align-items:center;gap:12px;}
+  .u-logo{width:32px;height:32px;background:white;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-weight:700;font-size:18px;color:var(--red);}
+  .banner-title{font-size:15px;font-weight:600;color:white;letter-spacing:0.02em;}
+  .banner-subtitle{font-size:12px;color:rgba(255,255,255,0.7);font-weight:400;}
+  .banner-right{font-size:12px;color:rgba(255,255,255,0.75);font-weight:500;display:flex;align-items:center;gap:20px;}
+  .hub-nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap;}
+  .hub-nav-link{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.85);text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:500;transition:background 0.15s,color 0.15s;white-space:nowrap;}
+  .hub-nav-link:hover{background:rgba(255,255,255,0.12);color:#fff;}
+  .hub-nav-link.current{background:rgba(255,255,255,0.15);color:#fff;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,0.15);}
+  .hub-nav-icon{font-size:16px;line-height:1;}
+  @media(max-width:768px){.hub-nav-link span:not(.hub-nav-icon){display:none;}.hub-nav-link{padding:8px 10px;}.hub-nav-icon{font-size:18px;}}
 
-  /* Tighten body for paper */
-  body {
-    background: white !important;
-    color: #111 !important;
-    font-size: 10.5pt;
-    line-height: 1.45;
-  }
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--slate) 0%,#2d1b1b 50%,var(--red-dark) 100%);padding:52px 32px 44px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(204,0,0,0.3) 0%,transparent 70%);border-radius:50%;}
+  .hero::after{content:'';position:absolute;bottom:-40px;left:18%;width:200px;height:200px;background:radial-gradient(circle,rgba(0,96,100,0.25) 0%,transparent 70%);border-radius:50%;}
+  .hero-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1;}
+  .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:12px;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:40px;color:white;line-height:1.15;margin-bottom:14px;}
+  .hero h1 span{color:#fca5a5;}
+  .hero-sub{font-size:16px;color:rgba(255,255,255,0.72);max-width:620px;line-height:1.65;margin-bottom:30px;}
+  .hero-stats{display:flex;gap:28px;flex-wrap:wrap;}
+  .stat-item{text-align:left;}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:30px;color:white;line-height:1;}
+  .stat-num.up{color:#86efac;}
+  .stat-label{font-size:12px;color:rgba(255,255,255,0.6);margin-top:5px;font-weight:500;letter-spacing:0.02em;}
+  .stat-divider{width:1px;background:rgba(255,255,255,0.2);align-self:stretch;}
 
-  /* Page setup */
-  @page {
-    size: letter;
-    margin: 0.5in 0.55in;
-  }
+  /* LAYOUT */
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 32px 8px;}
+  .stage{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate-light);margin-bottom:6px;}
+  .stage.before{color:var(--slate-light);}
+  .stage.after{color:var(--teal);}
+  .stage.overall{color:var(--red);}
+  .sec-title{font-family:'DM Serif Display',serif;font-size:27px;color:var(--slate);margin-bottom:10px;line-height:1.2;}
+  .sec-lede{font-size:15.5px;color:var(--slate-mid);max-width:760px;line-height:1.7;margin-bottom:24px;}
+  section{margin-bottom:44px;}
+  .card{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:26px 28px;margin-bottom:18px;}
+  .card-h{font-size:13px;font-weight:700;color:var(--slate);letter-spacing:0.02em;margin-bottom:20px;text-transform:uppercase;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr;}}
 
-  /* Keep hero compact, no reverse video */
-  .hero {
-    background: white !important;
-    color: #5C0000 !important;
-    padding: 0 0 .8rem 0 !important;
-    border-bottom: 2px solid #5C0000;
-    margin-bottom: 1rem !important;
-    page-break-after: avoid;
-  }
-  .hero h1 {
-    color: #5C0000 !important;
-    font-size: 22pt !important;
-    margin-bottom: .4rem !important;
-  }
-  .hero h1 em {
-    color: #8B0000 !important;
-  }
-  .hero-tag {
-    color: #92400E !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    font-size: 8.5pt !important;
-  }
-  .hero-sub {
-    color: #374151 !important;
-    font-size: 9.5pt !important;
-  }
+  .pullquote{border-left:4px solid var(--red);background:var(--red-soft);border-radius:0 8px 8px 0;padding:16px 20px;font-family:'DM Serif Display',serif;font-size:18px;color:var(--slate);font-style:italic;line-height:1.4;margin:6px 0 0;}
 
-  /* KPI strip — flatten for paper */
-  .kpi-strip {
-    background: transparent !important;
-    border-top: 1px solid #ccc !important;
-    border-bottom: 1px solid #ccc !important;
-    padding: .5rem 0 !important;
-    gap: 1rem !important;
-  }
-  .kpi { background: transparent !important; padding: .2rem .5rem !important; }
-  .kpi-n { color: #5C0000 !important; font-size: 16pt !important; }
-  .kpi-l { color: #374151 !important; font-size: 8.5pt !important; }
+  /* SCALE BARS (pre baseline & movement) */
+  .metric{margin-bottom:22px;}
+  .metric:last-child{margin-bottom:0;}
+  .metric-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .metric-name{font-size:14px;font-weight:600;color:var(--slate);}
+  .metric-val{font-family:'DM Serif Display',serif;font-size:20px;color:var(--slate);}
+  .track{position:relative;height:14px;background:#eef1f4;border-radius:8px;overflow:hidden;}
+  .track .fill{position:absolute;left:0;top:0;height:100%;border-radius:8px;}
+  .fill.pre{background:#cbd5e1;}
+  .fill.post{background:linear-gradient(90deg,var(--teal),#00838F);}
+  .fill.mission{background:linear-gradient(90deg,var(--teal),#00acc1);}
+  .fill.roadmap{background:linear-gradient(90deg,var(--gold),#d97706);}
+  .scale-ends{display:flex;justify-content:space-between;font-size:10px;color:var(--slate-light);margin-top:4px;}
 
-  /* Body wrapper */
-  .body { padding: 0 !important; max-width: none !important; }
+  /* MOVEMENT ROW */
+  .move-row{display:grid;grid-template-columns:130px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);}
+  .move-row:last-child{border-bottom:none;}
+  .move-name{font-size:14px;font-weight:600;color:var(--slate);}
+  .move-bars{display:flex;flex-direction:column;gap:7px;}
+  .mb-line{display:flex;align-items:center;gap:10px;}
+  .mb-tag{font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--slate-light);width:34px;flex-shrink:0;}
+  .mb-track{flex:1;height:12px;background:#eef1f4;border-radius:7px;overflow:hidden;}
+  .mb-fill{height:100%;border-radius:7px;}
+  .mb-fill.pre{background:#cbd5e1;}
+  .mb-fill.post{background:linear-gradient(90deg,var(--green),#16a34a);}
+  .mb-num{font-size:12px;font-weight:700;color:var(--slate);width:34px;text-align:right;}
+  .delta{background:var(--green-soft);color:var(--green);font-weight:700;font-size:15px;border-radius:10px;padding:8px 14px;white-space:nowrap;font-family:'DM Serif Display',serif;}
 
-  /* Section spacing tightened */
-  .section { margin-bottom: 1rem !important; }
-  .section-head h2 {
-    font-size: 13pt !important;
-    color: #5C0000 !important;
-    margin-bottom: .4rem !important;
-  }
+  /* DONUT */
+  .donut-wrap{display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center;}
+  .donut{width:170px;height:170px;border-radius:50%;flex-shrink:0;position:relative;
+    background:conic-gradient(var(--green) 0 67.4%, var(--gold) 67.4% 88.3%, var(--red) 88.3% 100%);}
+  .donut::after{content:'';position:absolute;inset:30px;background:var(--white);border-radius:50%;}
+  .donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;}
+  .donut-n{font-family:'DM Serif Display',serif;font-size:30px;color:var(--slate);line-height:1;}
+  .donut-n small{font-size:11px;color:var(--slate-light);display:block;font-family:'DM Sans';letter-spacing:0.1em;margin-top:2px;}
+  .legend{display:flex;flex-direction:column;gap:10px;}
+  .leg-item{display:flex;align-items:center;gap:10px;font-size:14px;}
+  .leg-dot{width:13px;height:13px;border-radius:4px;flex-shrink:0;}
+  .leg-name{font-weight:600;color:var(--slate);}
+  .leg-val{color:var(--slate-mid);}
 
-  /* Headings */
-  h1, h2, h3, h4 {
-    page-break-after: avoid;
-    color: #111 !important;
-  }
+  /* GROUPED BARS */
+  .gbars{display:flex;justify-content:space-around;align-items:flex-end;height:210px;padding:0 6px;border-bottom:2px solid var(--border);margin-bottom:8px;}
+  .gcol{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;flex:1;}
+  .gpair{display:flex;align-items:flex-end;gap:6px;height:100%;}
+  .gbar{width:30px;border-radius:5px 5px 0 0;position:relative;display:flex;justify-content:center;}
+  .gbar span{position:absolute;top:-19px;font-size:11px;font-weight:700;color:var(--slate);}
+  .gbar.mission{background:linear-gradient(180deg,#00acc1,var(--teal));}
+  .gbar.roadmap{background:linear-gradient(180deg,#d97706,var(--gold));}
+  .gcol-label{font-size:12px;font-weight:600;color:var(--slate);margin-top:10px;text-align:center;}
+  .gcol-label small{display:block;font-weight:400;color:var(--slate-light);font-size:11px;}
+  .gkey{display:flex;gap:20px;justify-content:center;margin-top:14px;}
+  .gkey-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate-mid);font-weight:500;}
+  .gkey-dot{width:12px;height:12px;border-radius:3px;}
 
-  /* Avoid orphaned content */
-  .scale-row, .theme-card, .theme-detail, .closing, .resource-list,
-  .alert-box, .intro-card, .what-comes-next {
-    page-break-inside: avoid;
-  }
+  /* DEPT CHIPS */
+  .dept-block{margin-bottom:16px;}
+  .dept-block:last-child{margin-bottom:0;}
+  .dept-head{font-size:13px;font-weight:700;color:var(--slate);margin-bottom:10px;}
+  .dept-head .cnt{color:var(--slate-light);font-weight:500;}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:6px 13px;font-size:13px;font-weight:600;color:var(--slate);}
+  .chip b{background:var(--slate);color:#fff;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;}
+  .chip.no b{background:var(--red);}
+  .chip.maybe b{background:var(--gold);}
 
-  /* Boxes — flatten heavy backgrounds for ink economy */
-  .alert-box, .intro-card, .scale-note, .theme-detail, .what-comes-next {
-    background: white !important;
-    border: 1px solid #ccc !important;
-    box-shadow: none !important;
-    padding: .6rem .8rem !important;
-  }
+  /* THEMES */
+  .theme{padding:14px 0;border-bottom:1px solid var(--border);}
+  .theme:last-child{border-bottom:none;}
+  .theme-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:7px;}
+  .theme-body{font-size:14px;color:var(--slate-mid);line-height:1.6;}
 
-  /* Closing block — invert the dark background */
-  .closing {
-    background: white !important;
-    color: #111 !important;
-    border: 2px solid #5C0000 !important;
-    padding: 1rem !important;
-  }
-  .closing::before { display: none !important; }
-  .closing h3 { color: #5C0000 !important; }
-  .closing em { color: #6B7280 !important; }
+  /* RESOURCES */
+  .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:760px){.res-grid{grid-template-columns:1fr;}}
+  .res-card{display:block;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px;text-decoration:none;color:var(--slate);transition:all 0.18s;}
+  .res-card:hover{border-color:var(--red);box-shadow:0 8px 24px rgba(204,0,0,0.10);transform:translateY(-2px);}
+  .res-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;}
+  .res-type{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate-light);margin-bottom:4px;}
+  .res-name{font-size:15px;font-weight:700;color:var(--slate);margin-bottom:5px;line-height:1.3;}
+  .res-desc{font-size:12.5px;color:var(--slate-mid);line-height:1.5;}
+  .res-open{font-size:12px;font-weight:600;color:var(--red);margin-top:12px;}
 
-  /* More Context section */
-  .more-context-section {
-    page-break-before: always;
-    border-top: 2px solid #5C0000 !important;
-    background: white !important;
-    padding: 1rem 0 !important;
-  }
-  .more-context-section a {
-    text-decoration: none !important;
-    color: #111 !important;
-    border: 1px solid #ccc !important;
-    background: white !important;
-  }
+  /* CALLOUT STRIP */
+  .keyfinding{background:linear-gradient(135deg,var(--teal),#00838F);color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:18px;}
+  .keyfinding.warm{background:linear-gradient(135deg,var(--red-dark),var(--red));}
+  .kf-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;opacity:0.7;margin-bottom:8px;}
+  .kf-text{font-size:16px;line-height:1.55;font-weight:500;}
+  .kf-text b{font-weight:700;}
 
-  /* Links — show URL after for paper trail */
-  a { color: #5C0000 !important; text-decoration: underline !important; }
-  a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 8pt;
-    color: #6B7280;
-    word-break: break-all;
-  }
-  /* But not on internal/anchor links */
-  a[href^="#"]::after,
-  a[href^="index"]::after,
-  a[href^="retreat"]::after,
-  a[href^="staff"]::after { content: ""; }
-
-  /* Print marker at bottom of last page */
-  body::after {
-    content: "Student Health & Wellness · University of Utah · May 8, 2026 · wellnessattheu.github.io/wellness-hub";
-    display: block;
-    margin-top: 1.5rem;
-    padding-top: .5rem;
-    border-top: 1px solid #ccc;
-    font-size: 8pt;
-    color: #6B7280;
-    text-align: center;
-  }
-}
-
-/* Print button — visible on screen only */
-.print-action-bar {
-  background: #FAFAF7;
-  border-bottom: 1px solid #E5DDD5;
-  padding: 12px 32px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-}
-.print-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  background: #5C0000;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.15s, transform 0.15s;
-}
-.print-btn:hover {
-  background: #7A0000;
-  transform: translateY(-1px);
-}
-.print-btn-hint {
-  font-size: 12px;
-  color: #6B7280;
-}
-@media (max-width: 768px) {
-  .print-action-bar { padding: 10px 14px; }
-  .print-btn-hint { display: none; }
-}
+  .footer{background:var(--slate);color:rgba(255,255,255,0.5);text-align:center;padding:26px 32px;font-size:12px;margin-top:24px;}
+  .footer strong{color:rgba(255,255,255,0.8);}
 </style>
 </head>
 <body>
 
-<!-- HUB NAV STRIP -->
-<style>
-  .hub-strip {
-    background: #5C0000;
-    color: white;
-    padding: 10px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: var(--sans);
-    font-size: 13px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  }
-  .hub-strip-left { display: flex; align-items: center; gap: 10px; }
-  .hub-strip-logo {
-    width: 28px; height: 28px;
-    background: white; border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif); font-weight: 700;
-    color: #5C0000; font-size: 16px;
-  }
-  .hub-strip-title { font-weight: 600; letter-spacing: 0.02em; }
-  .hub-strip-subtitle { font-size: 11px; color: rgba(255,255,255,0.7); }
-  .hub-strip-nav { display: flex; gap: 4px; flex-wrap: wrap; }
-  .hub-strip-nav a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    transition: background 0.15s;
-  }
-  .hub-strip-nav a:hover { background: rgba(255,255,255,0.12); color: white; }
-  .hub-strip-nav a.current {
-    background: rgba(255,255,255,0.18);
-    color: white;
-    font-weight: 600;
-  }
-  @media (max-width: 768px) {
-    .hub-strip { padding: 8px 14px; flex-wrap: wrap; gap: 8px; }
-    .hub-strip-subtitle { display: none; }
-  }
-</style>
-<div class="hub-strip">
-  <div class="hub-strip-left">
-    <div class="hub-strip-logo">U</div>
+<div class="top-banner">
+  <div class="banner-left">
+    <div class="u-logo">U</div>
     <div>
-      <div class="hub-strip-title">Student Health &amp; Wellness</div>
-      <div class="hub-strip-subtitle">Division Hub · University of Utah</div>
+      <div class="banner-title">Student Health &amp; Wellness</div>
+      <div class="banner-subtitle">Division Hub &nbsp;·&nbsp; University of Utah</div>
     </div>
   </div>
-  <nav class="hub-strip-nav">
-    <a href="index.html">🏠 Hub</a>
-    <a href="retreat.html">🗓️ Retreat 2026</a>
-    <a href="#" class="current">📋 Pre-Survey</a>
-  </nav>
+  <div class="banner-right">
+    <nav class="hub-nav" role="navigation" aria-label="Site navigation">
+      <a href="index.html" class="hub-nav-link"><span class="hub-nav-icon">🏠</span><span>Hub</span></a>
+      <a href="retreat.html" class="hub-nav-link current"><span class="hub-nav-icon">🗓️</span><span>Retreat 2026</span></a>
+      <a href="roadmap.html" class="hub-nav-link"><span class="hub-nav-icon">🗺️</span><span>Roadmap</span></a>
+      <a href="dashboard.html" class="hub-nav-link"><span class="hub-nav-icon">📊</span><span>KPI Dashboard</span></a>
+      <a href="strategic-initiatives.html" class="hub-nav-link"><span class="hub-nav-icon">🌅</span><span>Initiatives</span></a>
+    </nav>
+  </div>
 </div>
-
-<!-- PRINT ACTION BAR -->
-<div class="print-action-bar">
-  <span class="print-btn-hint">Want a copy to keep or share?</span>
-  <button type="button" class="print-btn" onclick="window.print();">
-    🖨️ Print this page
-  </button>
-</div>
-
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">All-Staff Retreat · May 8, 2026</div>
-    <h1>What You Said:<em>Pre-Survey Summary</em></h1>
-    <p class="hero-sub">Student Health &amp; Wellness Division · University of Utah · n=40 responses</p>
-    <div class="kpi-strip">
-      <div class="kpi"><span class="kpi-n">40</span><span class="kpi-l">Staff Responded</span></div>
-      <div class="kpi"><span class="kpi-n">3.48</span><span class="kpi-l">Mission Connection</span></div>
-      <div class="kpi"><span class="kpi-n">2.82</span><span class="kpi-l">Roadmap Awareness</span></div>
-      <div class="kpi"><span class="kpi-n">7</span><span class="kpi-l">Themes Identified</span></div>
+    <div class="hero-eyebrow">SH&amp;W All-Staff Retreat &nbsp;·&nbsp; May 8, 2026 &nbsp;·&nbsp; Survey Summary</div>
+    <h1>The Retreat, <span>Measured.</span></h1>
+    <p class="hero-sub">One day, one room, one direction. Here is what we heard going in, what changed coming out, and what it means for the work ahead — the pre-survey baseline, the post-retreat results, and the overall movement, in one place.</p>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">43</div><div class="stat-label">Staff responses<br>post-retreat</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><div class="stat-num up">+0.61</div><div class="stat-label">Mission<br>connection</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><div class="stat-num up">+1.23</div><div class="stat-label">Roadmap<br>awareness</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><div class="stat-num">67%</div><div class="stat-label">Ready to reach<br>across teams</div></div>
     </div>
   </div>
 </div>
 
-<div class="body">
+<div class="wrap">
 
-  <!-- FROM DR. WATKINS -->
-  <div class="section fade-in">
-    <div class="intro-card">
-      <div class="card-label">From Dr. Watkins</div>
-      <p>Forty of you took the time to fill out the pre-retreat survey. Some of what you wrote was honest. Some of it was vulnerable. A few of you were direct about things that are hard to say in a work setting. This document is what you told us — summarized in seven themes, with a sense of where we go from here. The retreat on May 8 is built around what you said. This document is built around making sure you can see that.</p>
-    </div>
+  <!-- ============ BEFORE ============ -->
+  <section>
+    <div class="stage before">01 · Before the retreat</div>
+    <div class="sec-title">The pre-survey baseline</div>
+    <p class="sec-lede">Before May 8, staff told us they believed in the work but couldn't always see the map. Connection to the mission sat at a moderate 3.48 — and the real gap was strategic roadmap awareness, at just 2.82 out of 5. The pre-survey named it plainly.</p>
 
-    <div class="alert-box mist" style="margin-bottom:.8rem;">
-      <strong>A note on quotes.</strong>
-      This summary does not include verbatim quotes from survey responses. With 40 respondents, even anonymized language can sometimes identify the person who wrote it. We chose paraphrase over quotation to honor the privacy of every staff member who shared honestly. The substance is preserved. The risk of identification is not.
-    </div>
-    <div class="alert-box mist">
-      <strong>A note on tone.</strong>
-      Some of this document names hard things directly. That's deliberate. One of you wrote that you wished we could speak plainly. Speaking plainly back is the cleanest gift this document can give in return.
-    </div>
-  </div>
-
-  <hr class="divider red">
-
-  <!-- TWO NUMBERS -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>Where We Landed</h2>
-    </div>
-    <p style="font-size:.85rem;margin-bottom:1.2rem;color:var(--slate);">Two numbers tell the headline of the survey.</p>
-
-    <div class="two-num">
-      <div class="num-card blue">
-        <div class="num-label">Connection to Mission</div>
-        <span class="num-val">3.48</span>
-        <span class="num-denom"> / 5</span>
-        <p class="num-desc">Most of you are connected to why we do this work.</p>
+    <div class="card">
+      <div class="card-h">Where we started (mean score, 1–5)</div>
+      <div class="metric">
+        <div class="metric-top"><span class="metric-name">Mission connection</span><span class="metric-val">3.48</span></div>
+        <div class="track"><div class="fill mission" style="width:69.6%"></div></div>
+        <div class="scale-ends"><span>1</span><span>5</span></div>
       </div>
-      <div class="num-card red">
-        <div class="num-label">Awareness of Roadmap</div>
-        <span class="num-val">2.82</span>
-        <span class="num-denom"> / 5</span>
-        <p class="num-desc">Most of you are not sure where the work is going.</p>
+      <div class="metric">
+        <div class="metric-top"><span class="metric-name">Strategic roadmap awareness</span><span class="metric-val">2.82</span></div>
+        <div class="track"><div class="fill roadmap" style="width:56.4%"></div></div>
+        <div class="scale-ends"><span>1</span><span>5</span></div>
       </div>
+      <div class="pullquote">"A translation problem, not a strategy problem."</div>
+      <p style="font-size:14px;color:var(--slate-mid);margin-top:14px;line-height:1.65;">People were bought in. What they needed was the direction made legible — the strategy translated into something they could see, say, and act on. That became the retreat's job.</p>
     </div>
+  </section>
 
-    <p style="font-size:.85rem;line-height:1.75;color:var(--slate);margin-bottom:1rem;">That gap is the story. You care about the work. You're less sure where the work is going. The good news is the connection is real and durable. The harder news is that the second number is the one we have to address — together.</p>
+  <!-- ============ AFTER ============ -->
+  <section>
+    <div class="stage after">02 · After the retreat</div>
+    <div class="sec-title">The post-retreat survey</div>
+    <p class="sec-lede">Forty-three staff completed the post-retreat survey. Two-thirds left more comfortable reaching across teams — and the responses showed clearly what drove that willingness.</p>
 
-    <!-- Scales -->
-    <div class="scale-wrap">
-      <div class="scale-title">Mission Connectedness &nbsp;(1 = Disconnected &nbsp;·&nbsp; 5 = Very Connected)</div>
-      <div class="scale-mean">3.48 <span>/ 5 mean</span></div>
-      <div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill low" style="width:13%"></div></div><span class="bar-val">2 · 5%</span></div>
-      <div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill low" style="width:35%"></div></div><span class="bar-val">6 · 15%</span></div>
-      <div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill mid" style="width:63%"></div></div><span class="bar-val">10 · 25%</span></div>
-      <div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill high" style="width:100%"></div></div><span class="bar-val">15 · 37.5%</span></div>
-      <div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill high" style="width:47%"></div></div><span class="bar-val">7 · 17.5%</span></div>
-      <div class="scale-note">More than half of us — <strong>55%</strong> — feel at least solidly connected to the mission. Nearly 1 in 5 feel disconnected or uncertain. Building that connection across the whole team is one of May 8's core goals.</div>
-    </div>
-
-    <div class="scale-wrap">
-      <div class="scale-title">Strategic Roadmap Awareness &nbsp;(1 = Not informed &nbsp;·&nbsp; 5 = Very informed)</div>
-      <div class="scale-mean">2.82 <span>/ 5 mean</span></div>
-      <div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill low" style="width:57%"></div></div><span class="bar-val">7 · 18.4%</span></div>
-      <div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill low" style="width:57%"></div></div><span class="bar-val">7 · 18.4%</span></div>
-      <div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill mid" style="width:100%"></div></div><span class="bar-val">12 · 31.6%</span></div>
-      <div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill high" style="width:83%"></div></div><span class="bar-val">10 · 26.3%</span></div>
-      <div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill high" style="width:17%"></div></div><span class="bar-val">2 · 5.3%</span></div>
-      <div class="scale-note">Over a third of us (<strong>36.8%</strong>) don't feel informed about the Roadmap at all. Only 2 people chose "very informed." The Roadmap exists — but it hasn't reached everyone in a way that connects to daily work. May 8 is a chance to change that.</div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- WHAT WE DO WELL -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>What You Said the Division Does Well</h2>
-    </div>
-    <p style="font-size:.85rem;line-height:1.75;margin-bottom:1rem;">Almost every response that named a strength named the same thing: this division cares about students. Even through burnout. Even through disappointment. That is not a given at every institution. It is the foundation everything else is built on.</p>
-    <div class="alert-box teal">
-      The retreat on May 8 will start there — with what you named as the strength of this division — before naming any of the rest.
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- SEVEN THEMES OVERVIEW -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>The Seven Themes</h2>
-    </div>
-    <p style="font-size:.85rem;line-height:1.75;margin-bottom:1.3rem;">Your responses surfaced seven themes — in the order you raised them, by how often each was named.</p>
-
-    <div class="theme-grid">
-      <div class="theme-card">
-        <div class="tc-label">Cross-Departmental Silos</div>
-        <div><span class="tc-count">31</span><span class="tc-of"> / 40</span><span class="tc-pct">78%</span></div>
-        <p class="tc-desc">We don't know what other departments are doing. We want cross-department collaboration at every level — not just director-to-director.</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-h">More comfortable reaching across teams?</div>
+        <div class="donut-wrap">
+          <div class="donut"><div class="donut-center"><span class="donut-n">43<small>RESPONSES</small></span></div></div>
+          <div class="legend">
+            <div class="leg-item"><span class="leg-dot" style="background:var(--green)"></span><span class="leg-name">Yes</span>&nbsp;<span class="leg-val">29 · 67.4%</span></div>
+            <div class="leg-item"><span class="leg-dot" style="background:var(--gold)"></span><span class="leg-name">Maybe</span>&nbsp;<span class="leg-val">9 · 20.9%</span></div>
+            <div class="leg-item"><span class="leg-dot" style="background:var(--red)"></span><span class="leg-name">No</span>&nbsp;<span class="leg-val">5 · 11.6%</span></div>
+          </div>
+        </div>
       </div>
-      <div class="theme-card teal">
-        <div class="tc-label">Roadmap & Strategic Direction</div>
-        <div><span class="tc-count">18</span><span class="tc-of"> / 40</span><span class="tc-pct">45%</span></div>
-        <p class="tc-desc">The roadmap exists. We don't know it exists in a form that connects to our work. We want visuals, plain language, and to find ourselves in it.</p>
-      </div>
-      <div class="theme-card navy">
-        <div class="tc-label">Decision-Making Transparency</div>
-        <div><span class="tc-count">16</span><span class="tc-of"> / 40</span><span class="tc-pct">40%</span></div>
-        <p class="tc-desc">"Game of telephone." We want to understand how decisions get made and hear them from the source — not through three or four layers.</p>
-      </div>
-      <div class="theme-card sage">
-        <div class="tc-label">Appreciation & Validation</div>
-        <div><span class="tc-count">14</span><span class="tc-of"> / 40</span><span class="tc-pct">35%</span></div>
-        <p class="tc-desc">We want specific, named recognition — not group thanks at staff meetings. The ratio of criticism to recognition feels off for some of us.</p>
-      </div>
-      <div class="theme-card amber">
-        <div class="tc-label">Compensation & Wage Equity</div>
-        <div><span class="tc-count">12</span><span class="tc-of"> / 40</span><span class="tc-pct">30%</span></div>
-        <p class="tc-desc">We're watching colleagues leave. The math on master's-level salaries doesn't work. This is the most emotionally charged theme in the data.</p>
-      </div>
-      <div class="theme-card teal">
-        <div class="tc-label">Referral Pathways</div>
-        <div><span class="tc-count">8</span><span class="tc-of"> / 40</span><span class="tc-pct">20%</span></div>
-        <p class="tc-desc">Clinical staff want clean, Medicat-integrated handoffs. A referral coordination program is in pilot — most staff don't know it exists yet.</p>
-      </div>
-      <div class="theme-card">
-        <div class="tc-label">Trust & Psychological Safety</div>
-        <div><span class="tc-count">8</span><span class="tc-of"> / 40</span><span class="tc-pct">20%</span></div>
-        <p class="tc-desc">The hardest theme. A few of us wrote about not feeling safe to ask questions, feeling unheard during personal crises, and cultural belonging.</p>
-      </div>
-    </div>
-  </div>
 
-  <hr class="divider">
-
-  <!-- THEMES IN DETAIL -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>Themes in Detail</h2>
-    </div>
-
-    <div class="theme-detail">
-      <div class="td-hdr">
-        <span class="td-num">01</span>
-        <span class="td-title">Cross-Departmental Silos</span>
-        <span class="td-sub">≈31 of 40 &nbsp;·&nbsp; Most Pervasive</span>
-      </div>
-      <div class="td-body">
-        <p>Many of us wrote that the division feels like it operates in parallel rather than together — that we do our work, colleagues in other departments do theirs, and the seams are mostly invisible. Some of us named that this leads to duplicated effort. Some named that it leads to feeling alone. Several specifically asked for ways for non-director staff to know what's happening across departments — not just director-to-director.</p>
-        <span class="resp-label">How May 8 addresses it</span>
-        <p>The Interactive Activity is built around mixed-department teams. Director Speed Rounds make every department's work visible to every staff member in the room. Lunch seating is intentionally mixed. The Hub launches at every seat as the asynchronous home for cross-department awareness between retreats.</p>
-        <span class="resp-label">Being considered for after May 8</span>
-        <p>A quarterly cross-department touchpoint. A rotating department spotlight on the Hub. Clearer internal communication about what each department is working on. These structures should be built with us, not handed down to us.</p>
+      <div class="card">
+        <div class="card-h">What predicted willingness: clarity</div>
+        <div class="gbars">
+          <div class="gcol"><div class="gpair">
+            <div class="gbar mission" style="height:88.2%"><span>4.41</span></div>
+            <div class="gbar roadmap" style="height:87.6%"><span>4.38</span></div>
+          </div><div class="gcol-label">Yes<small>n=29</small></div></div>
+          <div class="gcol"><div class="gpair">
+            <div class="gbar mission" style="height:77.8%"><span>3.89</span></div>
+            <div class="gbar roadmap" style="height:73.4%"><span>3.67</span></div>
+          </div><div class="gcol-label">Maybe<small>n=9</small></div></div>
+          <div class="gcol"><div class="gpair">
+            <div class="gbar mission" style="height:52%"><span>2.60</span></div>
+            <div class="gbar roadmap" style="height:56%"><span>2.80</span></div>
+          </div><div class="gcol-label">No<small>n=5</small></div></div>
+        </div>
+        <div class="gkey">
+          <div class="gkey-item"><span class="gkey-dot" style="background:var(--teal)"></span>Mission</div>
+          <div class="gkey-item"><span class="gkey-dot" style="background:var(--gold)"></span>Roadmap</div>
+        </div>
+        <p style="font-size:12.5px;color:var(--slate-light);margin-top:12px;text-align:center;">Willingness tracked with understanding the mission and roadmap — not the venue or the food.</p>
       </div>
     </div>
 
-    <div class="theme-detail">
-      <div class="td-hdr">
-        <span class="td-num">02</span>
-        <span class="td-title">Roadmap & Strategic Direction</span>
-        <span class="td-sub">≈18 of 40</span>
+    <div class="card">
+      <div class="card-h">Where the hesitancy sat — the clinical and wellness teams</div>
+      <div class="dept-block">
+        <div class="dept-head">The five who said <span style="color:var(--red)">No</span> <span class="cnt">— by department</span></div>
+        <div class="chips">
+          <span class="chip no"><b>2</b> UCC</span>
+          <span class="chip no"><b>2</b> CDA</span>
+          <span class="chip no"><b>1</b> SHC</span>
+        </div>
       </div>
-      <div class="td-body">
-        <p>Many of us wrote that we don't have a clear picture of where the division is headed — what we're working on, why, and how it connects to the work we do. A few asked for a website where the division's initiatives, history, and direction would live in one place. That website now exists.</p>
-        <span class="resp-label">How May 8 addresses it</span>
-        <p>The opening of the retreat walks through the Strategic Roadmap and four division-level KPIs. The Programs & Initiatives section gives an in-depth review of four current initiatives. The new Strategic Initiatives page on the Hub launches alongside the retreat.</p>
-      </div>
-    </div>
-
-    <div class="theme-detail">
-      <div class="td-hdr">
-        <span class="td-num">03</span>
-        <span class="td-title">Decision-Making Transparency</span>
-        <span class="td-sub">≈16 of 40</span>
-      </div>
-      <div class="td-body">
-        <p>It's not that we disagree with the decisions. It's that we can't see how they get made. "Game of telephone" — by the time information reaches us, it has passed through layers and arrived without context. Several of us asked, plainly, that we speak plainly.</p>
-        <span class="resp-label">How May 8 addresses it</span>
-        <p>"You Asked. We Answer." names how decisions get made and commits to two specific changes: (1) major divisional decisions communicated in writing with reasoning included, and (2) a monthly AVP office-hours session open to any staff member.</p>
-      </div>
-    </div>
-
-    <div class="theme-detail">
-      <div class="td-hdr">
-        <span class="td-num">04</span>
-        <span class="td-title">Appreciation & Validation</span>
-        <span class="td-sub">≈14 of 40</span>
-      </div>
-      <div class="td-body">
-        <p>Recognition exists. Some of us wrote that it feels generic — and that mistakes get more airtime than contributions. Several used the word "validation" specifically. The ask is not for programs — it's for specific, named recognition from direct supervisors.</p>
-        <span class="resp-label">How May 8 addresses it</span>
-        <p>Director Speed Rounds now include a question: "Who on your team should be named today?" — each director comes prepared with a specific staff member and a specific reason. Staff Recognition Awards are integrated into lunch across four FY25 categories, announced as a surprise.</p>
-      </div>
-    </div>
-
-    <div class="theme-detail">
-      <div class="td-hdr">
-        <span class="td-num">05</span>
-        <span class="td-title">Compensation, Retention & Wage Equity</span>
-        <span class="td-sub">≈12 of 40 &nbsp;·&nbsp; Most Emotionally Charged</span>
-      </div>
-      <div class="td-body">
-        <p>We're watching colleagues leave. The math on a master's-level salary at this institution doesn't work the way it should. This was the most emotionally charged theme in the survey. Several of us asked for it to be named out loud at the retreat. It will be.</p>
-        <div class="alert-box red" style="margin:.8rem 0;">
-          <strong>An honest word about this theme.</strong>
-          Compensation decisions sit largely outside the AVP's authority — they involve central HR, the VP for Student Affairs, and budget cycles that don't move quickly. This is a true statement and insufficient. However, I am committed to hold a dedicated conversation on compensation and wage equity starting during the Retreat.
+      <div class="dept-block">
+        <div class="dept-head">The nine who said <span style="color:var(--gold)">Maybe</span> <span class="cnt">— by department</span></div>
+        <div class="chips">
+          <span class="chip maybe"><b>3</b> CCW</span>
+          <span class="chip maybe"><b>2</b> SHC</span>
+          <span class="chip maybe"><b>2</b> UCC</span>
+          <span class="chip maybe"><b>1</b> CRS</span>
+          <span class="chip maybe"><b>1</b> MSWP</span>
         </div>
       </div>
     </div>
 
-    <div class="theme-detail">
-      <div class="td-hdr">
-        <span class="td-num">06</span>
-        <span class="td-title">Referral Pathways & Clinical Coordination</span>
-        <span class="td-sub">≈8 of 40 &nbsp;·&nbsp; Clinical Staff</span>
+    <div class="card">
+      <div class="card-h">What they told us — in their own words</div>
+      <div class="theme">
+        <span class="theme-tag" style="background:var(--red-soft);color:var(--red)">No group · direction &amp; load</span>
+        <div class="theme-body">The barrier was direction, not the day — several noted the mission and roadmap "were not clear" and should have been stated plainly up front. Underneath ran a workload signal: a request for "more support around burnout prevention and understanding the level of acuity being treated," and time pressure sharp enough that one respondent had to cancel a student appointment when the day ran long. For stretched clinical staff, collaboration reads as one more demand unless its purpose is clear.</div>
       </div>
-      <div class="td-body">
-        <p>Several clinical staff wrote that referring a student to another service is harder than it should be — unclear processes, unclear contacts, no reliable way to know whether the handoff worked. A few asked specifically for a Medicat-integrated referral process.</p>
-        <span class="resp-label">How May 8 addresses it</span>
-        <p>The Programs & Initiatives review names the Referral Coordination Program directly — what's built (consent infrastructure, opt-out form, staff verbal script, Medicat-integrated form), who's in pilot (CCW + UCC), and the rollout timeline (soft Fall 2026, full January 2027). A one-page take-home summary is distributed at the retreat.</p>
+      <div class="theme">
+        <span class="theme-tag" style="background:var(--gold-soft);color:var(--gold)">Maybe group · wanted more connection</span>
+        <div class="theme-body">This group wants to connect — the format just didn't get them there. They asked repeatedly for structured, early cross-department interaction: mixed or assigned seating "from the beginning," get-to-know-you time, breakouts instead of lecture, and a take-home list of contacts and next steps. Several named the table-switching activity as the best part of the day. A winnable group — and they told us how.</div>
       </div>
     </div>
+  </section>
 
-    <div class="theme-detail">
-      <div class="td-hdr">
-        <span class="td-num">07</span>
-        <span class="td-title">Trust & Psychological Safety</span>
-        <span class="td-sub">≈8 of 40 &nbsp;·&nbsp; Largest by Stakes</span>
-      </div>
-      <div class="td-body">
-        <p>The hardest finding in the survey. A few of us wrote about trust — specifically, about not feeling safe to ask questions, about feeling unheard during personal crises, and about cultural belonging in the division. The substance of what was written was hard to read. It was also exactly what we needed to see.</p>
+  <!-- ============ OVERALL ============ -->
+  <section>
+    <div class="stage overall">03 · Overall</div>
+    <div class="sec-title">Pre &rarr; post movement</div>
+    <p class="sec-lede">Set the two surveys side by side and the retreat did what it set out to do — it translated. Both measures rose, and the one that started furthest behind moved the most.</p>
+
+    <div class="card">
+      <div class="card-h">The movement (mean score, 1–5)</div>
+      <div class="move-row">
+        <div class="move-name">Mission<br>connection</div>
+        <div class="move-bars">
+          <div class="mb-line"><span class="mb-tag">Pre</span><div class="mb-track"><div class="mb-fill pre" style="width:69.6%"></div></div><span class="mb-num">3.48</span></div>
+          <div class="mb-line"><span class="mb-tag">Post</span><div class="mb-track"><div class="mb-fill post" style="width:81.8%"></div></div><span class="mb-num">4.09</span></div>
         </div>
-        <span class="resp-label">How May 8 addresses it</span>
-        <p>"You Asked. We Answer." includes Trust and Psychological Safety as Theme 5. My response on this theme will be intentionally smaller than on the others — about what I will commit to doing differently as a leader. Trust is rebuilt through behavior over months, not through a slot at a retreat.</p>
+        <div class="delta">+0.61</div>
       </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- CELEBRATION -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>What We Celebrate</h2>
-    </div>
-    <div class="alert-box teal" style="margin-bottom:1.2rem;">
-      <strong>31 of 40 responses named caring for students as this division's most important strength.</strong>
-      Even respondents who expressed frustration anchored their concerns in care for students. Here is what you said — paraphrased to protect privacy.
-    </div>
-    <div class="quote green">Our staff care. Even through burnout and disappointment, we care about the students.</div>
-    <div class="quote green">This division genuinely puts the student first — and it shows in how we show up every day.</div>
-    <div class="quote green">There is a real sense of interconnection — even when we are not all in the same space.</div>
-    <div class="quote green">We have a great team. When given the opportunity and the support, we collaborate effectively.</div>
-    <div class="quote green">The level of care and commitment staff bring is genuine. We are here because we believe in this work.</div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- HONEST VOICES -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>What You Asked Us to Name Out Loud</h2>
-    </div>
-    <div class="alert-box mist" style="margin-bottom:1.2rem;">
-      You asked us to have the courage to name some hard things at this retreat. We heard you. Some of what follows is uncomfortable. It is here because you put it in the survey, and you deserve to see it reflected honestly — paraphrased to protect individuals.
-    </div>
-    <div class="quote amber">Why are we paying for crafts and not getting raises?</div>
-    <div class="quote amber">There is little trust between leadership and staff — and asking questions doesn't feel safe.</div>
-    <div class="quote amber">Pay equity across departments, lack of validation, and a sense of insincerity from management.</div>
-    <div class="quote amber">It feels like we spend more time talking at staff than listening to understand the real challenges.</div>
-    <div class="quote amber">I would feel more supported if I had clearer direction and didn't have to repeatedly over-explain myself.</div>
-    <div class="quote amber">I don't feel like I know enough about the direction and priorities to formulate a question — and that itself is the problem.</div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- WHAT WOULD MAKE IT WORTH IT -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>What Would Make This Retreat Worth It</h2>
-    </div>
-    <p style="font-size:.85rem;line-height:1.75;margin-bottom:1.2rem;">Your words on what you're hoping for May 8.</p>
-    <div class="commit-grid">
-      <div class="commit-card">
-        <h4>Connection</h4>
-        <p>"1 new relationship outside my department." "Connection with other offices." "A stronger sense of how our teams connect."</p>
+      <div class="move-row">
+        <div class="move-name">Roadmap<br>awareness</div>
+        <div class="move-bars">
+          <div class="mb-line"><span class="mb-tag">Pre</span><div class="mb-track"><div class="mb-fill pre" style="width:56.4%"></div></div><span class="mb-num">2.82</span></div>
+          <div class="mb-line"><span class="mb-tag">Post</span><div class="mb-track"><div class="mb-fill post" style="width:81%"></div></div><span class="mb-num">4.05</span></div>
+        </div>
+        <div class="delta">+1.23</div>
       </div>
-      <div class="commit-card" style="border-left-color:var(--red);">
-        <h4 style="color:var(--red);">Clarity</h4>
-        <p>"Clarity on what our top priorities and focuses are." "Understanding how H&W ties into Student Affairs objectives."</p>
-      </div>
-      <div class="commit-card" style="border-left-color:var(--teal);">
-        <h4 style="color:var(--teal);">Feeling Valued</h4>
-        <p>"I hope to walk away feeling genuinely valued for the work I'm doing." "Appreciation. Acknowledge that we work hard."</p>
-      </div>
-      <div class="commit-card" style="border-left-color:var(--amber);">
-        <h4 style="color:var(--amber);">Follow-Through</h4>
-        <p>"Action items. What can I do to help move the ball forward?" "Follow ups with how knowledge and clarity get re-incorporated."</p>
-      </div>
+      <p style="font-size:13px;color:var(--slate-light);margin-top:16px;line-height:1.6;">Roadmap awareness — the biggest gap going in — was the largest single change in the dataset. The translation gap the pre-survey identified is the gap the retreat closed.</p>
     </div>
-  </div>
 
-  <hr class="divider">
-
-  <!-- STUDENTS NEED -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>What You Say Students Need That We're Not Fully Delivering</h2>
+    <div class="keyfinding">
+      <div class="kf-eyebrow">The headline</div>
+      <div class="kf-text">The retreat translated strategy into shared direction. Mission connection rose, roadmap awareness rose most, and <b>67% of staff left ready to work across teams</b> — moving a divisions-under-one-roof idea a real step toward a division that acts like one.</div>
     </div>
-    <div class="need-grid">
-      <div class="need-card">
-        <h4>Wayfinding & Clarity</h4>
-        <p>Students don't know where to go and get bounced between offices until they've reached crisis. Warm handoffs and simplified access are the gap.</p>
-      </div>
-      <div class="need-card">
-        <h4>Isolation & Loneliness</h4>
-        <p>Students are struggling with isolation and loneliness. We may need to meet them where they are rather than waiting for them to come to us.</p>
-      </div>
-      <div class="need-card">
-        <h4>Outreach & Awareness</h4>
-        <p>Students don't know what resources exist until they're in crisis. Awareness — not new programs — is the gap.</p>
-      </div>
-      <div class="need-card">
-        <h4>Post-Graduation Continuity</h4>
-        <p>Do we do any after-college preparedness? Students don't know how to navigate adult systems without the built-in university net.</p>
-      </div>
+
+    <div class="keyfinding warm">
+      <div class="kf-eyebrow">Where the work goes next</div>
+      <div class="kf-text">The retreat is a moment; what we build after is the work. Follow-up concentrates on the clinical and wellness teams — <b>UCC, SHC, CDA, and CCW</b> — pairing two moves: communicating the mission and roadmap clearly and repeatedly, and standing up concrete connection structures (named contacts, cross-team groups). And it treats clinical workload as a genuine barrier, not a reluctance to collaborate.</div>
     </div>
-  </div>
+  </section>
 
-  <hr class="divider">
-
-  <!-- WHAT WE HEARD / WHAT'S NEXT -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>What We Heard — &amp; What Comes Next</h2>
+  <!-- ============ RESOURCES ============ -->
+  <section>
+    <div class="stage" style="color:var(--slate-light)">Retreat materials</div>
+    <div class="sec-title" style="font-size:24px;">Full resources</div>
+    <p class="sec-lede">The complete retreat handout, the staff summary, and the presentation slides.</p>
+    <div class="res-grid">
+      <a class="res-card" href="https://github.com/WellnessAtTheU/wellness-hub/blob/main/SHW_Retreat_Handout.html" target="_blank" rel="noopener">
+        <div class="res-icon" style="background:var(--red-soft)">📄</div>
+        <div class="res-type">Handout · HTML</div>
+        <div class="res-name">Retreat Handout</div>
+        <div class="res-desc">The full retreat handout — agenda, activities, and takeaways from the day.</div>
+        <div class="res-open">Open →</div>
+      </a>
+      <a class="res-card" href="https://github.com/WellnessAtTheU/wellness-hub/blob/main/SHW_Retreat_Staff_Summary.pdf" target="_blank" rel="noopener">
+        <div class="res-icon" style="background:var(--teal-soft)">📝</div>
+        <div class="res-type">Summary · PDF</div>
+        <div class="res-name">Staff Summary</div>
+        <div class="res-desc">The staff-facing summary of the retreat and its outcomes.</div>
+        <div class="res-open">Open →</div>
+      </a>
+      <a class="res-card" href="https://github.com/WellnessAtTheU/wellness-hub/blob/main/SHW_Retreat_2026_Slides_v3-UofU.pdf" target="_blank" rel="noopener">
+        <div class="res-icon" style="background:var(--gold-soft)">📊</div>
+        <div class="res-type">Slides · PDF</div>
+        <div class="res-name">Retreat Slides</div>
+        <div class="res-desc">The presentation deck from the May 8 all-staff retreat.</div>
+        <div class="res-open">Open →</div>
+      </a>
     </div>
-    <p style="font-size:.85rem;line-height:1.75;margin-bottom:1.2rem;">Not promises — commitments to an honest conversation.</p>
-    <div class="heard-grid">
-      <div class="heard-card">
-        <h4>You said: We feel siloed and disconnected.</h4>
-        <ul>
-          <li>May 8 is designed around cross-department interaction</li>
-          <li>You will spend time with people outside your team</li>
-          <li>Building division-wide connection is an ongoing priority</li>
-        </ul>
-      </div>
-      <div class="heard-card">
-        <h4>You said: Communication needs to be plainer.</h4>
-        <ul>
-          <li>We will practice that on May 8 — naming things directly</li>
-          <li>You will hear the Roadmap in plain language</li>
-          <li>Monthly AVP office hours begin after the retreat</li>
-        </ul>
-      </div>
-      <div class="heard-card">
-        <h4>You said: We need to know our work matters.</h4>
-        <ul>
-          <li>We will name what we celebrate — out loud — at the retreat</li>
-          <li>Your survey words will be reflected back to the room</li>
-          <li>This is an ongoing leadership commitment, not a retreat moment</li>
-        </ul>
-      </div>
-      <div class="heard-card">
-        <h4>You said: Compensation is urgent.</h4>
-        <ul>
-          <li>We hear it — and we will name it, not avoid it</li>
-          <li>We will be honest about where things stand</li>
-          <li>A dedicated compensation conversation within 30 days</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- RESOURCES -->
-  <div class="section fade-in">
-    <div class="section-head">
-      <h2>If Something in This Document Landed Hard</h2>
-    </div>
-    <p style="font-size:.85rem;line-height:1.75;margin-bottom:1rem;">Some of what's in here may be hard to read. If a theme surfaced something that's affecting your work or wellbeing, these resources exist for you:</p>
-    <ul class="resource-list">
-      <li><span class="r-dot"></span><div><strong>Employee Assistance Program (EAP)</strong> — free, confidential counseling and support services for U of U employees.</div></li>
-      <li><span class="r-dot"></span><div><strong>Center for Campus Wellness</strong> — three confidential support avenues open to faculty and staff: <em>Spiritual Wellness Chaplain</em>, <em>Victim-Survivor Advocacy</em>, and the <em>Basic Needs Collective (BNC)</em>.</div></li>
-      <li><span class="r-dot"></span><div><strong>HR Employee Relations or OEO</strong> — for concerns that warrant institutional channels beyond divisional leadership.</div></li>
-      <li><span class="r-dot"></span><div><strong>Dr. Watkins directly</strong> — if you'd like to raise something that doesn't fit one of the channels above. Email is open.</div></li>
-    </ul>
-  </div>
-
-  <hr class="divider">
-
-  <!-- CLOSING -->
-  <div class="section fade-in">
-    <div class="closing">
-      <h3>We'll see you on May 8.</h3>
-      <p>Forty people filled out this survey. The honesty in what you wrote is the reason this document exists. The retreat on May 8 is built around what you said.</p>
-      <p>One of you wrote that you wished we could speak plainly. The cleanest gift this division can give in return is to do exactly that — at the retreat, in this document, and in the months that follow.</p>
-      <p>Speaking plainly is not a one-time event. It is a practice.</p>
-      <p style="margin-top:1.2rem;"><em>— Dr. Sherrá L. Watkins, AVP Student Health &amp; Wellness · University of Utah · May 2026</em></p>
-    </div>
-  </div>
+  </section>
 
 </div>
 
-<!-- MORE CONTEXT — NASPA + ADVOCACY -->
-<div class="more-context-section" style="background: #FFFFFF; border-top: 3px solid #5C0000; padding: 2.4rem 1.5rem 2.4rem 1.5rem;">
-  <div style="max-width: 880px; margin: 0 auto;">
-    <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.5rem;">More Context · The Higher Ed Landscape</div>
-    <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: #5C0000; margin-bottom: 0.8rem; font-weight: 700;">If you want to dig deeper.</h3>
-    <p style="font-size: 0.95rem; line-height: 1.65; color: #1F2937; margin-bottom: 0.9rem;">Dr. Watkins serves on the <strong style="color: #111827;">NASPA 2025 Top Issues in Student Affairs Advisory Committee</strong> and is featured by name in the Health, Safety &amp; Well-being follow-up brief. The reports below show what 144 vice presidents for student affairs nationally rank as their top priorities — including basic needs (67%), institution-wide collaboration on holistic well-being (66%), and integration of mental health services. Many of the patterns named at the May 8 retreat appear in these national findings.</p>
-    <p style="font-size: 0.95rem; line-height: 1.65; color: #1F2937; margin-bottom: 1.3rem;">The fourth resource — the new <strong style="color: #111827;">Standards for Campus-Based Advocacy Services</strong> (NASPA, Every Voice Coalition, NOVA · January 2026) — is the national framework for trauma-informed survivor advocacy on campus, relevant to our Center for Campus Wellness work and to interpersonal violence response across the division.</p>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 1.2rem;">
-
-      <a href="https://www.naspa.org/report/2025-naspa-top-issues-in-student-affairs" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.4rem;">NASPA · Main Report</div>
-        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">2025 Top Issues in Student Affairs</div>
-        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">144 VPSAs ranked 50 issues across five key areas. Basic needs and institutional collaboration top the list.</div>
-        <div style="font-size: 0.75rem; color: #5C0000; margin-top: 0.6rem; font-weight: 700;">Read the report →</div>
-      </a>
-
-      <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-health-safety-and-well-being" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.4rem;">NASPA · Follow-Up Brief</div>
-        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">Health, Safety, &amp; Well-being</div>
-        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">Features Dr. Watkins' Advisory Committee perspective on basic needs as a structural reality and institutional integration.</div>
-        <div style="font-size: 0.75rem; color: #5C0000; margin-top: 0.6rem; font-weight: 700;">Read the brief →</div>
-      </a>
-
-      <a href="https://www.naspa.org/report/2025-top-issues-in-student-affairs-follow-up-brief-administration-and-governance" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #5C0000; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(92,0,0,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C0000; margin-bottom: 0.4rem;">NASPA · Follow-Up Brief</div>
-        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">Administration &amp; Governance</div>
-        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">Compliance (68% Very Important), revenue generation, organizational structure — what VPSAs are navigating.</div>
-        <div style="font-size: 0.75rem; color: #5C0000; margin-top: 0.6rem; font-weight: 700;">Read the brief →</div>
-      </a>
-
-      <a href="https://www.naspa.org/resources" target="_blank" rel="noopener" style="display: block; padding: 16px 18px; background: #FAFAF7; border: 1px solid #E5DDD5; border-left: 4px solid #1A5C6B; border-radius: 6px; text-decoration: none; transition: box-shadow 0.15s, transform 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(26,92,107,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.boxShadow=''; this.style.transform='';">
-        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1A5C6B; margin-bottom: 0.4rem;">NASPA · Every Voice · NOVA</div>
-        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: #1F2937; line-height: 1.25; margin-bottom: 0.4rem;">Standards for Campus-Based Advocacy Services</div>
-        <div style="font-size: 0.85rem; color: #374151; line-height: 1.45;">January 2026. National framework for trauma-informed, survivor-centered advocacy on campus — relevant to CCW &amp; division-wide IPV response.</div>
-        <div style="font-size: 0.75rem; color: #1A5C6B; margin-top: 0.6rem; font-weight: 700;">Find on NASPA Resources →</div>
-      </a>
-
-    </div>
-  </div>
+<div class="footer">
+  <strong>Student Health &amp; Wellness Division Hub</strong> &nbsp;·&nbsp; University of Utah &nbsp;·&nbsp; Student Affairs<br>
+  <span style="margin-top:6px;display:block;">Retreat Summaries · Pre-survey n varies · Post-survey n=43 · Questions? WellnessAtTheU@utah.edu</span>
 </div>
 
-<div class="page-footer" style="padding: 1.6rem 1.5rem;">
-  <div class="footer-buttons" style="margin-bottom: 1rem;">
-    <button type="button" onclick="window.print();" style="display: inline-block; padding: 10px 18px; background: #5C0000; color: white; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin: 0 6px 6px 0; border: none; cursor: pointer; font-family: inherit;">🖨️ Print this page</button>
-    <a href="retreat.html" style="display: inline-block; padding: 10px 18px; background: white; color: #5C0000; border: 1px solid #5C0000; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin: 0 6px 6px 0;">← Back to Retreat Page</a>
-    <a href="index.html" style="display: inline-block; padding: 10px 18px; background: white; color: #5C0000; border: 1px solid #5C0000; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin: 0 6px 6px 0;">🏠 Hub Home</a>
-  </div>
-  Student Health &amp; Wellness · University of Utah · Pre-Retreat Survey Summary · May 2026 · n=40 of 120 total staff · For All SH&amp;W Staff · Questions: WellnessAtTheU@utah.edu
-</div>
-
-<script>
-// Fade-in on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
