@@ -907,7 +907,8 @@
           <div class="ann-title">NEST — New-staff Experience, Support &amp; Traditions · Committee Sign-Up Open</div>
           <div class="ann-body">We're building the nest. <strong>NEST</strong> is a new Onboarding &amp; Engagement Committee shaping how SH&amp;W welcomes and grows its people. The committee will develop division onboarding, welcome new staff, lead team building, and drive engagement — including professional development and the annual all-staff retreat. All staff are invited to join; no seniority or prior committee experience required.
             <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
-              <a href="mailto:Cha.McNeil@sa.utah.edu?subject=NEST%20Committee%20Sign-Up&body=Name%3A%0D%0ADepartment%2FProgram%3A%0D%0ARole%20%2F%20Title%3A%0D%0AHow%20long%20at%20the%20U%3A%0D%0A%0D%0AWhich%20NEST%20focus%20areas%20interest%20you%3F%20(onboarding%20%2F%20welcoming%20new%20staff%20%2F%20team%20building%20%2F%20professional%20development%20%2F%20all-staff%20retreat)%3A%0D%0A%0D%0AWhy%20you'd%20like%20to%20join%3A%0D%0A%0D%0AWhat%20you'd%20most%20want%20a%20new%20SH%26W%20employee%20to%20experience%20in%20their%20first%2030%20days%3A%0D%0A%0D%0ATime%20you%20can%20commit%20(approx.%20hrs%2Fmonth)%3A%0D%0A" style="display:inline-block; background:#15803d; color:#fff; font-size:12px; font-weight:700; padding:8px 16px; border-radius:6px; text-decoration:none;">Sign up for NEST →</a>
+              <button type="button" onclick="openNest()" style="display:inline-block; background:#15803d; color:#fff; font-size:12px; font-weight:700; padding:9px 16px; border-radius:6px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif;">Sign up for NEST →</button>
+              <a href="NEST_Committee_SignUp_Fillable.pdf" download style="display:inline-block; background:#fff; color:#15803d; border:1.5px solid #15803d; font-size:12px; font-weight:700; padding:8px 16px; border-radius:6px; text-decoration:none;">⬇ Download fillable PDF</a>
             </div>
           </div>
           <div class="ann-date">Responses to Cha McNeil · Cha.McNeil@sa.utah.edu</div>
@@ -935,7 +936,7 @@
         <div class="ann-content">
           <span class="ann-tag" style="background: #fef3c7; color: #b45309;">Lunch &amp; Learn</span>
           <div class="ann-title">Lunch &amp; Learn Series — 2026–27 Dates</div>
-          <div class="ann-body">Save the dates for this year's Lunch &amp; Learn series. The series was developed to allow each department to provide an Overview of their department as related to services and resources. An Q&A will be included. The sseries opens with a division-wide overview of our health and wellness programs.
+          <div class="ann-body">Save the dates for this year's Lunch &amp; Learn series. The series opens with a division-wide overview of our health and wellness programs.
             <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:12px;">
               <div style="border:1px solid #fcd34d; border-radius:8px; padding:9px 6px; background:#fffbeb; text-align:center;">
                 <div style="font-size:10px; font-weight:700; color:#b45309; letter-spacing:0.06em;">AUG</div>
@@ -1410,5 +1411,168 @@
   <strong>Student Health & Wellness Division Hub</strong> &nbsp;·&nbsp; University of Utah &nbsp;·&nbsp; Student Affairs &nbsp;·&nbsp; Updated Monthly<br>
   <span style="margin-top:6px; display:block;">Questions? Contact WellnessAtTheU@utah.edu</span>
 </div>
+<!-- ===== NEST SIGN-UP MODAL ===== -->
+<div id="nestOverlay" onclick="if(event.target===this)closeNest()" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.55); z-index:2000; overflow-y:auto; padding:30px 16px;">
+  <div style="max-width:640px; margin:0 auto; background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div style="background:#15803d; color:#fff; padding:18px 24px; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div style="font-size:16px; font-weight:700;">NEST Committee — Sign-Up</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">New-staff Experience, Support &amp; Traditions</div>
+      </div>
+      <button type="button" onclick="closeNest()" style="background:rgba(255,255,255,0.2); border:none; color:#fff; font-size:20px; line-height:1; width:30px; height:30px; border-radius:6px; cursor:pointer;">×</button>
+    </div>
+    <div style="padding:22px 24px 8px; font-size:13px; color:#475569; line-height:1.6;">
+      We're building the nest. Fill this out and press Submit — your email will open, pre-filled and addressed to Cha McNeil. Just press send.
+    </div>
+    <div style="padding:6px 24px 24px;">
+      <div class="nest-sec">Section 1 — About you</div>
+      <label class="nest-l">Name *</label><input class="nest-i" id="n_name" type="text">
+      <label class="nest-l">Department / program *</label>
+      <select class="nest-i" id="n_dept">
+        <option value="">— Select —</option>
+        <option>University Counseling Center (UCC)</option><option>Student Health Center (SHC)</option>
+        <option>Center for Campus Wellness (CCW)</option><option>Center for Disability &amp; Access (CDA)</option>
+        <option>Campus Recreation Services (CRS)</option><option>Financial Wellness Center (FWC)</option>
+        <option>Medical Student Wellness (MSWP)</option><option>Office of the AVP / Division administration</option>
+        <option>Other</option>
+      </select>
+      <label class="nest-l">Role / title *</label><input class="nest-i" id="n_role" type="text">
+      <label class="nest-l">University email *</label><input class="nest-i" id="n_email" type="email">
+      <label class="nest-l">How long have you been with SH&amp;W? *</label>
+      <select class="nest-i" id="n_tenure">
+        <option value="">— Select —</option><option>Less than 6 months</option><option>6 months – 1 year</option>
+        <option>1–3 years</option><option>3–5 years</option><option>More than 5 years</option>
+      </select>
+
+      <div class="nest-sec">Section 2 — Where you'd like to contribute</div>
+      <label class="nest-l">Which focus areas interest you? (select all that apply) *</label>
+      <div id="n_focus">
+        <label class="nest-c"><input type="checkbox" value="Onboarding — building the SH&amp;W onboarding experience"> Onboarding — building the SH&amp;W onboarding experience</label>
+        <label class="nest-c"><input type="checkbox" value="Welcoming new staff — first-day and first-30-days touchpoints"> Welcoming new staff — first-day and first-30-days touchpoints</label>
+        <label class="nest-c"><input type="checkbox" value="Team building — cross-department connection and traditions"> Team building — cross-department connection and traditions</label>
+        <label class="nest-c"><input type="checkbox" value="Engagement — professional development opportunities"> Engagement — professional development opportunities</label>
+        <label class="nest-c"><input type="checkbox" value="Annual all-staff retreat — planning and programming"> Annual all-staff retreat — planning and programming</label>
+        <label class="nest-c"><input type="checkbox" value="Wherever I'm needed most"> Wherever I'm needed most</label>
+      </div>
+      <label class="nest-l">Why would you like to join NEST?</label><textarea class="nest-i" id="n_why" rows="3"></textarea>
+      <label class="nest-l">What would you most want a new SH&amp;W employee to experience in their first 30 days?</label><textarea class="nest-i" id="n_first30" rows="3"></textarea>
+      <label class="nest-l">One thing you wish had gone differently in your own onboarding?</label><textarea class="nest-i" id="n_own" rows="3"></textarea>
+
+      <div class="nest-sec">Section 3 — Commitment &amp; logistics</div>
+      <label class="nest-l">Approximately how much time can you commit? *</label>
+      <select class="nest-i" id="n_commit">
+        <option value="">— Select —</option><option>1–2 hours per month</option><option>3–4 hours per month</option>
+        <option>5+ hours per month</option><option>Event help only</option>
+      </select>
+      <label class="nest-l">Interested in a leadership or co-chair role? *</label>
+      <select class="nest-i" id="n_lead">
+        <option value="">— Select —</option><option>Yes</option><option>Maybe — tell me more</option><option>No, I'd prefer to be a member</option>
+      </select>
+      <label class="nest-l">What days/times generally work best to meet?</label>
+      <div id="n_days">
+        <label class="nest-c" style="display:inline-block; width:31%;"><input type="checkbox" value="Monday"> Monday</label>
+        <label class="nest-c" style="display:inline-block; width:31%;"><input type="checkbox" value="Tuesday"> Tuesday</label>
+        <label class="nest-c" style="display:inline-block; width:31%;"><input type="checkbox" value="Wednesday"> Wednesday</label>
+        <label class="nest-c" style="display:inline-block; width:31%;"><input type="checkbox" value="Thursday"> Thursday</label>
+        <label class="nest-c" style="display:inline-block; width:31%;"><input type="checkbox" value="Friday"> Friday</label>
+        <label class="nest-c" style="display:inline-block; width:31%;"><input type="checkbox" value="Mornings"> Mornings</label>
+        <label class="nest-c" style="display:inline-block; width:31%;"><input type="checkbox" value="Afternoons"> Afternoons</label>
+      </div>
+      <label class="nest-l">Have you confirmed with your supervisor? *</label>
+      <select class="nest-i" id="n_super">
+        <option value="">— Select —</option><option>Yes</option><option>Not yet — I plan to</option><option>I'd like help starting that conversation</option>
+      </select>
+      <label class="nest-l">Anything else you'd like the committee to know?</label><textarea class="nest-i" id="n_other" rows="3"></textarea>
+
+      <div id="n_err" style="display:none; background:#fef2f2; color:#cc0000; border:1px solid #fca5a5; border-radius:8px; padding:10px 14px; font-size:12px; font-weight:600; margin-top:14px;"></div>
+
+      <div style="display:flex; gap:10px; margin-top:18px; align-items:center; flex-wrap:wrap;">
+        <button type="button" onclick="submitNest()" style="background:#15803d; color:#fff; border:none; font-size:13px; font-weight:700; padding:11px 22px; border-radius:7px; cursor:pointer; font-family:'DM Sans',sans-serif;">Submit → opens your email</button>
+        <button type="button" onclick="closeNest()" style="background:#fff; color:#475569; border:1px solid #e2e8f0; font-size:13px; font-weight:600; padding:10px 18px; border-radius:7px; cursor:pointer; font-family:'DM Sans',sans-serif;">Cancel</button>
+      </div>
+      <div style="font-size:11px; color:#94a3b8; margin-top:10px; line-height:1.5;">Submitting opens a pre-filled email to Cha.McNeil@sa.utah.edu — press send in your mail app to finish. Prefer paper? Use the fillable PDF instead.</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .nest-sec { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#15803d; margin:20px 0 10px; padding-bottom:6px; border-bottom:2px solid #e2e8f0; }
+  .nest-l { display:block; font-size:12.5px; font-weight:600; color:#1e293b; margin:12px 0 5px; line-height:1.4; }
+  .nest-i { width:100%; padding:9px 11px; border:1px solid #e2e8f0; border-radius:7px; font-size:13px; font-family:'DM Sans',sans-serif; color:#1e293b; background:#f8fafc; box-sizing:border-box; }
+  .nest-i:focus { outline:none; border-color:#15803d; background:#fff; }
+  .nest-c { display:block; font-size:12.5px; color:#475569; margin-bottom:7px; cursor:pointer; line-height:1.45; }
+  .nest-c input { margin-right:7px; }
+</style>
+
+<script>
+  /* KPI cards — expand/collapse details (accordion: one open at a time) */
+  function toggleKpi(i){
+    var detail = document.getElementById('kpi-detail-' + i);
+    if(!detail) return;
+    var wasOpen = detail.style.display !== 'none';
+    for(var k = 0; k < 4; k++){
+      var d = document.getElementById('kpi-detail-' + k);
+      var c = document.getElementById('kpi-card-' + k);
+      if(d) d.style.display = 'none';
+      if(c) c.style.boxShadow = '';
+    }
+    if(!wasOpen){
+      detail.style.display = 'block';
+      var card = document.getElementById('kpi-card-' + i);
+      if(card) card.style.boxShadow = '0 6px 18px rgba(15,23,42,0.13)';
+    }
+  }
+
+  function openNest(){ document.getElementById('nestOverlay').style.display='block'; document.body.style.overflow='hidden'; }
+  function closeNest(){ document.getElementById('nestOverlay').style.display='none'; document.body.style.overflow=''; }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNest(); });
+
+  function nestChecked(id){
+    return Array.prototype.slice.call(document.querySelectorAll('#'+id+' input:checked')).map(function(x){return x.value;});
+  }
+  function submitNest(){
+    var v = function(id){ return (document.getElementById(id).value||'').trim(); };
+    var required = [['n_name','Name'],['n_dept','Department / program'],['n_role','Role / title'],
+                    ['n_email','University email'],['n_tenure','Time with SH&W'],
+                    ['n_commit','Time commitment'],['n_lead','Leadership interest'],['n_super','Supervisor confirmation']];
+    var missing = required.filter(function(r){ return !v(r[0]); }).map(function(r){ return r[1]; });
+    var focus = nestChecked('n_focus');
+    if(focus.length===0) missing.push('At least one focus area');
+    var err = document.getElementById('n_err');
+    if(missing.length){
+      err.style.display='block';
+      err.textContent = 'Please complete: ' + missing.join(', ');
+      err.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    err.style.display='none';
+    var NL = '\r\n';
+    var body =
+      'NEST Committee Sign-Up' + NL + NL +
+      'Name: ' + v('n_name') + NL +
+      'Department / program: ' + v('n_dept') + NL +
+      'Role / title: ' + v('n_role') + NL +
+      'University email: ' + v('n_email') + NL +
+      'Time with SH&W: ' + v('n_tenure') + NL + NL +
+      'FOCUS AREAS:' + NL + focus.map(function(f){return '  - '+f;}).join(NL) + NL + NL +
+      'Why join NEST:' + NL + (v('n_why') || '(not answered)') + NL + NL +
+      'First 30 days for a new employee:' + NL + (v('n_first30') || '(not answered)') + NL + NL +
+      'What I wish had gone differently in my onboarding:' + NL + (v('n_own') || '(not answered)') + NL + NL +
+      'Time commitment: ' + v('n_commit') + NL +
+      'Leadership / co-chair interest: ' + v('n_lead') + NL +
+      'Best days/times: ' + (nestChecked('n_days').join(', ') || '(none selected)') + NL +
+      'Supervisor confirmed: ' + v('n_super') + NL + NL +
+      'Anything else:' + NL + (v('n_other') || '(not answered)') + NL;
+    var url = 'mailto:Cha.McNeil@sa.utah.edu?subject=' + encodeURIComponent('NEST Committee Sign-Up — ' + v('n_name')) +
+              '&body=' + encodeURIComponent(body);
+    window.location.href = url;
+    setTimeout(function(){
+      err.style.display='block';
+      err.style.background='#eaf7ee'; err.style.color='#15803d'; err.style.borderColor='#86efac';
+      err.textContent = 'Your email should have opened — press send to finish. If nothing opened, email Cha.McNeil@sa.utah.edu directly.';
+    }, 800);
+  }
+</script>
+
 </body>
 </html>
