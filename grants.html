@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -315,40 +316,40 @@
 </footer>
 
 <script>
-// ─── DATA — verified row-by-row from Grant Tracker CSV, July 2026 ───
-// Not Awarded excluded: Emergency Aid Microgrant, Anna Lalor Burdick Program, Prejudice to Pluralism
-// Manual overrides: ECMC requested=$500,000; Schwab requested=$250,000
+// ─── DATA — verified from SH&W Grants Master List 8/26 CSV ───
+// Not Awarded rows excluded; Saalt row removed per request.
+// Deadline/period is blank because the new CSV does not contain deadline/period data.
 const GRANTS = [
-  // IN PROGRESS
-  { status:"In Progress", title:"GLS Suicide Prevention on Campus",              funder:"SAMHSA",                                type:"Federal",          requested:500000,  awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:"7/27/2026"  },
-  { status:"In Progress", title:"Warehouse Donations",                            funder:"Costco",                                type:"Corporate In-Kind",requested:1000,    awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"7/7/2026"   },
-  { status:"In Progress", title:"Schwab Moneywise Momentum Grants",               funder:"Charles Schwab Foundation",             type:"Corporate",        requested:250000,  awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"7/31/2026"  },
-  { status:"In Progress", title:"Basic Needs",                                    funder:"ECMC Foundation",                       type:"Foundation",       requested:500000,  awarded:null,  priority:"Basic Needs Security",                           dept:"SHW", period:"9/1/2026"   },
-  { status:"In Progress", title:"Zero Hunger / Hunger Relief",                    funder:"Kroger Co. Foundation",                 type:"Corporate",        requested:null,    awarded:null,  priority:"Basic Needs Security",                           dept:"CCW", period:"9/18/2026"  },
-  { status:"In Progress", title:"Get Out and Get Active",                         funder:"Anxiety and Depression Initiative",      type:"Foundation",       requested:10000,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CRS", period:"4/27/2026"  },
-  // UPCOMING
-  { status:"Upcoming",    title:"OVW Campus Grant",                               funder:"US Department of Justice",              type:"Federal",          requested:null,    awarded:null,  priority:"Mental Health Expansion and Crisis Prevention", dept:"CCW", period:"8/1/2026"   },
-  { status:"Upcoming",    title:"MEAF Grants",                                    funder:"Mitsubishi Electric America Foundation", type:"Corporate",        requested:null,    awarded:null,  priority:"Health Equity and Access",                      dept:"CDA", period:"11/1/2026"  },
-  { status:"Upcoming",    title:"Community Grant Competition",                     funder:"Organization for Autism Research",       type:"Foundation",       requested:15000,   awarded:null,  priority:"Peer-Led Support Models",                       dept:"CDA", period:"3/1/2027"   },
-  // SUBMITTED
-  { status:"Submitted",   title:"Patient Safety Prize",                           funder:"Elevance Health",                       type:"Foundation",       requested:1500000, awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"SHW", period:"4/7/2026"   },
-  { status:"Submitted",   title:"Aid to Higher Education",                        funder:"Northrop Grumman",                      type:"Corporate",        requested:15000,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"CCW", period:"5/27/2026"  },
-  { status:"Submitted",   title:"VITA Continued Support",                         funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Health Equity and Access",                       dept:"FWC", period:"6/30/2026"  },
-  { status:"Submitted",   title:"Success360 Campus Partner Training",             funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Health Equity and Access",                       dept:"FWC", period:"6/30/2026"  },
-  { status:"Submitted",   title:"Wellness Retreat",                               funder:"Parent Fund",                           type:"Donor(s)",         requested:7683,    awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",  dept:"UCC", period:"6/30/2026"  },
-  { status:"Submitted",   title:"Executive Functioning Project",                  funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Peer-Led Support Models",                       dept:"CDA", period:"6/30/2026"  },
-  { status:"Submitted",   title:"Meals Within Reach",                             funder:"Parent Fund",                           type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Basic Needs Security",                           dept:"SHW", period:"6/30/2026"  },
-  { status:"Submitted",   title:"Economic Opportunity Grants: Financial Literacy", funder:"Nasdaq Foundation",                    type:"Corporate",        requested:65000,   awarded:null,  priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"7/31/2026"  },
-
-  // AWARDED
-  { status:"Awarded",     title:"JED Campus",                                     funder:"JED Foundation",                        type:"Foundation",       requested:70000,   awarded:70000, priority:"Mental Health Expansion and Crisis Prevention",  dept:"SHW", period:"2021-2024"  },
-  { status:"Awarded",     title:"Faith and Health Pipeline",                      funder:"Interfaith America",                    type:"Foundation",       requested:5000,    awarded:5000,  priority:"Spiritual Wellness and Interfaith Programming",  dept:"SWP", period:"2025-2026"  },
-  { status:"Awarded",     title:"Prosperity Now",                                 funder:"Prosperity Now",                        type:"Foundation",       requested:20000,   awarded:11200, priority:"Health Equity and Access",                       dept:"FWC", period:"2026"       },
-  { status:"Awarded",     title:"In-Kind Donation",                               funder:"The OP Games",                          type:"Corporate In-Kind",requested:84700,   awarded:84700, priority:"Health Literacy and Digital Wellness Tools",     dept:"FWC", period:"2026"       },
-  { status:"Awarded",     title:"SoFi Bank Sweepstakes",                          funder:"SoFi Bank",                             type:"Corporate",        requested:12000,   awarded:12000, priority:"Basic Needs Security",                           dept:"FWC", period:"2026"       },
-  { status:"Awarded",     title:"Scholarships for Accessibility",                 funder:"Craig H. Neilsen Foundation",           type:"Foundation",       requested:10000,   awarded:10000, priority:"Health Equity and Access",                       dept:"CDA", period:"2026"       },
-  { status:"Awarded",     title:"Scholarships for Students with Learning Disabilities", funder:"Kingsley Foundation",             type:"Foundation",       requested:10000,   awarded:10000, priority:"Health Equity and Access",                       dept:"CDA", period:"2026"       },
-  { status:"Awarded",     title:"Product Donation",                               funder:"Chomps",                                type:"Corporate In-Kind",requested:512,     awarded:512,   priority:"Basic Needs Security",                           dept:"CCW", period:"2026"       },
+  { status:"Upcoming", title:"OVW Campus Grant", funder:"US Department of Justice", type:"Federal", requested:null, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
+  { status:"Upcoming", title:"Campus Grants", funder:"Swipe Out Hunger", type:"Foundation", requested:6000, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
+  { status:"Upcoming", title:"Product Donation", funder:"Trader Joe's", type:"Corporate In-Kind", requested:null, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
+  { status:"Upcoming", title:"MEAF Grants", funder:"Mitsubishi Electric America Foundation", type:"Corporate", requested:null, awarded:null, priority:"Health Equity and Access", dept:"CDA", period:null },
+  { status:"Upcoming", title:"Grants", funder:"Dr. Scholl Foundation", type:"Corporate", requested:null, awarded:null, priority:"Basic Needs Security", dept:"SHW", period:null },
+  { status:"Upcoming", title:"Community Grant Competition", funder:"Organization for Autism Research", type:"Foundation", requested:15000, awarded:null, priority:"Peer-Led Support Models", dept:"CDA", period:null },
+  { status:"Upcoming", title:"Tommy Wilson Memorial Grant", funder:"SHAPE America", type:"Foundation", requested:null, awarded:null, priority:"Health Equity and Access", dept:"CDA", period:null },
+  { status:"In Progress", title:"UREACH Grant", funder:"Learning Disabilities Foundation of America", type:"Foundation", requested:null, awarded:null, priority:"Health Equity and Access", dept:"CDA", period:null },
+  { status:"In Progress", title:"Zero Hunger / Hunger Relief", funder:"Kroger Co. Foundation", type:"Corporate", requested:null, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
+  { status:"In Progress", title:"Basic Needs", funder:"ECMC Foundation", type:"Foundation", requested:500000, awarded:null, priority:"Basic Needs Security", dept:"SHW", period:null },
+  { status:"Submitted", title:"Aid to Higher Education", funder:"Northrop Grumman", type:"Corporate", requested:15000, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"CCW", period:null },
+  { status:"Submitted", title:"VITA Continued Support", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Health Equity and Access", dept:"FWC", period:null },
+  { status:"Submitted", title:"Success360 Campus Partner Training", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Health Equity and Access", dept:"FWC", period:null },
+  { status:"Submitted", title:"Wellness Retreat", funder:"Parent Fund", type:"Donor(s)", requested:7683, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"UCC", period:null },
+  { status:"Submitted", title:"Executive Functioning Project", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Peer-Led Support Models", dept:"CDA", period:null },
+  { status:"Submitted", title:"Meals Within Reach", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Basic Needs Security", dept:"SHW", period:null },
+  { status:"Submitted", title:"Warehouse Donations", funder:"Costco", type:"Corporate In-Kind", requested:1000, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
+  { status:"Submitted", title:"GLS Suicide Prevention on Campus", funder:"SAMHSA", type:"Federal", requested:499996, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
+  { status:"Submitted", title:"Schwab Moneywise Momentum Grants", funder:"Charles Schwab Foundation", type:"Corporate", requested:200813, awarded:null, priority:"Innovation and Workforce Development in the Health Professions", dept:"FWC", period:null },
+  { status:"Submitted", title:"Economic Opportunity Grants: Financial Literacy", funder:"Nasdaq Foundation", type:"Corporate", requested:65000, awarded:null, priority:"Health Literacy and Digital Wellness Tools", dept:"FWC", period:null },
+  { status:"Submitted", title:"Get Out and Get Active", funder:"Anxiety and Depression Initiative", type:"Foundation", requested:10000, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"CRS", period:null },
+  { status:"Submitted", title:"Suicide prevention on campus", funder:"Lifestance Health Foundation", type:"Corporate", requested:null, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
+  { status:"Awarded", title:"JED Campus", funder:"JED Foundation", type:"Foundation", requested:70000, awarded:70000, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
+  { status:"Awarded", title:"Faith and Health Pipeline", funder:"Interfaith America", type:"Foundation", requested:5000, awarded:5000, priority:"Spiritual Wellness and Interfaith Programming", dept:"SWP", period:null },
+  { status:"Awarded", title:"Prosperity Now", funder:"Prosperity Now", type:"Foundation", requested:20000, awarded:11200, priority:"Health Equity and Access", dept:"FWC", period:null },
+  { status:"Awarded", title:"In-Kind Donation", funder:"The OP Games", type:"Corporate In-Kind", requested:84700, awarded:84700, priority:"Health Literacy and Digital Wellness Tools", dept:"FWC", period:null },
+  { status:"Awarded", title:"SoFi Bank Sweepstakes", funder:"SoFi Bank", type:"Corporate", requested:12000, awarded:12000, priority:"Basic Needs Security", dept:"FWC", period:null },
+  { status:"Awarded", title:"Scholarships for Accessibility", funder:"Craig H. Neilsen Foundation", type:"Foundation", requested:10000, awarded:10000, priority:"Health Equity and Access", dept:"CDA", period:null },
+  { status:"Awarded", title:"Scholarships for Students with Learning Disabilities", funder:"Kingsley Foundation", type:"Foundation", requested:10000, awarded:10000, priority:"Health Equity and Access", dept:"CDA", period:null },
+  { status:"Awarded", title:"Product Donation", funder:"Chomps", type:"Corporate In-Kind", requested:512, awarded:553, priority:"Basic Needs Security", dept:"CCW", period:null }
 ];
 
 // ─── HELPERS ───
@@ -376,7 +377,7 @@ function buildSummary() {
   const awd  = GRANTS.filter(isAwd);
   const pipe = GRANTS.filter(isPipe);
   const totalAwd  = sumBy(awd,  g => g.awarded);
-  const totalPipe = sumBy(pipe, g => g.requested);
+  const totalPipe = sumBy(GRANTS.filter(g => ['Upcoming','In Progress','Submitted'].includes(g.status)), g => g.requested);
   document.getElementById('summary-strip').innerHTML = `
     <div class="summary-tile emerald">
       <div class="tile-label">Total Funds Awarded</div>
