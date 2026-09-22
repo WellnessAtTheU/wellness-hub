@@ -34,8 +34,6 @@
     background: var(--bg); color: var(--text-primary);
     min-height: 100vh; line-height: 1.6; font-size: 16px;
   }
-
-  /* NAV */
   .site-nav {
     background: var(--crimson); border-bottom: 1px solid rgba(255,255,255,0.15);
     padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between;
@@ -45,17 +43,13 @@
     font-weight: 700; color: #fff; font-size: 1.1rem;
     padding: 1rem 0; letter-spacing: -0.02em; white-space: nowrap;
   }
-  .nav-links {
-    display: flex; align-items: center; flex-wrap: wrap; gap: 0;
-  }
+  .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: 0; }
   .site-nav a {
     color: rgba(255,255,255,0.85); text-decoration: none;
     padding: 1rem 0.75rem; font-size: 0.875rem; transition: color 0.2s; white-space: nowrap;
   }
   .site-nav a:hover { color: #fff; }
   .site-nav a.active { color: #fff; font-weight: 700; box-shadow: inset 0 -2px 0 #fff; }
-
-  /* HEADER */
   .page-header {
     background: linear-gradient(135deg, #1e293b 0%, #2d1b1b 50%, var(--crimson-dark) 100%);
     border-bottom: 1px solid var(--border); padding: 2.5rem 2rem 2rem;
@@ -76,11 +70,7 @@
     background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.25);
     border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.82rem; color: #fff; font-weight: 600;
   }
-
-  /* LAYOUT */
   .main { max-width: 1300px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-
-  /* SUMMARY STRIP */
   .summary-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
   .summary-tile {
     background: var(--surface); border: 1px solid var(--border);
@@ -94,8 +84,6 @@
   .tile-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
   .tile-value { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.25rem; }
   .tile-sub { font-size: 0.75rem; color: var(--text-secondary); }
-
-  /* SECTION HEADERS */
   .section-header { margin: 2.5rem 0 1.25rem; display: flex; align-items: baseline; gap: 0.75rem; }
   .section-header h2 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
   .section-badge {
@@ -103,8 +91,6 @@
     color: var(--crimson); background: var(--crimson-glow); border: 1px solid rgba(204,0,0,0.18);
     padding: 0.2rem 0.6rem; border-radius: 999px;
   }
-
-  /* CHART GRID */
   .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
   .chart-card {
     background: var(--surface); border: 1px solid var(--border);
@@ -116,8 +102,6 @@
   .card-sub { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
   .chart-card canvas { cursor: pointer; }
   .click-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center; }
-
-  /* DRILL PANEL */
   #drilldown-container { margin-top: 2rem; }
   .drill-panel {
     background: var(--surface); border: 1px solid var(--crimson);
@@ -140,8 +124,6 @@
     padding: 0.75rem 1rem; font-size: 0.875rem; color: var(--text-secondary);
     margin-bottom: 1.25rem; font-style: italic; line-height: 1.5;
   }
-
-  /* FUNDING SPLIT */
   .funding-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
   .funding-split-card { border-radius: var(--radius-sm); padding: 1rem 1.25rem; border: 1px solid var(--border); }
   .funding-split-card.awarded-card { background: rgba(21,128,61,0.06); border-color: rgba(21,128,61,0.25); }
@@ -153,8 +135,6 @@
   .awarded-card .split-card-value { color: var(--green); }
   .pipeline-card .split-card-value { color: var(--gold); }
   .split-card-sub { font-size: 0.75rem; color: var(--text-secondary); }
-
-  /* DRILL SECTION LABEL */
   .drill-section-label {
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--text-muted); margin: 1.25rem 0 0.75rem;
@@ -167,8 +147,6 @@
   .mini-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
   .mini-title.awarded-label { color: var(--green); }
   .mini-title.pipeline-label { color: var(--gold); }
-
-  /* TABLE */
   .grant-table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); margin-top: 1rem; }
   table.grant-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: var(--surface); }
   table.grant-table thead th {
@@ -188,14 +166,11 @@
   .amount-cell { font-variant-numeric: tabular-nums; color: var(--text-primary) !important; font-weight: 600; }
   .awarded-amount { color: var(--green) !important; font-weight: 700; font-variant-numeric: tabular-nums; }
   .na-cell { color: var(--text-muted); font-style: italic; }
-
-  /* CONTACT BOX */
   .contact-box {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 1.25rem 1.5rem;
     display: flex; align-items: center; gap: 1.25rem;
-    box-shadow: 0 1px 3px rgba(16,24,40,0.04);
-    margin-top: 2.5rem;
+    box-shadow: 0 1px 3px rgba(16,24,40,0.04); margin-top: 2.5rem;
   }
   .contact-icon {
     width: 44px; height: 44px; border-radius: 50%;
@@ -208,13 +183,10 @@
   .contact-role { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
   .contact-email a { font-size: 0.82rem; color: var(--crimson); text-decoration: none; font-weight: 500; }
   .contact-email a:hover { text-decoration: underline; }
-
-  /* FOOTER */
   .site-footer {
     border-top: 1px solid var(--border); padding: 1.5rem 2rem;
     text-align: center; font-size: 0.78rem; color: var(--text-muted); background: var(--surface);
   }
-
   @media (max-width: 640px) {
     .page-header { padding: 1.5rem 1rem; }
     .main { padding: 1.25rem 0.75rem 3rem; }
@@ -296,7 +268,6 @@
     </table>
   </div>
 
-  <!-- CONTACT BOX -->
   <div class="contact-box">
     <div class="contact-icon">✉️</div>
     <div>
@@ -310,45 +281,51 @@
 </main>
 
 <footer class="site-footer">
-  Student Health &amp; Wellness Division · University of Utah · Student Affairs · Grant data updated July 2026 ·
-  Questions? <a href="mailto:WellnessAtTheU@utah.edu" style="color:var(--crimson);">christa.greenlee@utah.edu</a>
+  Student Health &amp; Wellness Division · University of Utah · Student Affairs · Grant data updated September 2026 ·
+  Questions? <a href="mailto:christa.greenlee@utah.edu" style="color:var(--crimson);">christa.greenlee@utah.edu</a>
 </footer>
 
 <script>
-// ─── DATA — verified from SH&W Grants Master List 8/26 CSV ───
-// Not Awarded rows excluded; Saalt row removed per request.
-// Deadline/period is blank because the new CSV does not contain deadline/period data.
+// ─── DATA — verified from Excel_for_Hub_9_26.csv + 1 manual addition ───
+// Not Awarded: none in this dataset
+// Manual addition: SoFi Bank Sweepstakes (Submitted, new cycle) — confirmed by user
+// Dr. Scholl Foundation dept left blank (not in CSV)
 const GRANTS = [
-  { status:"Upcoming", title:"OVW Campus Grant", funder:"US Department of Justice", type:"Federal", requested:null, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
-  { status:"Upcoming", title:"Campus Grants", funder:"Swipe Out Hunger", type:"Foundation", requested:6000, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
-  { status:"Upcoming", title:"Product Donation", funder:"Trader Joe's", type:"Corporate In-Kind", requested:null, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
-  { status:"Upcoming", title:"MEAF Grants", funder:"Mitsubishi Electric America Foundation", type:"Corporate", requested:null, awarded:null, priority:"Health Equity and Access", dept:"CDA", period:null },
-  { status:"Upcoming", title:"Grants", funder:"Dr. Scholl Foundation", type:"Corporate", requested:null, awarded:null, priority:"Basic Needs Security", dept:"SHW", period:null },
-  { status:"Upcoming", title:"Community Grant Competition", funder:"Organization for Autism Research", type:"Foundation", requested:15000, awarded:null, priority:"Peer-Led Support Models", dept:"CDA", period:null },
-  { status:"Upcoming", title:"Tommy Wilson Memorial Grant", funder:"SHAPE America", type:"Foundation", requested:null, awarded:null, priority:"Health Equity and Access", dept:"CDA", period:null },
-  { status:"In Progress", title:"UREACH Grant", funder:"Learning Disabilities Foundation of America", type:"Foundation", requested:null, awarded:null, priority:"Health Equity and Access", dept:"CDA", period:null },
-  { status:"In Progress", title:"Zero Hunger / Hunger Relief", funder:"Kroger Co. Foundation", type:"Corporate", requested:null, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
-  { status:"In Progress", title:"Basic Needs", funder:"ECMC Foundation", type:"Foundation", requested:500000, awarded:null, priority:"Basic Needs Security", dept:"SHW", period:null },
-  { status:"Submitted", title:"Aid to Higher Education", funder:"Northrop Grumman", type:"Corporate", requested:15000, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"CCW", period:null },
-  { status:"Submitted", title:"VITA Continued Support", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Health Equity and Access", dept:"FWC", period:null },
-  { status:"Submitted", title:"Success360 Campus Partner Training", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Health Equity and Access", dept:"FWC", period:null },
-  { status:"Submitted", title:"Wellness Retreat", funder:"Parent Fund", type:"Donor(s)", requested:7683, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"UCC", period:null },
-  { status:"Submitted", title:"Executive Functioning Project", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Peer-Led Support Models", dept:"CDA", period:null },
-  { status:"Submitted", title:"Meals Within Reach", funder:"Parent Fund", type:"Donor(s)", requested:10000, awarded:null, priority:"Basic Needs Security", dept:"SHW", period:null },
-  { status:"Submitted", title:"Warehouse Donations", funder:"Costco", type:"Corporate In-Kind", requested:1000, awarded:null, priority:"Basic Needs Security", dept:"CCW", period:null },
-  { status:"Submitted", title:"GLS Suicide Prevention on Campus", funder:"SAMHSA", type:"Federal", requested:499996, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
-  { status:"Submitted", title:"Schwab Moneywise Momentum Grants", funder:"Charles Schwab Foundation", type:"Corporate", requested:200813, awarded:null, priority:"Innovation and Workforce Development in the Health Professions", dept:"FWC", period:null },
-  { status:"Submitted", title:"Economic Opportunity Grants: Financial Literacy", funder:"Nasdaq Foundation", type:"Corporate", requested:65000, awarded:null, priority:"Health Literacy and Digital Wellness Tools", dept:"FWC", period:null },
-  { status:"Submitted", title:"Get Out and Get Active", funder:"Anxiety and Depression Initiative", type:"Foundation", requested:10000, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"CRS", period:null },
-  { status:"Submitted", title:"Suicide prevention on campus", funder:"Lifestance Health Foundation", type:"Corporate", requested:null, awarded:null, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
-  { status:"Awarded", title:"JED Campus", funder:"JED Foundation", type:"Foundation", requested:70000, awarded:70000, priority:"Mental Health Expansion and Crisis Prevention", dept:"SHW", period:null },
-  { status:"Awarded", title:"Faith and Health Pipeline", funder:"Interfaith America", type:"Foundation", requested:5000, awarded:5000, priority:"Spiritual Wellness and Interfaith Programming", dept:"SWP", period:null },
-  { status:"Awarded", title:"Prosperity Now", funder:"Prosperity Now", type:"Foundation", requested:20000, awarded:11200, priority:"Health Equity and Access", dept:"FWC", period:null },
-  { status:"Awarded", title:"In-Kind Donation", funder:"The OP Games", type:"Corporate In-Kind", requested:84700, awarded:84700, priority:"Health Literacy and Digital Wellness Tools", dept:"FWC", period:null },
-  { status:"Awarded", title:"SoFi Bank Sweepstakes", funder:"SoFi Bank", type:"Corporate", requested:12000, awarded:12000, priority:"Basic Needs Security", dept:"FWC", period:null },
-  { status:"Awarded", title:"Scholarships for Accessibility", funder:"Craig H. Neilsen Foundation", type:"Foundation", requested:10000, awarded:10000, priority:"Health Equity and Access", dept:"CDA", period:null },
-  { status:"Awarded", title:"Scholarships for Students with Learning Disabilities", funder:"Kingsley Foundation", type:"Foundation", requested:10000, awarded:10000, priority:"Health Equity and Access", dept:"CDA", period:null },
-  { status:"Awarded", title:"Product Donation", funder:"Chomps", type:"Corporate In-Kind", requested:512, awarded:553, priority:"Basic Needs Security", dept:"CCW", period:null }
+  // UPCOMING (6)
+  { status:"Upcoming",    title:"Energize the Environment",                                          funder:"Quadratec",                              type:"Corporate",        requested:3500,    awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",       dept:"CCW", period:"10/30/2026" },
+  { status:"Upcoming",    title:"OVW Campus Grant",                                                  funder:"US Department of Justice",               type:"Federal",          requested:null,    awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",       dept:"SHW", period:"11/1/2026"  },
+  { status:"Upcoming",    title:"MEAF Grants",                                                       funder:"Mitsubishi Electric America Foundation",  type:"Corporate",        requested:null,    awarded:null,  priority:"Health Equity and Access",                            dept:"CDA", period:"11/1/2026"  },
+  { status:"Upcoming",    title:"Grants",                                                             funder:"Dr. Scholl Foundation",                  type:"Corporate",        requested:null,    awarded:null,  priority:"Basic Needs Security",                                dept:"",    period:"1/31/2027"  },
+  { status:"Upcoming",    title:"Community Grant Competition",                                        funder:"Organization for Autism Research",        type:"Foundation",       requested:15000,   awarded:null,  priority:"Peer-Led Support Models",                             dept:"CDA", period:"3/1/2027"   },
+  { status:"Upcoming",    title:"Tommy Wilson Memorial Grant",                                        funder:"SHAPE America",                          type:"Foundation",       requested:null,    awarded:null,  priority:"Health Equity and Access",                            dept:"CDA", period:"6/1/2027"   },
+  // IN PROGRESS (4)
+  { status:"In Progress", title:"Basic Needs",                                                        funder:"ECMC Foundation",                        type:"Foundation",       requested:500000,  awarded:null,  priority:"Basic Needs Security",                                dept:"SHW", period:"10/1/2026"  },
+  { status:"In Progress", title:"Campus Grants",                                                      funder:"Swipe Out Hunger",                       type:"Foundation",       requested:10000,   awarded:null,  priority:"Basic Needs Security",                                dept:"CCW", period:"10/2/2026"  },
+  { status:"In Progress", title:"Zero Hunger / Hunger Relief",                                        funder:"Kroger Co. Foundation",                  type:"Corporate",        requested:null,    awarded:null,  priority:"Basic Needs Security",                                dept:"CCW", period:"12/4/2026"  },
+  { status:"In Progress", title:"College Well-Being Award",                                           funder:"American College Health Foundation",      type:"Foundation",       requested:3500,    awarded:null,  priority:"Health Equity and Access",                            dept:"SHW", period:"1/14/2027"  },
+  // SUBMITTED (11 from CSV + 1 manual = 12)
+  { status:"Submitted",   title:"Aid to Higher Education",                                            funder:"Northrop Grumman",                       type:"Corporate",        requested:15000,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",       dept:"CCW", period:"5/27/2026"  },
+  { status:"Submitted",   title:"VITA Continued Support",                                             funder:"Parent Fund",                            type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Health Equity and Access",                            dept:"FWC", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Success360 Campus Partner Training",                                 funder:"Parent Fund",                            type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Health Equity and Access",                            dept:"FWC", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Wellness Retreat",                                                   funder:"Parent Fund",                            type:"Donor(s)",         requested:7683,    awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",       dept:"UCC", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Executive Functioning Project",                                      funder:"Parent Fund",                            type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Peer-Led Support Models",                             dept:"CDA", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Meals Within Reach",                                                 funder:"Parent Fund",                            type:"Donor(s)",         requested:10000,   awarded:null,  priority:"Basic Needs Security",                                dept:"SHW", period:"6/30/2026"  },
+  { status:"Submitted",   title:"Warehouse Donations",                                                funder:"Costco",                                 type:"Corporate In-Kind",requested:1000,    awarded:null,  priority:"Basic Needs Security",                                dept:"CCW", period:"7/7/2026"   },
+  { status:"Submitted",   title:"Schwab Moneywise Momentum Grants",                                   funder:"Charles Schwab Foundation",              type:"Corporate",        requested:200813,  awarded:null,  priority:"Innovation and Workforce Development in Health Professions", dept:"FWC", period:"7/31/2026" },
+  { status:"Submitted",   title:"Get Out and Get Active",                                             funder:"Anxiety and Depression Initiative",       type:"Foundation",       requested:10000,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",       dept:"CRS", period:"8/3/2026"   },
+  { status:"Submitted",   title:"Suicide Prevention on Campus",                                       funder:"Lifestance Health Foundation",            type:"Corporate",        requested:10000,   awarded:null,  priority:"Mental Health Expansion and Crisis Prevention",       dept:"SHW", period:"8/10/2026"  },
+  { status:"Submitted",   title:"Utah Cooperative Cohort",                                            funder:"Interfaith America",                     type:"Foundation",       requested:4050,    awarded:null,  priority:"Spiritual Wellness and Interfaith Programming",       dept:"CCW", period:"10/2/2026"  },
+  { status:"Submitted",   title:"SoFi Bank Sweepstakes",                                              funder:"SoFi Bank",                              type:"Corporate",        requested:14000,   awarded:null,  priority:"Basic Needs Security",                                dept:"FWC", period:"TBD"        },
+  // AWARDED (9)
+  { status:"Awarded",     title:"JED Campus",                                                         funder:"JED Foundation",                         type:"Foundation",       requested:70000,   awarded:70000,  priority:"Mental Health Expansion and Crisis Prevention",      dept:"SHW", period:"2021-2024"  },
+  { status:"Awarded",     title:"Faith and Health Pipeline",                                          funder:"Interfaith America",                     type:"Foundation",       requested:5000,    awarded:5000,   priority:"Spiritual Wellness and Interfaith Programming",      dept:"SWP", period:"2025-2026"  },
+  { status:"Awarded",     title:"Prosperity Now",                                                     funder:"Prosperity Now",                         type:"Foundation",       requested:20000,   awarded:11200,  priority:"Health Equity and Access",                           dept:"FWC", period:"2026"       },
+  { status:"Awarded",     title:"In-Kind Donation",                                                   funder:"The OP Games",                           type:"Corporate In-Kind",requested:84700,   awarded:84700,  priority:"Health Literacy and Digital Wellness Tools",         dept:"FWC", period:"2026"       },
+  { status:"Awarded",     title:"SoFi Bank Sweepstakes",                                              funder:"SoFi Bank",                              type:"Corporate",        requested:12000,   awarded:12000,  priority:"Basic Needs Security",                               dept:"FWC", period:"2026"       },
+  { status:"Awarded",     title:"Scholarships for Accessibility",                                     funder:"Craig H. Neilsen Foundation",            type:"Foundation",       requested:10000,   awarded:10000,  priority:"Health Equity and Access",                           dept:"CDA", period:"2026"       },
+  { status:"Awarded",     title:"Scholarships for Students with Learning Disabilities",               funder:"Kingsley Foundation",                    type:"Foundation",       requested:10000,   awarded:10000,  priority:"Health Equity and Access",                           dept:"CDA", period:"2026"       },
+  { status:"Awarded",     title:"Product Donation",                                                   funder:"Chomps",                                 type:"Corporate In-Kind",requested:512,     awarded:553,    priority:"Basic Needs Security",                               dept:"CCW", period:"2026-2027"  },
+  { status:"Awarded",     title:"GLS Suicide Prevention on Campus",                                   funder:"SAMHSA",                                 type:"Federal",          requested:499996,  awarded:499996, priority:"Mental Health Expansion and Crisis Prevention",      dept:"SHW", period:"2026-2030"  },
 ];
 
 // ─── HELPERS ───
@@ -371,12 +348,11 @@ const LEG = { position:'bottom', labels:{ color:'#475569', font:{size:11}, paddi
 let charts = {};
 function killChart(id) { if (charts[id]) { charts[id].destroy(); delete charts[id]; } }
 
-// ─── SUMMARY ───
 function buildSummary() {
   const awd  = GRANTS.filter(isAwd);
   const pipe = GRANTS.filter(isPipe);
-  const totalAwd  = sumBy(awd,  g => g.awarded);
-  const totalPipe = sumBy(GRANTS.filter(g => ['Upcoming','In Progress','Submitted'].includes(g.status)), g => g.requested);
+  const totalAwd  = sumBy(awd, g => g.awarded);
+  const totalPipe = sumBy(pipe, g => g.requested);
   document.getElementById('summary-strip').innerHTML = `
     <div class="summary-tile emerald">
       <div class="tile-label">Total Funds Awarded</div>
@@ -400,7 +376,6 @@ function buildSummary() {
     </div>`;
 }
 
-// ─── GROUPED BAR ───
 function makeGroupedBar(id, labels, awdVals, pipeVals, onClick) {
   killChart(id);
   charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
@@ -421,7 +396,6 @@ function makeGroupedBar(id, labels, awdVals, pipeVals, onClick) {
   });
 }
 
-// ─── DOUGHNUT ───
 function makePie(id, labels, values, palette, onClick) {
   killChart(id);
   charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
@@ -435,7 +409,6 @@ function makePie(id, labels, values, palette, onClick) {
   });
 }
 
-// ─── OVERVIEW CHARTS ───
 function buildOverview() {
   const priorities = unique(GRANTS, 'priority');
   const shortP = priorities.map(p => p.length > 28 ? p.substring(0,26)+'…' : p);
@@ -457,7 +430,6 @@ function buildOverview() {
   );
 }
 
-// ─── DRILL DOWN ───
 let panelN = 0;
 function drillDown(dim, value) {
   const subset = GRANTS.filter(g => g[dim] === value);
@@ -543,7 +515,8 @@ function drillDown(dim, value) {
       tbody.innerHTML += `<tr>
         <td>${g.title}</td>
         <td><span class="status-badge badge-${sc}">${g.status}</span></td>
-        <td>${g.funder}</td><td>${g.type}</td><td>${g.dept}</td><td>${g.priority}</td>
+        <td>${g.funder}</td><td>${g.type}</td>
+        <td>${g.dept||'TBD'}</td><td>${g.priority}</td>
         <td class="${g.requested ? 'amount-cell' : 'na-cell'}">${g.requested ? fmt(g.requested) : 'TBD'}</td>
         <td class="${g.awarded ? 'awarded-amount' : 'na-cell'}">${g.awarded ? fmt(g.awarded) : 'Not yet awarded'}</td>
         <td>${g.period||'—'}</td></tr>`;
@@ -560,7 +533,6 @@ function closePanel(id) {
   setTimeout(() => el.remove(), 220);
 }
 
-// ─── NARRATIVE ───
 function buildNarrative(dim, value, subset, aGrants, pGrants, totalA, totalP) {
   function top(arr, field, fn) {
     const m = {};
@@ -595,7 +567,6 @@ function buildNarrative(dim, value, subset, aGrants, pGrants, totalA, totalP) {
   return parts.join(' ');
 }
 
-// ─── MAIN TABLE ───
 function buildTable() {
   const order = { Awarded:0, Submitted:1, 'In Progress':2, Upcoming:3 };
   const sorted = [...GRANTS].sort((a,b) => (order[a.status]??9) - (order[b.status]??9));
@@ -605,7 +576,8 @@ function buildTable() {
     tbody.innerHTML += `<tr>
       <td>${g.title}</td>
       <td><span class="status-badge badge-${sc}">${g.status}</span></td>
-      <td>${g.funder}</td><td>${g.type}</td><td>${g.dept}</td><td>${g.priority}</td>
+      <td>${g.funder}</td><td>${g.type}</td>
+      <td>${g.dept||'TBD'}</td><td>${g.priority}</td>
       <td class="${g.requested ? 'amount-cell' : 'na-cell'}">${g.requested ? fmt(g.requested) : 'TBD'}</td>
       <td class="${g.awarded ? 'awarded-amount' : 'na-cell'}">${g.awarded ? fmt(g.awarded) : 'Not yet awarded'}</td>
       <td>${g.period||'—'}</td></tr>`;
@@ -613,7 +585,6 @@ function buildTable() {
   document.getElementById('table-count-badge').textContent = `${GRANTS.length} grants`;
 }
 
-// ─── INIT ───
 window.closePanel = closePanel;
 document.addEventListener('DOMContentLoaded', () => { buildSummary(); buildOverview(); buildTable(); });
 </script>
